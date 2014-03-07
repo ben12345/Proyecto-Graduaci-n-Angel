@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Introduccin}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Qu son las ecuaciones de Navier-Stokes?}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Cmo surgen?}{10}{0}{1}
+\beamer@subsectionintoc {1}{3}{Problema matemtico}{14}{0}{1}
+\beamer@sectionintoc {2}{Descripcin del problema}{19}{0}{2}
+\beamer@subsectionintoc {2}{1}{Las ecuaciones de Euler}{19}{0}{2}
+\beamer@subsectionintoc {2}{2}{Las Ecuaciones de Navier-Stokes}{30}{0}{2}
+\beamer@subsectionintoc {2}{3}{El desafo}{39}{0}{2}
+\beamer@sectionintoc {3}{Enunciado del problema}{48}{0}{3}
+\beamer@sectionintoc {4}{Referencias}{52}{0}{4}

@@ -1,0 +1,361 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author:  Pablo Alvarado
+%
+% Escuela de Electrónica
+% Instituto Tecnológico de Costa Rica
+%
+% Phone:   +506 550 2106
+% Fax:     +506 591 6629
+% email:   palvarado@ietec.org
+%
+% $Id: macros.tex 1497 2010-08-09 17:04:26Z palvarado $
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Configuration of the exercises package, which is used to collect all
+% problems and answers in the document.
+\usepackage[exercisedelayed,answerdelayed,lastexercise]{exercise}
+\renewcounter{Exercise}[chapter]
+\renewcommand{\ExerciseName}{Problema}
+\renewcommand{\theExercise}{\thechapter.\arabic{Exercise}}
+\newcommand{\ExerciseLabel}{Exercise.\theExercise}
+\renewcommand{\ExerciseHeader}%
+{\textbf{\ExerciseName\ \theExercise.\ \ExerciseHeaderTitle\ }}
+\renewcommand{\AnswerHeader}%
+{\textbf{\ExerciseName\ \theExercise.\ }}
+
+
+\usepackage{ifpdf}
+
+% Command to change between draft or release mode:
+\newcommand{\ifdraft}[2]{\ifthenelse{\boolean{draftmode}}{#1}{#2}}
+% Command to change between draft or release mode:
+\newcommand{\ifbook}[2]{\ifthenelse{\boolean{bookmode}}{#1}{#2}}
+
+% include all required packages here
+\usepackage[spanish,english]{babel}     % supports english, but default is 
+                                        % spanish...
+\newcommand*{\SelectSpanish}{%          % well, the last line indeed selects
+  \hyphenrules{spanish}%                % english over spanish, but with this
+  \languageshorthands{spanish}%         % command we turn it around.
+  \captionsspanish                      % The reason: hyperref has some
+  \datespanish                          % problems with the spanish babel,
+}                                       % so we use some trick here so that it
+\AtBeginDocument{\SelectSpanish}        % thinks it is english.
+
+\usepackage{makeidx}                    % to create index file
+
+\ifdraft{%
+  %\usepackage[refpage]{nomencl}        % Use to easily administrate the list
+ \usepackage{nomencl}                   % of symbols
+}{%
+ \usepackage{nomencl}
+}
+%\usepackage{times}                     % replace latex pk fonts with ps type I
+                                        % don't forget to use dvips -D600 -Pcmz
+                                        % to ensure Type I fonts!
+\usepackage{amsmath}
+\usepackage{amssymb,amstext}            % AMS-math and symbols package
+\usepackage{mathrsfs}                   % Calygraphic fonts for transforms
+\usepackage{array}                      % extensions to tabular environment
+\usepackage{longtable}                  % supports extraordinary long tables
+\usepackage{tabularx}                   % supports tables with fixed width
+\usepackage{afterpage}                  % put something only after the page
+\usepackage{multirow}                   % supports multiple row grouping in 
+                                        % tables
+\usepackage{multicol}                   % multiple columns environments
+\usepackage{paralist}                   % a few enumeration settings
+
+\usepackage[hang,%
+            small,%
+            bf]{caption}                % nicer figure captions
+%\usepackage{sty/ftcap}                 % switch \abovecaptionskip and
+%                                       % \belowcaptionskip for tables, in 
+%                                       % order to avoid the caption to be
+%                                       % too near to the table itself
+% locally added packages
+\usepackage{float}                      % really place figures "here" (H)
+\usepackage{booktabs}                   % book type tabulars
+
+% the own style with options depending on the draft mode
+\ifdraft{%
+\usepackage[todo]{sty/tecStyle}         % some command definitions
+                                        % options [todo] todo-index
+}{%
+\usepackage{sty/tecStyle}               % some command definitions
+                                        % options [todo] todo-index
+}
+
+%% fix the title for examples
+\renewcommand{\examplelistname}{Índice de ejemplos}
+\renewcommand{\examplename}{Ejemplo}
+
+
+\usepackage{url}                        % allows linebreaks at certain
+                                        % characters or combinations of 
+                                        % characters for URLs
+
+\usepackage[nottoc]{tocbibind}          % Fix the hyperrefs to TOC,TOF, etc.
+                                        % and ensure that they appear all in 
+                                        % the Table of Contents
+
+\usepackage{color}                      % Support for colors
+\definecolor{dkred}{rgb}{0.5,0,0}       %   dark red
+\definecolor{dkgreen}{rgb}{0,0.3,0}     %   dark green
+\definecolor{dkblue}{rgb}{0,0.0,0.5}    %   dark blue
+\definecolor{dkgray}{gray}{0.4}         %   dark gray
+\definecolor{dkmagenta}{rgb}{0.3,0.0,0.3} % dark magenta
+\definecolor{ltyellow}{rgb}{1.0,1.0,0.7}  % light yellow
+
+\newcommand{\bG}[1]{\textcolor{dkgreen}{\textbf{#1}}}
+\newcommand{\bR}[1]{\textcolor{dkred}{\textbf{#1}}}
+\newcommand{\bB}[1]{\textcolor{dkblue}{\textbf{#1}}}
+\newcommand{\bM}[1]{\textcolor{dkmagenta}{\textbf{#1}}}
+\newcommand{\bY}[1]{\textcolor{dkyellow}{\textbf{#1}}}
+\newcommand{\bC}[1]{\textcolor{dkcyan}{\textbf{#1}}}
+
+% For pdflatex
+% - The hyperref package should always be loaded last, since it has to
+%   overwrite some of the commands.
+% - The package subfigure caused that the pagebackrefs and index refs were set
+%   incorrectly.
+
+\ifpdf
+%
+% final / draft document options
+\usepackage[pdftex,final]{graphicx}     % for inserting pdf-graphics.
+                                        % options final / draft
+\ifdraft{%
+
+\usepackage[pdftex,%
+            pdftitle={\pdfTitle},%
+            pdfauthor={\pdfAuthor},%
+            pdfsubject={Notas de Clase},%
+            pdfkeywords={\pdfKeywords},%
+            naturalnames=true,
+            linktocpage,
+            hyperindex,
+            colorlinks,
+            urlcolor=dkred,          %\href to external url
+            filecolor=dkmagenta,     %\href to local file
+            linkcolor=dkred,         %\ref and \pageref
+            citecolor=dkgreen,       %\cite
+            pagecolor=dkred,
+            pagebackref,
+            plainpages=false,
+            pdfpagelabels,
+            pdfpagemode=UseOutlines, % means use bookmarks (None,UseOutlines)
+            % bookmarksopen=false,   % would show the whole hierarchy if true
+            bookmarksnumbered=true,
+            pdfpagelayout=OneColumn, % SinglePage,OneColumn,TwoColumnLeft,...
+            pdfview=FitH, % FitB,FitBH,FitBV,Fit,FitH,FitV
+            pdfstartview=FitH, % FitB,FitBH,FitBV,Fit,FitH,FitV
+            ]{hyperref}
+}{%
+\usepackage[pdftex,%
+            pdftitle={\pdfTitle},%
+            pdfauthor={\pdfAuthor},%
+            pdfsubject={Notas de clase},%
+            pdfkeywords={\pdfKeywords},%
+            naturalnames=true,
+            linktocpage,hyperindex,
+            colorlinks,
+            urlcolor=dkred,          %\href to external url
+            filecolor=dkmagenta,     %\href to local file
+            linkcolor=dkred,         %\ref and \pageref
+            citecolor=dkgreen,       %\cite
+            pagecolor=dkred,
+            % pagebackref,           % only in draft modus should this be on.
+            plainpages=false,
+            pdfpagelabels,
+            pdfpagemode=UseOutlines, % means use bookmarks (None,UseOutlines)
+            % bookmarksopen=false,   % open the whole hierarchy if true!
+            bookmarksnumbered=true,
+            pdfpagelayout=OneColumn, % SinglePage,OneColumn,TwoColumnLeft,...
+            pdfview=FitH, % FitB,FitBH,FitBV,Fit,FitH,FitV
+            pdfstartview=FitH, % FitB,FitBH,FitBV,Fit,FitH,FitV
+            ]{hyperref}
+}
+
+%
+% Ensure that the links of the images point to the top of the images and not
+% to the caption
+%
+\usepackage[figure]{hypcap}
+
+% %
+% % Ensure that pdfLaTeX do the same spacing as LaTeX
+% %
+\pdfadjustspacing=1 
+% %
+\else   % i.e. if not pdf
+
+\usepackage[active]{srcltx}             % insert links into the dvi to jump
+\usepackage[dvips,final]{graphicx}      % for inserting eps-graphics.
+                                        % options final / draft
+                                        % into the sources directly.
+\ifdraft{%
+\usepackage[ps2pdf,%
+            pdftitle={\pdfTitle}%
+            pdfauthor={\pdfAuthor},%
+            pdfsubject={Notas de clase},%
+            pdfkeywords={\pdfKeywords},%
+            % plainpages=false,
+            linktocpage,
+            hyperindex,
+            pagebackref,
+            % pdfpagelabels,
+            pdfpagemode=UseOutlines,
+            pdfstartview=FitH]{hyperref}
+}{%
+\usepackage[ps2pdf,%
+            pdftitle={\pdfTitle}%
+            pdfauthor={\pdfAuthor},%
+            pdfsubject={Notas de clase},%
+            pdfkeywords={\pdfKeywords},%
+            % plainpages=false,
+            linktocpage,
+            hyperindex,
+            % pagebackref,
+            % pdfpagelabels,
+            pdfpagemode=UseOutlines,
+            pdfstartview=FitH]{hyperref}
+}
+
+%\usepackage[ps2pdf]{hyperref}
+
+\fi  % end of if pdf or not
+
+\usepackage{sty/algorithmic}            % algorithmic environment
+
+
+\usepackage{rotating}                   % allow block rotation
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\sloppy
+
+%
+% Some own font definitions
+%
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\DeclareMathAlphabet{\mathpss}{OT1}{cmss}{m}{sl}
+
+%
+% page layout
+%
+
+\usepackage{vmargin}
+\setpapersize{USletter}
+
+% For letter-paper printing
+\setmarginsrb{33mm}{8mm}{23mm}{7mm}{15pt}{15pt}{7mm}{12mm}
+%\setlength{\headheight}{15pt}         % fancy headers wanted this
+
+%
+% Fraction of Float Object / Text
+%
+
+\renewcommand{\topfraction}{0.95}       % how much of top of page should be 
+                                        % allowed to be float object?
+\renewcommand{\bottomfraction}{0.95}    % how much of bottom of page should be
+                                        % allowed to be float object?
+\renewcommand{\textfraction}{0.05}      % how much of page must be text?
+
+\usepackage{fancyhdr}                   % fancy page headers
+
+\usepackage{lastpage}
+
+%
+% header and footer layout (needs package fancyhdr)
+%
+\newcommand{\copyrightfooter}{\tiny{\copyright 2005-2010 --- P.~Alvarado %
+    \qquad Uso exclusivo ITCR}}
+%
+\newcommand{\draftfoot}%
+  {\ifdraft{\textcolor{dkblue}{\tiny\textsl{Borrador: \today}}{}}
+           {}
+}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{{\small
+    \thechapter\hspace*{1mm}#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{{\small
+    \thesection\hspace*{1mm}#1}}{}}
+\lhead[{\small\textbf\thepage}]{\fancyplain{}%
+        {{\slshape \small\nouppercase{\leftmark}}}}
+\chead[]{}
+\rhead[\fancyplain{}%
+        {{\slshape \small\nouppercase{\rightmark}}}]{{\small\textbf\thepage}}
+\lfoot[]{\draftfoot}
+\ifbook{%
+  \cfoot[]{}
+}{
+  \cfoot[\copyrightfooter]{\copyrightfooter}
+}
+\rfoot[\draftfoot]{}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%
+% Caption style for tables
+% Requires the packages caption2 and ftcap
+% (caption2 required this, but is obsolete now:)
+%
+%\newcaptionstyle{tablecaptionstyle}{%
+%  \renewcommand\captionlabelfont{\normalsize\bf}
+%  \renewcommand\captionfont{\normalsize}
+%  \usecaptionstyle{hang}%
+%}
+
+% For caption v3:
+\captionsetup[table]{position=top,format=hang,textfont={normalsize},labelfont={normalsize,bf}}
+
+\newcommand{\tablecaption}[2][foo]{%
+  \ifthenelse{\equal{#1}{foo}}{%
+    %\captionstyle{tablecaptionstyle}%
+    \caption{#2}%
+  }
+  {%
+    %\captionstyle{tablecaptionstyle}%
+    \caption[#1]{#2}%
+  }
+}
+\addto\extrasspanish{\renewcommand{\tablename}{Tabla}}
+\addto\extrasspanish{\renewcommand{\listtablename}{\'Indice de tablas}}
+
+%
+% paragraph layout
+%
+\renewcommand{\baselinestretch}{1.1}    % line spacing
+\parindent0em                           % indentation width of first line
+\parskip1.3ex                           % space between paragraphs
+
+%
+% document consists of
+% chapter - section - subsection - subsubsection - paragraph - subparagraph
+%
+\setcounter{secnumdepth}{2}             % depth of section numbering
+\setcounter{tocdepth}{2}                % depth of table of contents
+
+%
+% prepares index from entries like \index{word} or \index{group!word}.
+% don't forget to call "makeindex filename" for final index generation.
+%
+\makeindex                            %% for package makeidx.sty
+%\newindex{default}{idx}{ind}{Index}  %% for package index.sty
+
+\newcommand{\octave}{GNU/Octave}
+
+
+%
+% prepares notation or nomenclature 
+%
+%\makeglossary
+\makenomenclature
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

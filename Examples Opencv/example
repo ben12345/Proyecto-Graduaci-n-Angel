@@ -1,0 +1,12 @@
+#include
+#include<opencv2/highgui/highgui.hpp>
+ 
+int main()
+{
+     IplImage* img = cvLoadImage("image.jpg",CV_LOAD_IMAGE_COLOR);
+     cvNamedWindow("example",CV_WINDOW_AUTOSIZE);
+     cvShowImage("example",img);
+     cvWaitKey(0);
+     cvReleaseImage(&img);
+     return 0;
+}

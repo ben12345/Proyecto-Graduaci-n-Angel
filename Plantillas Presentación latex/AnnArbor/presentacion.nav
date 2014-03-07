@@ -1,0 +1,64 @@
+\beamer@endinputifotherversion {3.10pt}
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\sectionentry {1}{Introduccin}{3}{Introduccin}{0}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Qu son las ecuaciones de Navier-Stokes?}}\headcommand {\beamer@subsectionpages {3}{2}}
+\headcommand {\slideentry {1}{1}{1}{3/9}{Qu son las ecuaciones de Navier-Stokes?}{0}}
+\headcommand {\beamer@framepages {3}{9}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{10}{Cmo surgen?}}\headcommand {\beamer@subsectionpages {3}{9}}
+\headcommand {\slideentry {1}{2}{1}{10/11}{Cmo surgen?}{0}}
+\headcommand {\beamer@framepages {10}{11}}
+\headcommand {\slideentry {1}{2}{2}{12/13}{Cmo surgen?}{0}}
+\headcommand {\beamer@framepages {12}{13}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{14}{Problema matemtico}}\headcommand {\beamer@subsectionpages {10}{13}}
+\headcommand {\slideentry {1}{3}{1}{14/17}{Problema matemtico}{0}}
+\headcommand {\beamer@framepages {14}{17}}
+\headcommand {\slideentry {1}{3}{2}{18/18}{Problema matemtico}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\sectionentry {2}{Descripcin del problema}{19}{Descripcin del problema}{0}}
+\headcommand {\beamer@sectionpages {3}{18}}
+\headcommand {\beamer@subsectionpages {14}{18}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{19}{Las ecuaciones de Euler}}\headcommand {\beamer@subsectionpages {19}{18}}
+\headcommand {\slideentry {2}{1}{1}{19/22}{Las ecuaciones de Euler}{0}}
+\headcommand {\beamer@framepages {19}{22}}
+\headcommand {\slideentry {2}{1}{2}{23/26}{Las ecuaciones de Euler}{0}}
+\headcommand {\beamer@framepages {23}{26}}
+\headcommand {\slideentry {2}{1}{3}{27/29}{Las ecuaciones de Euler}{0}}
+\headcommand {\beamer@framepages {27}{29}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{30}{Las Ecuaciones de Navier-Stokes}}\headcommand {\beamer@subsectionpages {19}{29}}
+\headcommand {\slideentry {2}{2}{1}{30/33}{Las Ecuaciones de Navier-Stokes}{0}}
+\headcommand {\beamer@framepages {30}{33}}
+\headcommand {\slideentry {2}{2}{2}{34/35}{Las Ecuaciones de Navier-Stokes}{0}}
+\headcommand {\beamer@framepages {34}{35}}
+\headcommand {\slideentry {2}{2}{3}{36/38}{Las Ecuaciones de Navier-Stokes}{0}}
+\headcommand {\beamer@framepages {36}{38}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{39}{El desafo}}\headcommand {\beamer@subsectionpages {30}{38}}
+\headcommand {\slideentry {2}{3}{1}{39/41}{El desafo}{0}}
+\headcommand {\beamer@framepages {39}{41}}
+\headcommand {\slideentry {2}{3}{2}{42/47}{El desafo}{0}}
+\headcommand {\beamer@framepages {42}{47}}
+\headcommand {\sectionentry {3}{Enunciado del problema}{48}{Enunciado del problema}{0}}
+\headcommand {\beamer@sectionpages {19}{47}}
+\headcommand {\beamer@subsectionpages {39}{47}}
+\headcommand {\slideentry {3}{0}{3}{48/48}{}{0}}
+\headcommand {\beamer@framepages {48}{48}}
+\headcommand {\slideentry {3}{0}{4}{49/49}{}{0}}
+\headcommand {\beamer@framepages {49}{49}}
+\headcommand {\slideentry {3}{0}{5}{50/50}{}{0}}
+\headcommand {\beamer@framepages {50}{50}}
+\headcommand {\slideentry {3}{0}{6}{51/51}{}{0}}
+\headcommand {\beamer@framepages {51}{51}}
+\headcommand {\sectionentry {4}{Referencias}{52}{Referencias}{0}}
+\headcommand {\beamer@sectionpages {48}{51}}
+\headcommand {\beamer@subsectionpages {48}{51}}
+\headcommand {\slideentry {4}{0}{7}{52/52}{}{0}}
+\headcommand {\beamer@framepages {52}{52}}
+\headcommand {\beamer@partpages {1}{52}}
+\headcommand {\beamer@subsectionpages {52}{52}}
+\headcommand {\beamer@sectionpages {52}{52}}
+\headcommand {\beamer@documentpages {52}}
+\headcommand {\def \inserttotalframenumber {20}}

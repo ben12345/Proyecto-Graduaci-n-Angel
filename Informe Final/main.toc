@@ -1,0 +1,26 @@
+\select@language {english}
+\contentsline {chapter}{\'{I}ndice de figuras}{iii}{section*.6}
+\contentsline {chapter}{\'Indice de tablas}{v}{section*.8}
+\contentsline {chapter}{Revisar}{vii}{chapter*.9}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Objetivos y estructura del documento}{2}{section.1.1}
+\contentsline {chapter}{\numberline {2}Marco te\IeC {\'o}rico}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Descripci\IeC {\'o}n}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Generalidades}{3}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Redacci\IeC {\'o}n}{3}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Ecuaciones}{4}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Figuras}{5}{subsection.2.2.3}
+\contentsline {subsubsection}{Im\IeC {\'a}genes raster}{5}{section*.10}
+\contentsline {subsubsection}{Im\IeC {\'a}genes vectoriales}{5}{section*.11}
+\contentsline {subsubsection}{Figuras ltxfig/psfrag}{6}{section*.12}
+\contentsline {subsubsection}{Figuras pstricks}{6}{section*.14}
+\contentsline {subsubsection}{Entradas en el \IeC {\'\i }ndice de figuras}{6}{section*.16}
+\contentsline {subsection}{\numberline {2.2.4}Referencias bibliogr\IeC {\'a}ficas}{7}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Extensi\IeC {\'o}n}{7}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Sobre esta plantilla \textlatin {\LaTeX }}{7}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Marcar asuntos pendientes}{7}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}\IeC {\'I}ndices}{8}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}Soluci\IeC {\'o}n propuesta}{9}{chapter.3}
+\contentsline {chapter}{\numberline {4}Resultados y an\IeC {\'a}lisis}{11}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusiones}{13}{chapter.5}
+\contentsline {chapter}{\numberline {A}Demostraci\IeC {\'o}n del teorema de Nyquist}{15}{appendix.A}
