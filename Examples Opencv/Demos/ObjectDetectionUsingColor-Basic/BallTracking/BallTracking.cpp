@@ -1,7 +1,10 @@
 ﻿#include "stdafx.h"
-
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
+#include <math.h>
+#include <iostream>
+#include <stdio.h>
+using namespace cv;
 
 //This function threshold the HSV image and create a binary image
 IplImage* GetThresholdedImage(IplImage* imgHSV){
@@ -17,7 +20,7 @@ IplImage* GetThresholdedImage(IplImage* imgHSV){
 	/* upperb – inclusive upper boundary array or a scalar.				*/
 	/* dst – output array of the same size as src and CV_8U type.			*/
        //cvInRangeS(imgHSV, cvScalar(170,160,60), cvScalar(180,2556,256), imgThresh); 
-       cvInRangeS(imgHSV, cvScalar(100, 100, 100), cvScalar(110, 255, 255), imgThresh); 
+       cvInRangeS(imgHSV, cvScalar(0, 100, 100), cvScalar(10, 255, 255), imgThresh); 
        return imgThresh;
 } 
  
@@ -32,6 +35,7 @@ int main(){
       
       IplImage* frame=0;  
       IplImage* sample_1=0; //Variable de prueba
+      Mat imgThreshMat;
       
       cvNamedWindow("Video");     
       cvNamedWindow("Ball");
@@ -59,11 +63,32 @@ int main(){
             cvCvtColor(frame, imgHSV, CV_BGR2HSV); 
 	    /*This function threshold the HSV image and create a binary image*/
             IplImage* imgThresh = GetThresholdedImage(imgHSV);
-          
-             //cvSmooth(imgThresh, imgThresh, CV_GAUSSIAN,3,3); //smooth the binary image using Gaussian kernel
-            
+	    
+	    /*smooth the binary image using Gaussian kernel*/
+	    cvSmooth(imgThresh, imgThresh, CV_GAUSSIAN,3,3); 
+	    
+	    /*Convert IplImage to Mat for detection of circles*/
+	    imgThreshMat=cvarrToMat(imgThresh,false,true,0);
+	    
+	    vector<Vec3f> circles;
+
+	    // Apply the Hough Transform to find the circles
+	    HoughCircles( imgThreshMat, circles, CV_HOUGH_GRADIENT, 1, imgThreshMat.rows/8, 200, 100, 0, 1000 );
+
+	    // Draw the circles detected
+	    for( size_t i = 0; i < circles.size(); i++ )
+	    {
+		Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
+		int radius = cvRound(circles[i][2]);
+		// circle center
+		circle( imgThreshMat, center, 3, Scalar(0,255,0), -1, 8, 0 );
+		// circle outline
+		circle( imgThreshMat, center, radius, Scalar(0,0,255), 3, 8, 0 );
+	    }
+		      
             cvShowImage("Ball",imgThresh);           
             cvShowImage("Video",frame);
+	    imshow( "Hough Circle Transform Demo", imgThreshMat);
 	    
            
             //Clean up used images

@@ -3,7 +3,7 @@ CC=g++
 CFLAGS+=`pkg-config --cflags opencv`
 LDFLAGS+=`pkg-config --libs opencv`
 
-PROG=objecttracking
+PROG=figure
 OBJS=$(PROG).o
 
 .PHONY: all clean

@@ -11,7 +11,7 @@ int main(int argc, char** argv)
   Mat src, src_gray;
 
   /// Read the image
-  src = imread( "Lenna.png", 1 );
+  src = imread( "bate.png", 1 );
 
   if( !src.data )
     { return -1; }
