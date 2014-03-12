@@ -10,6 +10,7 @@ using namespace std;
 CvSeq* getCirclesInImage(IplImage*, CvMemStorage*, IplImage*);
 float eucdist(CvPoint, CvPoint);
 void drawCircleAndLabel(IplImage*, float*, const char*);
+//IplImage* DrawHistogram(CvHistogram *hist, float scaleX, float scaleY); //Dibuja histograma 
 bool circlesBeHomies(float*, float*);
 
 const int MIN_IDENT = 50;
@@ -42,6 +43,8 @@ int main(int argc, char *argv[]) {
 
   // Grayscale image
   IplImage* grayscaleImg = cvCreateImage(cvSize(640, 480), 8/*depth*/, 1/*channels*/);
+  
+
 
   CvPoint track1 = {-1, -1};
   CvPoint track2 = {-1, -1};
@@ -62,10 +65,12 @@ int main(int argc, char *argv[]) {
     //Iterate through the list of circles found by cvHoughCircles()
     for(int i = 0; i < circles->total; i++ ) {
       int matches = 0;
-      float* p = (float*)cvGetSeqElem( circles, i );
+      float* p = (float*)cvGetSeqElem( circles, i ); //Devuelve un puntero a un elemento de la secuencia de circulos 
       float x = p[0];
       float y = p[1];
       float r = p[2];
+      //printf ("x,y,r: %4.2f %4.2f %4.2f \n", x, y, r);
+      /*Verifica el tamaño de los circulos y los limites a 640x480*/
       if (x-r < 0 || y-r < 0 || x+r >= frame->width || y+r >= frame->height) {
         continue;
       }
@@ -80,11 +85,11 @@ int main(int argc, char *argv[]) {
         }
       }
       if (matches > MATCHES_THRESH) {
-        cvSetImageROI(frame, cvRect(x-r, y-r, 2*r, 2*r));
+        cvSetImageROI(frame, cvRect(x-r, y-r, 2*r, 2*r)); // Selecciona la región de interes del circulos 
         IplImage* copy = cvCreateImage(cvSize(2*r, 2*r), frame->depth, 3);
-        cvCvtColor(frame, copy, CV_BGR2HSV);
+        cvCvtColor(frame, copy, CV_BGR2HSV);		 // RGB a HSV 
         IplImage* hue = cvCreateImage(cvGetSize(copy), copy->depth, 1);
-        cvCvtPixToPlane(copy, hue, 0, 0, 0);
+        cvCvtPixToPlane(copy, hue, 0,0, 0);
         int hsize[] = {HUE_BINS};
         float hrange[] = {0,180};
         float* range[] = {hrange};
@@ -93,12 +98,14 @@ int main(int argc, char *argv[]) {
         CvHistogram* hist = cvCreateHist(1, hsize, CV_HIST_ARRAY, range, 1);
         cvCalcHist(hueArray, hist, 0, 0);
         cvNormalizeHist(hist, 1.0);
+	//IplImage* xa = DrawHistogram(CvHistogram *hist, float scaleX, float scaleY);
         int highestBinSeen = -1;
         float maxVal = -1;
         for (int b=0; b<HUE_BINS; b++) {
           float binVal = cvQueryHistValue_1D(hist, b);
           if (binVal > maxVal) {
-            maxVal = binVal;
+            printf ("maxVal,binVal: %4.2f %4.2f \n", binVal,maxVal);
+	    maxVal = binVal;
             highestBinSeen = b;
           }
         }
@@ -141,7 +148,10 @@ int main(int argc, char *argv[]) {
     key = cvWaitKey( 1 );
   }
 }
-
+/*Este función realiza la extracción de circulos en la imagen
+  mediante la utilización de la transformada de hough
+  además aplica preliminarmente un filtro gaussiano de 7x7
+  */
 CvSeq* getCirclesInImage(IplImage* frame, CvMemStorage* storage, IplImage* grayscaleImg) {
   // houghification
   // Convert to a single-channel, grayspace image
@@ -179,3 +189,25 @@ bool circlesBeHomies(float* c1, float* c2) {
   return (abs(c1[0]-c2[0]) < X_THRESH) && (abs(c1[1]-c2[1]) < Y_THRESH) &&
       (abs(c1[2]-c2[2]) < R_THRESH);
 }
+
+/*IplImage* DrawHistogram(CvHistogram *hist, float scaleX, float scaleY){
+   float histMax = 0;
+   cvGetMinMaxHistValue(hist, 0, &histMax, 0, 0);
+   IplImage* imgHist = cvCreateImage(cvSize(256*scaleX, 64*scaleY), 8 ,1);
+   cvZero(imgHist);
+   for(int i=0;i<255;i++)
+    {
+        float histValue = cvQueryHistValue_1D(hist, i);
+        float nextValue = cvQueryHistValue_1D(hist, i+1);
+ 
+        CvPoint pt1 = cvPoint(i*scaleX, 64*scaleY);
+        CvPoint pt2 = cvPoint(i*scaleX+scaleX, 64*scaleY);
+        CvPoint pt3 = cvPoint(i*scaleX+scaleX, (64-nextValue*64/histMax)*scaleY);
+        CvPoint pt4 = cvPoint(i*scaleX, (64-histValue*64/histMax)*scaleY);
+ 
+        int numPts = 5;
+        CvPoint pts[] = {pt1, pt2, pt3, pt4, pt1};
+ 
+        cvFillConvexPoly(imgHist, pts, numPts, cvScalar(255));
+    }
+}*/
