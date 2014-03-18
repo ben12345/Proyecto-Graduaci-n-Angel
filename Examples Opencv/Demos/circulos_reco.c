@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
   IplImage* frame = 0; //The images you bring out of the camera
 
   //Open the camera
-  capture = cvCaptureFromCAM( 0 );
+  capture = cvCaptureFromCAM(0);
   if (!capture ) {
     printf("Could not connect to camera\n" );
     return 1;

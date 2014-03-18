@@ -10,7 +10,6 @@ using namespace std;
 CvSeq* getCirclesInImage(IplImage*, CvMemStorage*, IplImage*);
 float eucdist(CvPoint, CvPoint);
 void drawCircleAndLabel(IplImage*, float*, const char*);
-IplImage* histogram(IplImage *image);
 //IplImage* DrawHistogram(CvHistogram *hist, float scaleX, float scaleY); //Dibuja histograma 
 bool circlesBeHomies(float*, float*);
 
@@ -28,7 +27,7 @@ int main(int argc, char *argv[]) {
   IplImage* frame = 0; //The images you bring out of the camera
 
   //Open the camera
-  capture = cvCaptureFromCAM( 0 );
+  capture = cvCaptureFromCAM( 1 );
   if (!capture ) {
     printf("Could not connect to camera\n" );
     return 1;
@@ -99,8 +98,7 @@ int main(int argc, char *argv[]) {
         CvHistogram* hist = cvCreateHist(1, hsize, CV_HIST_ARRAY, range, 1);
         cvCalcHist(hueArray, hist, 0, 0);
         cvNormalizeHist(hist, 1.0);
-	IplImage* xa = histogram(hue);
-	cvShowImage("histogramWin", xa);
+	//IplImage* xa = DrawHistogram(CvHistogram *hist, float scaleX, float scaleY);
         int highestBinSeen = -1;
         float maxVal = -1;
         for (int b=0; b<HUE_BINS; b++) {
@@ -213,51 +211,3 @@ bool circlesBeHomies(float* c1, float* c2) {
         cvFillConvexPoly(imgHist, pts, numPts, cvScalar(255));
     }
 }*/
-
-IplImage* histogram(IplImage *image)
-{
-   //Function which takes an image as parameter and returns the image containing the gray-scale intensity histogram
- 
-   IplImage* imgHistogram; IplImage* gray; //Variables for the histogram's image and the gray-scale intermediate
-   CvHistogram* hist; //To store the histogram variable in the proper format
- 
-   //The next few lines of declarations are all important variables for executing the OpenCV histogram functions
- 
-   int bins = 256;//Size of the histogram
-   int hsize[] = {bins}; //One-dimensional histogram, so one value in array
- 
-   float max_value = 0, min_value = 0; //Max and min value of the histogram
- 
-   int value; //Value of frequency;
-   int normalized, scale = 200; //Variables for storing the normalized value, and the scaled maximum (200)
- 
-   float xranges[] = {0,255};//Ranges of the values
-   float* ranges[] = {xranges};//One-dimensional image, so only one value in array
- 
-   gray = cvCreateImage(cvGetSize(image), 8, 1);
-   cvCvtColor(image, gray, CV_BGR2GRAY);//Grayscale equivalent created
- 
-   IplImage* planes[] = {gray};//Planes to obtain the histogram, in this case just one
- 
-   hist = cvCreateHist(1, hsize, CV_HIST_ARRAY, ranges,1);//Creates the histogram with the necessary parameters
-   cvCalcHist(planes, hist, 0, NULL); //Calculates the histogram with the parameters
-   cvGetMinMaxHistValue(hist, &min_value, &max_value); //Reports the minimal and maximal values in histogram
- 
-   imgHistogram = cvCreateImage(cvSize(bins,scale),8,3); //Creates the image of the histogram of width 'bins' (256) and height 'scale' (200)
- 
-   cvRectangle(imgHistogram, cvPoint(0,0), cvPoint(bins-1,scale-1), CV_RGB(255,255,255),-1); //Draws a white rectangle from (0,0) to (256,200)
- 
-   //Draws the vertically flipped histogram
- 
-   for(int i=0; i < bins; i++)
-   	{
-	   value = cvQueryHistValue_1D(hist, i); //Obtains the frequency for the intensity i
-	   normalized = cvRound(value*scale/max_value); //Scales it down
-	   cvLine(imgHistogram,cvPoint(i,scale), cvPoint(i,scale-normalized), CV_RGB(0,0,0)); //Draws a line in the vertical direction of that height from point (i,200) to (i,200-normalized)
-	}
- 
-   cvFlip(image, NULL, 1);// flips the image upside down
- 
-   cvReleaseImage(&gray);
-   return imgHistogram; //Returns the image
-}
