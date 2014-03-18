@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+﻿//#include "stdafx.h"
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
 #include <math.h>
@@ -6,23 +6,15 @@
 #include <stdio.h>
 using namespace cv;
 
-//This function threshold the HSV image and create a binary image
-IplImage* GetThresholdedImage(IplImage* imgHSV){
-	/*Creates an image header and allocates the image data*/
-	/* cvGetSize: The function returns number of rows (CvSize::height)*( 
-	/* and number of columns (CvSize::width) of the input matrix or image.*/
-       IplImage* imgThresh=cvCreateImage(cvGetSize(imgHSV),IPL_DEPTH_8U, 1);
-       
-	/* Checks if array elements lie between the elements of two other arrays.	*/
-	/* void cvInRangeS(const CvArr* src, CvScalar lower, CvScalar upper, CvArr* dst)*/
-	/* src – first input array.							*/
-	/* lowerb – inclusive lower boundary array or a scalar.				*/
-	/* upperb – inclusive upper boundary array or a scalar.				*/
-	/* dst – output array of the same size as src and CV_8U type.			*/
-       //cvInRangeS(imgHSV, cvScalar(170,160,60), cvScalar(180,2556,256), imgThresh); 
-       cvInRangeS(imgHSV, cvScalar(0, 100, 100), cvScalar(10, 255, 255), imgThresh); 
-       return imgThresh;
-} 
+int H_MIN = 0;
+int H_MAX = 256;
+int S_MIN = 0;
+int S_MAX = 256;
+int V_MIN = 0;
+int V_MAX = 256;
+
+void createTrackbars();
+
  
 int main(){
   
@@ -36,7 +28,7 @@ int main(){
       IplImage* frame=0;  
       IplImage* sample_1=0; //Variable de prueba
       Mat imgThreshMat;
-      
+      createTrackbars();
       cvNamedWindow("Video");     
       cvNamedWindow("Ball");
 
@@ -106,4 +98,50 @@ int main(){
       cvReleaseCapture(&capture);     
 
       return 0;
+}
+
+//This function threshold the HSV image and create a binary image
+IplImage* GetThresholdedImage(IplImage* imgHSV){
+	/*Creates an image header and allocates the image data*/
+	/* cvGetSize: The function returns number of rows (CvSize::height)*( 
+	/* and number of columns (CvSize::width) of the input matrix or image.*/
+       IplImage* imgThresh=cvCreateImage(cvGetSize(imgHSV),IPL_DEPTH_8U, 1);
+       
+	/* Checks if array elements lie between the elements of two other arrays.	*/
+	/* void cvInRangeS(const CvArr* src, CvScalar lower, CvScalar upper, CvArr* dst)*/
+	/* src – first input array.							*/
+	/* lowerb – inclusive lower boundary array or a scalar.				*/
+	/* upperb – inclusive upper boundary array or a scalar.				*/
+	/* dst – output array of the same size as src and CV_8U type.			*/
+       //cvInRangeS(imgHSV, cvScalar(170,160,60), cvScalar(180,2556,256), imgThresh);
+       cvInRangeS(imgHSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX), imgThresh); 
+       return imgThresh;
+}
+
+void createTrackbars(){
+	//create window for trackbars
+
+
+    namedWindow(trackbarWindowName,0);
+	//create memory to store trackbar name on window
+	char TrackbarName[50];
+	sprintf( TrackbarName, "H_MIN", H_MIN);
+	sprintf( TrackbarName, "H_MAX", H_MAX);
+	sprintf( TrackbarName, "S_MIN", S_MIN);
+	sprintf( TrackbarName, "S_MAX", S_MAX);
+	sprintf( TrackbarName, "V_MIN", V_MIN);
+	sprintf( TrackbarName, "V_MAX", V_MAX);
+	//create trackbars and insert them into window
+	//3 parameters are: the address of the variable that is changing when the trackbar is moved(eg.H_LOW),
+	//the max value the trackbar can move (eg. H_HIGH), 
+	//and the function that is called whenever the trackbar is moved(eg. on_trackbar)
+	//                                  ---->    ---->     ---->      
+    createTrackbar( "H_MIN", trackbarWindowName, &H_MIN, H_MAX, on_trackbar );
+    createTrackbar( "H_MAX", trackbarWindowName, &H_MAX, H_MAX, on_trackbar );
+    createTrackbar( "S_MIN", trackbarWindowName, &S_MIN, S_MAX, on_trackbar );
+    createTrackbar( "S_MAX", trackbarWindowName, &S_MAX, S_MAX, on_trackbar );
+    createTrackbar( "V_MIN", trackbarWindowName, &V_MIN, V_MAX, on_trackbar );
+    createTrackbar( "V_MAX", trackbarWindowName, &V_MAX, V_MAX, on_trackbar );
+
+
 }
