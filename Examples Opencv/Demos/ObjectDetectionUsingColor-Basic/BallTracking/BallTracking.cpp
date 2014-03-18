@@ -1,4 +1,5 @@
-﻿//#include "stdafx.h"
+﻿
+//#include "stdafx.h"
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
 #include <math.h>
@@ -12,6 +13,7 @@ int S_MIN = 0;
 int S_MAX = 256;
 int V_MIN = 0;
 int V_MAX = 256;
+
 const string trackbarWindowName = "Trackbars";
 void on_trackbar( int, void* ){}
 
@@ -43,7 +45,49 @@ void createTrackbars(){
 
 }
 
- 
+void morphOps(Mat &thresh){
+
+	//create structuring element that will be used to "dilate" and "erode" image.
+	//the element chosen here is a 3px by 3px rectangle
+
+	Mat erodeElement = getStructuringElement( MORPH_RECT,Size(3,3));
+	//dilate with larger element so make sure object is nicely visible
+	//Mat dilateElement = getStructuringElement( MORPH_RECT,Size(8,8));
+
+	erode(thresh,thresh,erodeElement);
+	//erode(thresh,thresh,erodeElement);
+	//dilate(thresh,thresh,dilateElement);
+	//dilate(thresh,thresh,dilateElement);
+	
+}
+
+/*void thresh_callback(int, void* )
+{
+  vector<vector<Point> > contours;
+  vector<Vec4i> hierarchy;
+
+  findContours( m, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
+
+  /// Get the moments
+  vector<Moments> mu(contours.size() );
+  for( int i = 0; i < contours.size(); i++ )
+     { mu[i] = moments( contours[i], false ); }
+
+  ///  Get the mass centers:
+  vector<Point2f> mc( contours.size() );
+  for( int i = 0; i < contours.size(); i++ )
+     { mc[i] = Point2f( mu[i].m10/mu[i].m00 , mu[i].m01/mu[i].m00 ); }
+
+  /// Draw contours
+  for( int i = 0; i< contours.size(); i++ )
+     {
+       Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
+       drawContours( drawing, contours, i, color, 2, 8, hierarchy, 0, Point() );
+       circle( drawing, mc[i], 4, color, -1, 8, 0 );
+     }  
+     
+}
+ */
 int main(int argc, char* argv[]){
   
       CvCapture* capture =0;       
@@ -55,7 +99,6 @@ int main(int argc, char* argv[]){
       
       IplImage* frame=0;  
       IplImage* sample_1=0; //Variable de prueba
-      Mat imgThreshMat;
       createTrackbars();
       cvNamedWindow("Video");     
       cvNamedWindow("Ball");
@@ -79,12 +122,43 @@ int main(int argc, char* argv[]){
 
 	    cvInRangeS(imgHSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX), imgThresh);
 	    
-	    cvSmooth(imgThresh, imgThresh, CV_GAUSSIAN,3,3); 
+	    cvSmooth(imgThresh, imgThresh, CV_GAUSSIAN,3,3);
+	    
+	    Mat m = cvarrToMat(imgThresh); 
+	    //morphOps(m);
+	    	    
+	    Mat drawing = Mat::zeros( m.size(), CV_8UC3 );
+	    
+	     vector<vector<Point> > contours;
+	    vector<Vec4i> hierarchy;
+
+	    findContours( m, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
+
+	    /// Get the moments
+	    vector<Moments> mu(contours.size() );
+	    for( int i = 0; i < contours.size(); i++ )
+	      { mu[i] = moments( contours[i], false ); }
+
+	    ///  Get the mass centers:
+	    vector<Point2f> mc( contours.size() );
+	    for( int i = 0; i < contours.size(); i++ )
+	      { mc[i] = Point2f( mu[i].m10/mu[i].m00 , mu[i].m01/mu[i].m00 ); }
+
+	    /// Draw contours
+	    for( int i = 0; i< contours.size(); i++ )
+	      {
+		Scalar color = Scalar(255, 255, 255);
+		drawContours( drawing, contours, i, color, 2, 8, hierarchy, 0, Point() );
+		circle( drawing, mc[i], 4, color, -1, 8, 0 );
+	      }  
 	   		      
             cvShowImage("Ball",imgThresh);  
          
             cvShowImage("Video",frame);
 	    
+	    //show frames 
+	    //imshow("ee",m);
+	    imshow( "Contours", drawing );
            
             //Clean up used images
             cvReleaseImage(&imgHSV);
@@ -92,7 +166,7 @@ int main(int argc, char* argv[]){
             cvReleaseImage(&frame);
 
             //Wait 50mS
-            int c = cvWaitKey(10);
+            int c = cvWaitKey(5);
             //If 'ESC' is pressed, break the loop
             if((char)c==27 ) break;      
       }
