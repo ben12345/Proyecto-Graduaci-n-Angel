@@ -22,18 +22,20 @@
 using namespace cv;
 using namespace std;
 
-int main()
+int main(int argc, char** argv)
 {
 	//turn performance analysis functions on if testing = true
 	bool testing=false;
 	double t; //timing variable
 
 	//load training image
-	Mat object = imread ("/home/aphillips/Documents/PG/Examples Opencv/Demos/dd.jpg", CV_LOAD_IMAGE_GRAYSCALE);
-	if (!object.data){
-		cout<<"Can't open image";
+	//Mat object = imread ("/home/aphillips/Documents/PG/Examples Opencv/Demos/dd.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+	if (argc != 2){
+		cout<<"\n Can't open image \n\n";
 		return -1;
 	}
+	Mat object = imread (argv[1], CV_LOAD_IMAGE_GRAYSCALE);
+	
 	namedWindow("Good Matches", CV_WINDOW_AUTOSIZE);
 
 	//SURF Detector, and descriptor parameters
@@ -108,7 +110,7 @@ int main()
 
 	}
 	imshow("Good Matches",interestPointObject);
-	imwrite("/home/aphillips/Documents/PG/Examples Opencv/Demos/ff.jpg", interestPointObject);
+	imwrite("~/Examples Opencv/Demos/ff.jpg", interestPointObject);
 	cvWaitKey(0);
 	}
 
@@ -216,8 +218,8 @@ int main()
     	                            escapeKey=cvWaitKey(10);
     	                            //imwrite("C:/School/Image Processing/bookIP3.jpg", img_matches);
 
-    	                            if(frameCount>10)
-    	                            	escapeKey='q';
+    	                            //if(frameCount>10)
+    	                            	//escapeKey='q';
 
 
     }
