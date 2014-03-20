@@ -1,0 +1,10 @@
+n1.bmp
+n2.bmp
+n3.bmp
+n4.bmp
+n5.bmp
+n6.bmp
+n7.bmp
+n8.bmp
+n9.bmp
+Negative.txt
