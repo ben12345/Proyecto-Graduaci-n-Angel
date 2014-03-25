@@ -30,7 +30,7 @@
    if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("--(!)Error loading\n"); return -1; };
 
    //-- 2. Read the video stream
-   capture = cvCaptureFromCAM( -1 );
+   
    if( capture )
    {
      while( true )
