@@ -1,0 +1,591 @@
+/*********************************************************************************
+
+Copyright(c) 2012 Analog Devices, Inc. All Rights Reserved.
+
+This software is proprietary and confidential.  By using this software you agree
+to the terms of the associated Analog Devices License Agreement.
+
+*********************************************************************************/
+/*!
+ * @file      Sensor.c
+ * @brief     MT9M114 sensor configuration.
+ * @version:  $Revision: 9373 $
+ * @date:     $Date: 2012-11-06 16:23:36 +0530 (Tue, 06 Nov 2012) $
+ *
+ * @details
+ *            This is the primary source file for the sensor configuration
+ *            and buffer management.
+ *
+ */
+
+
+
+#include "Sensor.h"
+#include <string.h>
+#include <stdio.h>
+//#include "glut.h"
+
+#ifdef INIT_GRAPHICS_IMAGES
+#include "image.c"
+
+#else
+static void FillBlackColor (uint8_t    *pBuff);
+#pragma alignment_region (32)
+#pragma section ("sdram_bank0")
+MT9M114_VIDEO_BUF    VideoBuf0;
+#pragma alignment_region_end
+#endif
+/*=============  D A T A  =============*/
+
+/* MT9M114 Device handle */
+static ADI_MT9M114_HANDLE   hMTM114Dev;
+volatile uint32_t NumFramesCaptured=0;
+/* MT9M114 device memory */
+#pragma section ("adi_fastb1_prio0_rw")
+static uint8_t MT9M114DevMem[ADI_MT9M114_MEMORY_SIZE];
+
+
+/* Prepares video frames for sensor input */
+static void PrepareVideoFrames(void);
+/* Video frames */
+#pragma alignment_region (32)
+#pragma section ("sdram_bank1")
+MT9M114_VIDEO_BUF    VideoBuf1;
+#pragma section ("sdram_bank2")
+MT9M114_VIDEO_BUF    VideoBuf2;
+#pragma section ("sdram_bank2")
+MT9M114_VIDEO_BUF    VideoBuftemp;
+#pragma section ("sdram_bank3")
+MT9M114_VIDEO_BUF    VideoBuf3;
+#pragma section ("sdram_bank5")
+MT9M114_VIDEO_BUF    VideoBuf4;
+#pragma alignment_region_end
+
+/*! Register configuration for 480p 30 Frames per second. */
+ADI_MT9M114_REG  ADI_MT9M114_RegConf_480p_38_4MHZ[]  =
+{
+     { 0x98E,  0x1000,     2 },
+     { 0xC97E, 0x01,       1 },       //cam_sysctl_pll_enable = 1
+     { 0xC980, 0x0110,     2 },      //cam_sysctl_pll_divider_m_n = 272
+     { 0xC982, 0x0700,     2 },       //cam_sysctl_pll_divider_p = 1792
+     { 0xC800, 0x00F4,     2 },       //cam_sensor_cfg_y_addr_start = 244
+     { 0xC802, 0x011C,     2 },       //cam_sensor_cfg_x_addr_start = 284
+     { 0xC804, 0x02DB,     2 },       //cam_sensor_cfg_y_addr_end = 731
+     { 0xC806, 0x03F3,     2 },       //cam_sensor_cfg_x_addr_end = 1011
+     { 0xC808, 0x16E3600,  4 },     //cam_sensor_cfg_pixclk = 24000000
+     { 0xC80C, 0x0001,     2 },      //cam_sensor_cfg_row_speed = 1
+     { 0xC80E, 0x00DB,     2 },      //cam_sensor_cfg_fine_integ_time_min = 219
+     { 0xC810, 0x448,     2 },      //cam_sensor_cfg_fine_integ_time_max = 922
+     { 0xC812, 0x28c,     2 },      //cam_sensor_cfg_frame_length_lines = 770
+     { 0xC814, 0x04CB,     2 },      //cam_sensor_cfg_line_length_pck = 1053
+     { 0xC816, 0x0060,     2 },      //cam_sensor_cfg_fine_correction = 96
+     { 0xC818, 0x01E3,     2 },      //cam_sensor_cfg_cpipe_last_row = 483
+     { 0xC826, 0x0020,     2 },      //cam_sensor_cfg_reg_0_data = 32
+     { 0xC834, 0x0000,     2 },      //cam_sensor_control_read_mode = 0
+     { 0xC854, 0x0000,     2 },      //cam_crop_window_xoffset = 0
+     { 0xC856, 0x0000,     2 },      //cam_crop_window_yoffset = 0
+     { 0xC858, 0x02D0,     2 },      //cam_crop_window_width = 720
+     { 0xC85A, 0x01E0,     2 },      //cam_crop_window_height = 480
+     { 0xC85C, 0x03,       1 },      //cam_crop_cropmode = 3
+     { 0xC868, 0x02D0,     2 },      //cam_output_width = 720
+     { 0xC86A, 0x01E0,     2 },      //cam_output_height = 480
+     { 0xC878, 0x00,       1 },      //cam_aet_aemode = 0
+     { 0xC88C, 0x1E00,     2 },      //cam_aet_max_frame_rate = 7578
+     { 0xC88E, 0x1E00,     2 },      //cam_aet_min_frame_rate = 7578
+     { 0xC914, 0x0000,     2 },      //cam_stat_awb_clip_window_xstart = 0
+     { 0xC916, 0x0000,     2 },      //cam_stat_awb_clip_window_ystart = 0
+     { 0xC918, 0x02CF,     2 },      //cam_stat_awb_clip_window_xend = 719
+     { 0xC91A, 0x01DF,     2 },      //cam_stat_awb_clip_window_yend = 479
+     { 0xC91C, 0x0000,     2 },      //cam_stat_ae_initial_window_xstart = 0
+     { 0xC91E, 0x0000,     2 },      //cam_stat_ae_initial_window_ystart = 0
+     { 0xC920, 0x008F,     2 },      //cam_stat_ae_initial_window_xend = 143
+     { 0xC922, 0x005F,     2 }     //cam_stat_ae_initial_window_yend = 95
+};
+
+/*=============  L O C A L    F U N C T I O N    P R O T O T Y P E S  =============*/
+
+static void load_image(void );
+
+static void mt9m114Callback(void        *AppHandle,uint32_t    Event,void        *pArg);
+/*=============  C O D E  =============*/
+/*********************************************************************
+
+    Function: ConfigureSensor
+
+        Configure the mt9m114 sensor to capture video.
+
+    Returns:
+        SUCCESS : Successfully  configured the sensor.
+        FAILURE : Failed to   configure the sensor.
+
+*********************************************************************/
+/* Configures the sensor */
+uint32_t ConfigureSensor(void)
+{
+    /* Loop variable */
+    uint8_t                 i;
+
+    /* Return code */
+    ADI_MT9M114_RESULT      eResult;
+
+    ADI_MT9M114_FRAME_INFO  *pFrameInfo;
+
+    /* Configure system - terminate configuration process on error */
+    do
+    {
+        /* Open MT9M114 video sensor instance */
+        if ((eResult = adi_mt9m114_Open (ADI_MT9M114_DEV_NUM,
+                                         &MT9M114DevMem[0],
+                                         &hMTM114Dev)) != ADI_MT9M114_SUCCESS)
+        {
+            printf("Failed to open MT9M114 sensor, Error Code: 0x%08X\n", eResult);
+            break;
+        }
+
+        /* Configure the TWI for communicating with MT9M114 sensor */
+        if ((eResult = adi_mt9m114_ConfigTWI(hMTM114Dev,
+        	                                 INPUT_TWI_DEV_NUM,
+                                             ADI_MT9M114_TWI_ADDR,
+                                             ADI_MT9M114_TWI_BITRATE,
+                                             ADI_MT9M114_TWI_PRESCALE)) != ADI_MT9M114_SUCCESS)
+        {
+            printf("Failed to configure TWI: 0x%08X\n", eResult);
+            break;
+        }
+
+        /* Set PPI Device number to get the data from MT9M114 */
+        if ((eResult = adi_mt9m114_SetPPIDevice (hMTM114Dev, INPUT_PPI_DEV_NUM)) != ADI_MT9M114_SUCCESS)
+        {
+            printf("Failed to set PPI Device Number, Error Code: 0x%08X\n", eResult);
+            break;
+        }
+
+
+        /* Set the output color format */
+        if((eResult = adi_mt9m114_RegisterCallback(hMTM114Dev,mt9m114Callback ,hMTM114Dev)) != ADI_MT9M114_SUCCESS)
+        {
+            printf("Failed to set the output color format, Error Code: 0x%08X\n", eResult);
+            break;
+        }
+
+
+
+#ifdef DISPLAY_720P
+        /* Configure the image */
+        if((eResult = adi_mt9m114_ConfigImage(hMTM114Dev, ADI_MT9M114_RegConf_480p_38_4MHZ,
+       		 sizeof (ADI_MT9M114_RegConf_480p_38_4MHZ)/sizeof(ADI_MT9M114_REG) )) != ADI_MT9M114_SUCCESS)
+        {
+            printf("Failed to configure the image, Error Code: 0x%08X\n", eResult);
+            break;
+        }
+
+        /* Set the output color format */
+         if((eResult = adi_mt9m114_SetYStride(hMTM114Dev, DISPLAY_BUFFER_Y_STRIDE)) != ADI_MT9M114_SUCCESS)
+         {
+             printf("Failed to set the output color format, Error Code: 0x%08X\n", eResult);
+             break;
+         }
+#else
+          /* Configure the image */
+           if((eResult = adi_mt9m114_ConfigImage(hMTM114Dev, ADI_MT9M114_RegConf_QVGA,
+                                                 ADI_MT9M114_IMAGE_CFG_ARRAY_SIZE)) != ADI_MT9M114_SUCCESS)
+           {
+               printf("Failed to configure the image, Error Code: 0x%08X\n", eResult);
+               break;
+           }
+
+          /* Set the output color format */
+          if((eResult = adi_mt9m114_SetYStride(hMTM114Dev, DISPLAY_BUFFER_Y_STRIDE)) != ADI_MT9M114_SUCCESS)
+          {
+              printf("Failed to set the output color format, Error Code: 0x%08X\n", eResult);
+              break;
+          }
+
+#endif
+
+        /* Get the frame information */
+        if((eResult = adi_mt9m114_GetFrameInfo(hMTM114Dev, &pFrameInfo)) != ADI_MT9M114_SUCCESS)
+        {
+            printf("Failed to get the capture frame information, Error Code: 0x%08X\n", eResult);
+            break;
+        }
+        /* Set the output color format */
+        if((eResult = adi_mt9m114_SetColorFormat(hMTM114Dev, ADI_MT9M114_COLOR_FORMAT_YUV, 0u, false, true)) != ADI_MT9M114_SUCCESS)
+        {
+            printf("Failed to set the output color format, Error Code: 0x%08X\n", eResult);
+            break;
+        }
+        if((eResult = adi_mt9m114_SetDMATransferSize(hMTM114Dev,ADI_MT9M114_DMA_TX_256BIT )) != ADI_MT9M114_SUCCESS)
+        {
+            printf("Failed to set the DMA transfer size: 0x%08X\n", eResult);
+            break;
+        }
+        /* Set the output color format */
+         if((eResult = adi_mt9m114_SetYStride(hMTM114Dev, DISPLAY_BUFFER_Y_STRIDE)) != ADI_MT9M114_SUCCESS)
+         {
+             printf("Failed to set the output color format, Error Code: 0x%08X\n", eResult);
+             break;
+         }
+        /* Mask the line track overflow error */
+        *pREG_EPPI1_IMSK |= (1 << 2);
+
+    }while (0);
+
+    /* Prepare video frames for filling */
+    PrepareVideoFrames();
+
+    if (eResult != ADI_MT9M114_SUCCESS)
+    {
+        return FAILURE;
+    }
+    else
+    {
+        return SUCCESS;
+    }
+}
+/*********************************************************************
+
+    Function: SubmitEmptyVideoFrame
+
+        Submits a video frames for filling
+
+    Returns:
+        SUCCESS : Successfully  submitted  the buffer.
+        FAILURE : Failed to  submit the buffer.
+
+*********************************************************************/
+uint32_t SubmitEmptyVideoFrame(void)
+{
+    /* Return code */
+    ADI_MT9M114_RESULT  eResult;
+    uint8_t *pBuffer;
+    /* IF (we've an empty video frame) */
+    if (pCameraBufToSubmit->eStatus == CONTOUR_COUNT_BUFFER_FREE)
+    {
+        /* IF (Sensor can accept more frame) */
+        if (NumCameraBufsInQ <= 1)
+        {
+            pBuffer =&pCameraBufToSubmit->VideoBuf[0];
+            pBuffer += VIDEO_BUF_POSITION_OFFSET;
+                /* Submit Video frame to MT9M114 */
+            if ((eResult = adi_mt9m114_SubmitFrame(hMTM114Dev, (void *)  pBuffer)) != ADI_MT9M114_SUCCESS)
+            {
+                printf("Failed to Submit Video frame to MT9M114, Error Code: 0x%08X\n", eResult);
+                return FAILURE;
+            }
+            /* ELSE (Successfully submitted video frame) */
+            else
+            {
+                /* Update frame in use count */
+            	NumCameraBufsInQ++;
+                /* update video frame status flag */
+                //pCameraBufToSubmit->bIsValid = true;
+            	pCameraBufToSubmit->CameraUsageCount++;
+                /* Move to next video frame in chain */
+                pCameraBufToSubmit = pCameraBufToSubmit->pNext;
+            }
+        }
+    }
+
+    /* return */
+    return SUCCESS;
+}
+
+
+/*********************************************************************
+
+    Function: EnableSensor
+
+        Enable the MT9M114  sensor for capturing video.
+    parameter :
+      bEnable : Indicate whether to enable (bEnable == true) / disable(bEnable == false) the device.
+    Returns:
+        SUCCESS : Successfully  enabled the sensor.
+        FAILURE : Failed to  enable the sensor.
+
+*********************************************************************/
+
+uint32_t EnableSensor(bool bEnable)
+{
+    /* Return code */
+    ADI_MT9M114_RESULT      eResult;
+
+    /* Enable MT9M114 dataflow */
+    if((eResult = adi_mt9m114_Enable(hMTM114Dev, bEnable)) != ADI_MT9M114_SUCCESS){
+        printf("Failed to enable/disble MT9M114 dataflow, Error Code: 0x%08X\n", eResult);
+        return FAILURE;
+    }
+
+    return SUCCESS;
+}
+/*********************************************************************
+
+    Function:  Copy static images form VideoBuff0 to VideoBuff1
+
+    parameter : None
+
+    Returns:   None
+
+*********************************************************************/
+
+void load_image()
+{
+#ifdef INIT_GRAPHICS_IMAGES
+	memcpy(&VideoBuf1.VideoBuf[0],&VideoBuf0.VideoBuf[0],VIDEO_BUF_SIZE);
+	memcpy(&VideoBuf2.VideoBuf[0],&VideoBuf0.VideoBuf[0],VIDEO_BUF_SIZE);
+	memcpy(&VideoBuf3.VideoBuf[0],&VideoBuf0.VideoBuf[0],VIDEO_BUF_SIZE);
+	memcpy(&VideoBuf4.VideoBuf[0],&VideoBuf0.VideoBuf[0],VIDEO_BUF_SIZE);
+	memcpy(&VideoBuftemp.VideoBuf[0],&VideoBuf0.VideoBuf[0],VIDEO_BUF_SIZE);
+#else
+	FillBlackColor (&VideoBuf0.VideoBuf[0]);
+	FillBlackColor (&VideoBuf1.VideoBuf[0]);
+	FillBlackColor (&VideoBuf2.VideoBuf[0]);
+	FillBlackColor (&VideoBuf3.VideoBuf[0]);
+	FillBlackColor (&VideoBuf4.VideoBuf[0]);
+#endif
+}
+
+/*********************************************************************
+
+    Function: ResetVideoBufStatus
+
+    Resets video frame status flag and initialize the buffers with graphics data.
+
+    parameter : None
+
+    Returns:
+        none
+
+*********************************************************************/
+static void PrepareVideoFrames(void)
+{
+   /* Reset video frames status */
+
+    VideoBuf0.eStatus = CONTOUR_COUNT_BUFFER_FREE;
+    VideoBuf1.eStatus = CONTOUR_COUNT_BUFFER_FREE;
+    VideoBuf2.eStatus = CONTOUR_COUNT_BUFFER_FREE;
+    VideoBuf3.eStatus = CONTOUR_COUNT_BUFFER_FREE;
+   
+    VideoBuf0.EncUsageCount = 0;
+    VideoBuf1.EncUsageCount = 0;
+    VideoBuf2.EncUsageCount = 0;
+    VideoBuf3.EncUsageCount = 0;
+
+    VideoBuf0.CameraUsageCount = 0;
+    VideoBuf1.CameraUsageCount = 0;
+    VideoBuf2.CameraUsageCount = 0;
+    VideoBuf3.CameraUsageCount = 0;
+
+
+    load_image();
+
+    /* Create a chain of video buffers */
+    VideoBuf0.pNext = &VideoBuf1;
+    VideoBuf1.pNext = &VideoBuf2;
+    VideoBuf2.pNext = &VideoBuf3;
+    VideoBuf3.pNext = &VideoBuf4;
+
+    VideoBuf4.pNext = &VideoBuf0;
+    VideoBuf4.CameraUsageCount = 0;
+    VideoBuf4.EncUsageCount = 0;
+    VideoBuf4.eStatus = CONTOUR_COUNT_BUFFER_FREE;
+
+    pNextEncBuf      = NULL;
+    pEncBufToSubmit  = NULL;
+    pProcessedEncBuf = NULL;
+    pgfxBufToSubmit   = NULL;
+
+    /* Pointer to video buffer that ready to accept new data from Sensor */
+    pCameraBufToSubmit = &VideoBuf0;
+    /* Pointer to the encoder video buffer to submit to start video loopback */
+    pEncBufToSubmit = pgfxBufToSubmit = &VideoBuf0;
+    /* Encoder display start buffer */
+    pEncDispStartBuf = &VideoBuftemp;
+    /* Update the aDMCess of last Sensor buffer submitted */
+    pLastCameraBuf = pCameraBufToSubmit;
+    /* Update the address of last encoder buffer submitted */
+    pLastEncBuf = pEncDispStartBuf;
+
+    /* Reset buffer queue counters */
+    NumCameraBufsInQ = 0;
+    NumEncBufsInQ = 0;
+}
+
+/*********************************************************************
+*
+*   Submits video buffer(s) to sensor
+*
+*   parameter : None
+*
+*   Returns: none
+*
+*********************************************************************/
+void SubmitSensorBuf(void)
+{
+    /* Return code */
+	ADI_MT9M114_RESULT  eResult = ADI_MT9M114_SUCCESS;
+    /* Decoder buffer to submit */
+	MT9M114_VIDEO_BUF           *pBuffer;
+
+    /* WHILE (Decoder queue is not full (less than two buffers in queue)) */
+    while (NumCameraBufsInQ < 2)
+    {
+        /* IF (Next buffer in chain to submit to Sensor is not in encoder queue) */
+        if (pCameraBufToSubmit->EncUsageCount == 0 && pCameraBufToSubmit->eStatus ==CONTOUR_COUNT_BUFFER_FREE)
+        {
+            /* Next buffer to submit to Sensor */
+            pBuffer = pCameraBufToSubmit;
+            /* Move to next video buffer in chain */
+            pCameraBufToSubmit = pCameraBufToSubmit->pNext;
+        }
+        /* ELSE (Buffer is in encoder queue) */
+        else
+        {
+            /* Re-submit the most recently submitted buffer to Sensor */
+            pBuffer = pLastCameraBuf;
+        }
+        /* Submit Video buffer to camera */
+        if ((eResult = adi_mt9m114_SubmitFrame(hMTM114Dev, (void *) &pBuffer->VideoBuf[VIDEO_BUF_POSITION_OFFSET])) != ADI_MT9M114_SUCCESS)
+        {
+            return ;
+        }
+
+        /* ELSE (Successfully submitted video buffer) */
+        else
+        {
+            /* Update number of Sensor buffers in queue count */
+        	NumCameraBufsInQ++;
+        	/* Update Sensor usage count */
+        	pBuffer->CameraUsageCount++;
+        	/* Update the last buffer address submitted to Sensor */
+        	pLastCameraBuf = pBuffer;
+        }
+    }
+    /* return success */
+    return;
+}
+/*********************************************************************
+*
+*   Function GetProcessedSensorBuf
+*           Returns the buffers processed by the Sensor.
+*
+*   Parameters
+*    - [in/out]  ppVideoBuffer  Pointer to hold the buffer address.
+*
+*   Returns  None
+*
+*********************************************************************/
+void GetProcessedSensorBuf (void 	**ppVideoBuffer)
+{
+	/* assume we've no valid video buffer to offer */
+	*ppVideoBuffer = NULL;
+    /* IF (Next buffer in line to encoder has valid data and is not in Sensor queue) */
+    if (pEncBufToSubmit->CameraUsageCount == 0 && pEncBufToSubmit->eStatus == CONTOUR_COUNT_BUFFER_FILLED)
+    {
+         /* Pass the processed video buffer address */
+         *ppVideoBuffer = (void *) pEncBufToSubmit;
+          /* Move to next buffer in chain */
+         pEncBufToSubmit = pEncBufToSubmit->pNext;
+     }
+
+}
+/*********************************************************************
+*
+*   Function GetProcessedGfxBuf
+*           Returns the buffers processed by the Graphics.
+*
+*   Parameters
+*    - [in/out]  ppVideoBuffer  Pointer to hold the buffer address.
+*
+*   Returns  None
+*
+*********************************************************************/
+void GetProcessedGfxBuf (void 	**ppVideoBuffer)
+{
+	/* assume we've no valid video buffer to offer */
+	*ppVideoBuffer = NULL;
+    /* IF (Next buffer in line to encoder has valid data and is not in Sensor queue) */
+    if ((pgfxBufToSubmit->eStatus == CONTOUR_COUNT_BUFFER_READY) && (pgfxBufToSubmit->CameraUsageCount == 0))
+    {
+         /* Pass the processed video buffer address */
+         *ppVideoBuffer = (void *) pgfxBufToSubmit;
+         /* Reset data valid flag */
+         //  pgfxBufToSubmit->bIsValid = false;
+          /* Move to next buffer in chain */
+         pgfxBufToSubmit = pgfxBufToSubmit->pNext;
+     }
+
+}
+
+/*********************************************************************
+*
+*   Callback for  Camera sensor
+*
+*   Parameters
+*    - [in]  AppHandle   instance to work on.
+*    - [in]  Event       Event ID
+*    - [in]  pArg        Event specific argument
+*
+*   Returns  None
+*
+*********************************************************************/
+static void mt9m114Callback(
+    void        *AppHandle,
+    uint32_t    Event,
+    void        *pArg)
+{
+    /* IF (Buffer processed event) */
+    /* Decoder buffer to submit */
+	MT9M114_VIDEO_BUF           *pBuffer;
+    uint8_t *pDataBuff = (uint8_t * )pArg;
+    pDataBuff -= VIDEO_BUF_POSITION_OFFSET;
+    pBuffer = (MT9M114_VIDEO_BUF *)pDataBuff;
+
+    if (Event == ADI_MT9M114_EVENT_BUFFER_PROCESSED)
+    {
+        /* Reduce  usage count of this buffer by sensor */
+         pBuffer->CameraUsageCount--;
+        /* Number of video frames filled */
+         if(pBuffer->CameraUsageCount == 0)
+         {
+             pBuffer->eStatus = CONTOUR_COUNT_BUFFER_FILLED;
+         }
+        NumFramesCaptured++;
+        /* Decrement Number of buffers in Sensor queue */
+        if (NumCameraBufsInQ)
+        {
+        	NumCameraBufsInQ--;
+        }
+        SubmitSensorBuf();
+    }
+}
+#ifndef INIT_GRAPHICS_IMAGES
+/*********************************************************************
+*
+*   Fills a video buffer with black color
+*
+*   Parameters
+*       pBackGndBuf    Pointer to video buffer to fill
+*
+*   Returns: None
+*
+*********************************************************************/
+static void FillBlackColor (uint8_t    *pBuff)
+{
+    /* Loop Variables */
+    uint32_t    i,j;
+    /* FOR (each line) */
+	for(i = 0; i < OUTPUT_VIDEO_HEIGHT; i++)
+	{
+        /* Fill this line */
+		for (j = 0; j < (OUTPUT_VIDEO_WIDTH/2); j++ )
+		{
+		    /* Fill the line with UYVY Data */
+			*pBuff++ = 0X80; /* U */
+			*pBuff++ = 0X10; /* Y */
+			*pBuff++ = 0X80; /* V */
+			*pBuff++ = 0X10; /* Y */
+		}
+	}
+}
+#endif

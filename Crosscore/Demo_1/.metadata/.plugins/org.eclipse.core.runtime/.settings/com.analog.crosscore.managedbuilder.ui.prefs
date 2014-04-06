@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+npw-addComments=true
+npw-addTemplateCode=true
+npw-commandLineSupport=true
+npw-family=Blackfin
+npw-language=1
+npw-processor=ADSP-BF609
+npw-projectType=0
+npw-toolchain=CrossCore Blackfin Toolchain

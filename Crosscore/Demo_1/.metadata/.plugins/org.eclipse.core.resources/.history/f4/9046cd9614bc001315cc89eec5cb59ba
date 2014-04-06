@@ -1,0 +1,32 @@
+/*****************************************************************************
+ * Escenario_1_Core0.c
+ *****************************************************************************/
+
+#include <ccblkfn.h>
+#include "adi_initialize.h"
+#include "Escenario_1_Core0.h"
+
+/** 
+ * Place program arguments in the following string. 
+ */
+extern char __argv_string[] = "prog_name -in x.gif -out y.jpeg";
+
+int main(int argc, char *argv[])
+{
+	/**
+	 * Initialize managed drivers and/or services that have been added to 
+	 * the project.
+	 * @return zero on success 
+	 */
+	adi_initComponents();
+	
+	/**
+	 * The default startup code does not include any functionality to allow
+	 * core 0 to enable core 1. A convenient way to enable core 1 is to use the
+	 * 'adi_core_1_enable' function. 
+	 */
+	/* Begin adding your custom code here */
+
+	return 0;
+}
+

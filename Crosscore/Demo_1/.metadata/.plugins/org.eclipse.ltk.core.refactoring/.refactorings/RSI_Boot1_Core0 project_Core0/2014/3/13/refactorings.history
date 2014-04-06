@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;VideoLoopbackYUV.dxe&apos; to &apos;RSI_Boot1_Core0 project_Core0&apos;" description="Move &apos;VideoLoopbackYUV.dxe&apos; to &apos;RSI_Boot1_Core0 project_Core0&apos;" destination="/RSI_Boot1_Core0 project_Core0" element1="Debug/VideoLoopbackYUV.dxe" element2="Debug/VideoLoopbackYUV.ldr" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="2" stamp="1396028203231" updateReferences="true"/>
+</session>

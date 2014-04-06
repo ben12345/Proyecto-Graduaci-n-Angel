@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Escenario_1_Core0/src/EdgeDetection.h&apos; to &apos;EdgeDetection.txt&apos;" description="Rename resource &apos;EdgeDetection.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/EdgeDetection.h" name="EdgeDetection.txt" stamp="1396626819034" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Escenario_1_Core0/src/EdgeDetection.c&apos; to &apos;EdgeDetectionc.txt&apos;" description="Rename resource &apos;EdgeDetection.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/EdgeDetection.c" name="EdgeDetectionc.txt" stamp="1396626837785" updateReferences="true"/>
+</session>

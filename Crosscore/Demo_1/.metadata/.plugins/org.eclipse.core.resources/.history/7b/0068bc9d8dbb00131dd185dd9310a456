@@ -1,0 +1,136 @@
+/*****************************************************************************
+ * Escenario1_Core0.c
+ *****************************************************************************/
+
+/*=============  I N C L U D E S   =============*/
+/* Standard include Files */
+#include <builtins.h>
+#include <blackfin.h>
+#include <stdio.h>
+#include <string.h>
+#include <ccblkfn.h>
+/* Power Service includes */
+#include <services/pwr/adi_pwr.h>
+/* Interrupt Manager includes */
+#include <services/int/adi_int.h>
+/* SEC includes */
+#include <services/int/adi_sec.h>
+/* TWI driver includes */
+#include <drivers/twi/adi_twi.h>
+/* PPI driver includes */
+#include <drivers/ppi/adi_ppi.h>
+/* Encoder include file */
+#include "encoder.h"
+/* Video sensor include file */
+#include "Sensor.h"
+/*video analytic toolbox  include file*/
+#include "adi_vat.h"
+#include "adi_codec.h"
+/* demo include file */
+#include "BallTracking.h"
+#include "finboard_bsp.h"
+
+/* ADI initialization header */
+#include "system/adi_initialize.h"
+#include "adi_common.h"
+
+uint32_t NumFilledFrames = 0;
+/* Buffer to store the edge trace output */
+#pragma alignment_region (32)
+#pragma section ("sdram_bank4_A")
+#pragma alignment_region_end
+uint32_t NumCameraBufsInQ;
+uint32_t NumEncBufsInQ;
+/* Buffer pointers for managing the input and output video*/
+/* Counter for PEC buffer processed */
+uint32_t nPECProcCount=0;
+uint32_t nEdgeTraceIndex = 0;
+uint8_t *pEdgeTrace;
+/* Switch for drawing the bounding rectangle */
+MT9M114_VIDEO_BUF *pLastEncBuf;   //encoder VideoEncAdv7511Callback
+MT9M114_VIDEO_BUF *pNextEncBuf;	  //encoder VideoEncAdv7511Callback
+MT9M114_VIDEO_BUF *pEncDispStartBuf;  //Here
+MT9M114_VIDEO_BUF *pCameraBufToSubmit;
+MT9M114_VIDEO_BUF *pEncBufToSubmit;
+MT9M114_VIDEO_BUF *pgfxBufToSubmit;
+MT9M114_VIDEO_BUF *pProcessedEncBuf;  //encoder VideoEncAdv7511Callback
+MT9M114_VIDEO_BUF *pLastCameraBuf;
+#if defined(FINBOARD)
+extern volatile uint32_t nIllumination;
+uint32_t prevIllumination;
+#endif
+
+//extern MT9M114_VIDEO_BUF VideoBuf0;
+//extern MT9M114_VIDEO_BUF VideoBuf1;
+//extern MT9M114_VIDEO_BUF VideoBuf2;
+//extern MT9M114_VIDEO_BUF VideoBuf3;
+//extern MT9M114_VIDEO_BUF VideoBuf4;
+//extern MT9M114_VIDEO_BUF VideoBuftemp;
+
+MESSAGE_INFO *pMessageInfo;
+
+unsigned char buffer[512];
+
+void main(void)
+{
+	/**
+	* Initialize managed drivers and/or services that have been added to
+	* the project.
+	* @return zero on success
+	*/
+	uint32_t nResult= SUCCESS;
+	/* Buffer pointer used to get the  frames with data */
+    void * pPECFrame,*pVideoBuffer=NULL, *pIIMFrame;
+    uint32_t *pTemp = (uint32_t *)&buffer[0];
+
+	MT9M114_VIDEO_BUF *pBufTemp;
+	uint32_t       *pBuf;
+	int32_t        nSize;
+
+	/* Initialize the ADI components such as pin muxing etc */
+	adi_initComponents();
+	/* Interface functions */
+	nIllumination = prevIllumination = 1;
+
+	do
+	   {
+				/* Initialize the power services*/
+			if (adi_pwr_Init (PROC_CLOCK_IN, PROC_MAX_CORE_CLOCK, PROC_MAX_SYS_CLOCK, PROC_MIN_VCO_CLOCK) != ADI_PWR_SUCCESS)
+			{
+				printf ("Failed to initialize Power service\n");
+				nResult= FAILURE;
+				break;
+			}
+			 /* Set the required core clock and system clock */
+			if(adi_pwr_SetFreq(PROC_REQ_CORE_CLOCK, PROC_REQ_SYS_CLOCK)!= ADI_PWR_SUCCESS )
+			{
+				printf ("Failed to initialize Power service\n");
+				nResult= FAILURE;
+				break;
+			}
+	   }while(0);
+
+	   while(NumFramesCaptured < EXAMPLE_TIMEOUT && nResult == SUCCESS )
+	       {
+
+	              /* Get the video display frame */
+	              pVideoBuffer = NULL;
+	              while(pVideoBuffer == NULL)
+	              {
+	                  //GetProcessedSensorBuf (&pVideoBuffer);
+	              }
+	              if(pVideoBuffer != NULL )
+	              {
+					   if ( prevIllumination != nIllumination )
+					   {
+						  prevIllumination = nIllumination;
+						  FINBOARD_LED_Drivers_Config( nIllumination );
+					   }
+
+	              }
+	              /* Increment the counter */
+	              NumFilledFrames++;
+	       }
+
+}
+

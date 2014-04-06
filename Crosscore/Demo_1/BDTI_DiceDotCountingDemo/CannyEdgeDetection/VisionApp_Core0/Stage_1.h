@@ -1,0 +1,157 @@
+/*********************************************************************************
+
+Copyright(c) 2012 Analog Devices, Inc. All Rights Reserved.
+
+This software is proprietary and confidential.  By using this software you agree
+to the terms of the associated Analog Devices License Agreement.
+
+*********************************************************************************/
+/*!
+ * @file      EdgeDetection.h
+ * @brief     Dice demo example include file
+ * @version:  $Revision: 9526 $
+ * @date:     $Date: 2012-11-20 19:46:14 +0530 (Tue, 20 Nov 2012) $
+ *
+ * @details
+ *            This is the include file for dice demo example using PVP.
+ *
+ */
+
+#ifndef _EDGEDETECTION_H_
+#define _EDGEDETECTION_H_
+
+#include "finboard_bsp.h"
+#include <adi_types.h>
+#include "adi_common.h"
+
+/* Compilation switch to enable IIM module */
+//#define ENABLE_IIM_MODULE 
+
+#define DISPLAYMODE_720P60
+
+
+#ifdef DISPLAYMODE_720P60
+
+#define ADI_DOTCOUNT_DISP_MODE ADI_ADV7511_720P_YCBCR_60HZ
+
+#else
+
+#define ADI_DOTCOUNT_DISP_MODE ADI_ADV7511_720P_YCBCR_30HZ
+
+#endif
+
+#define INIT_GRAPHICS_IMAGES
+
+/* External input clock frequency in Hz */
+#define PROC_CLOCK_IN                   (25000000u)
+/* Maximum core clock frequency in Hz */
+#define PROC_MAX_CORE_CLOCK             (500000000u)
+/* Maximum system clock frequency in Hz */
+#define PROC_MAX_SYS_CLOCK              (250000000u)
+/* Minimum VCO clock frequency in Hz */
+#define PROC_MIN_VCO_CLOCK              (25000000u)
+/* Required core clock frequency in Hz */
+#define PROC_REQ_CORE_CLOCK             (500000000u)
+/* Required system clock frequency in Hz */
+#define PROC_REQ_SYS_CLOCK              (250000000u)
+/* Number of buffers declared for PVP output */ 
+#define NUM_OF_OUTPUT_BUFFER 4
+
+/* Adjust the macro value to increase or decrease the timeout
+ *
+ * Comment the macro to disable the timeout or set the macro to 0.
+ * */
+#define EXAMPLE_TIMEOUT                  1000000000
+
+/* PPI device number used by encoder(ADV7511) for displaying the video */
+#if !defined(FINBOARD)
+#define ENC_PPI_DEV_NUM                  (2u)
+#else
+#define ENC_PPI_DEV_NUM                  (0u)
+#endif
+
+/* Encoder TWI device number  */
+#define ENC_TWI_DEV_NUM                  (0u)
+
+/* PPI device number used by sensor for capturing the video  */
+#if !defined(FINBOARD)
+#define INPUT_PPI_DEV_NUM                (0u)
+#else
+#define INPUT_PPI_DEV_NUM                (2u)
+#endif
+
+/* TWI Device number to access MT9M114 sensor registers */
+#define INPUT_TWI_DEV_NUM                (0u)
+
+/* Number of bits per pixel used by  VAT */
+#define ED_DEMO_BITS_PER_PIXEL           8u
+
+/* Stride to be used for DMA */
+#define ED_DEMO_INPUT_STRIDE             1u
+
+/* Maximum width of the input video for VAT*/
+#define ED_DEMO_MAX_WIDTH                INPUT_VIDEO_WIDTH
+
+/* Maximum Height of the input video for VAT*/
+#define ED_DEMO_MAX_HEIGHT               INPUT_VIDEO_HEIGHT
+
+/* IIM output element size : IIM output is 32bit wide*/
+#define IIM_OUT_ELEM_WIDTH                4
+
+/* Size of the IIIM output buffer */
+#define IIM_BUFFER_SIZE                  (INPUT_VIDEO_WIDTH * INPUT_VIDEO_HEIGHT * IIM_OUT_ELEM_WIDTH)
+
+#define REPORT_ERROR                     printf
+
+#define NUM_OF_FRAMES                    0
+
+#define MSG_MAX							 512
+
+/* PVP  buffer structure ***/
+typedef struct  PVP_BUF_INFO
+{
+    /* Buffer to store the output of the PVP */
+    uint8_t  VideoData[INPUT_VIDEO_WIDTH*INPUT_VIDEO_HEIGHT];
+
+    uint32_t nUsageCount;
+} PVP_BUF_INFO;
+
+/* =========================== Function prototypes ==================================== */
+
+void     GetIIMOutputBuffer (void **const ppVideoBuffer);
+void     FreeIIMOutputBuffer(void *Pbuffer);
+void     GetPECOutputBuffer (void **const ppVideoBuffer);
+void     FreePECOutputBuffer(void *Pbuffer);
+uint32_t InitPVP(void);
+void     GetProcessedSensorBuf(void 	**ppVideoBuffer);
+void     GetProcessedGfxBuf (void 	**ppVideoBuffer);
+uint32_t enablePVP(void);
+uint32_t SubmitEncBuf(MT9M114_VIDEO_BUF    *pBuffer);
+int32_t  graphics_init(void);
+uint32_t adi_DMCamInit(void);
+extern   unsigned char *GetFrameBuffer(void*);
+void display_count(uint32_t nDotCount, uint8_t *EdgeTrace);
+extern   void display_title(void);
+void     itoa(int number,char *str) ;
+void     display2(void);
+uint32_t Init_GPIO(void);
+uint32_t InitEdgeTrace(void);
+int32_t  EdgeTracePVPOut(uint8_t *pInput, uint8_t *pOutput);
+uint32_t InitEdgeDraw(void);
+void DrawEdge(void *pBufferIn);
+/* =========================== Extern variables ==================================== */
+extern uint32_t NumCameraBufsInQ;
+extern uint32_t NumEncBufsInQ;
+extern MT9M114_VIDEO_BUF *pLastEncBuf;
+extern MT9M114_VIDEO_BUF *pNextEncBuf;
+extern MT9M114_VIDEO_BUF *pEncDispStartBuf;
+extern MT9M114_VIDEO_BUF *pCameraBufToSubmit;
+extern MT9M114_VIDEO_BUF *pEncBufToSubmit;
+extern MT9M114_VIDEO_BUF *pProcessedEncBuf;
+extern MT9M114_VIDEO_BUF *pLastCameraBuf;
+extern volatile uint32_t NumFramesCaptured;
+extern  MT9M114_VIDEO_BUF *pgfxBufToSubmit;
+extern   MT9M114_VIDEO_BUF *pGFxBuff;
+extern char aString2[10];
+extern volatile uint32_t nBoundingRectFlag;
+#endif /* _EDGEDETECTION_H_ */

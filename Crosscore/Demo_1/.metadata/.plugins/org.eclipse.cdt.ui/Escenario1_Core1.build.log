@@ -1,0 +1,47 @@
+
+**** Build of configuration Debug for project Escenario1_Core1 ****
+
+make all 
+'Building file: ../system/startup_ldf/app_cplbtab.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core1" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -DCORE1 -D_DEBUG -DADI_MCAPI -I"C:\Users\Usuario\Music\PG\Demo_1\Escenario1_Core1\system" -I"/Include" -I"/include" -I"/Include" -I"/Blackfin/include" -I"/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_cplbtab.d" -o "system/startup_ldf/app_cplbtab.doj" "../system/startup_ldf/app_cplbtab.c"
+'Finished building: ../system/startup_ldf/app_cplbtab.c'
+' '
+'Building file: ../system/startup_ldf/app_handler_table.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core1" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -DCORE1 -D_DEBUG -DADI_MCAPI -I"C:\Users\Usuario\Music\PG\Demo_1\Escenario1_Core1\system" -I"/Include" -I"/include" -I"/Include" -I"/Blackfin/include" -I"/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_handler_table.d" -o "system/startup_ldf/app_handler_table.doj" "../system/startup_ldf/app_handler_table.c"
+'Finished building: ../system/startup_ldf/app_handler_table.c'
+' '
+'Building file: ../system/startup_ldf/app_heaptab.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core1" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -DCORE1 -D_DEBUG -DADI_MCAPI -I"C:\Users\Usuario\Music\PG\Demo_1\Escenario1_Core1\system" -I"/Include" -I"/include" -I"/Include" -I"/Blackfin/include" -I"/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_heaptab.d" -o "system/startup_ldf/app_heaptab.doj" "../system/startup_ldf/app_heaptab.c"
+'Finished building: ../system/startup_ldf/app_heaptab.c'
+' '
+'Building file: ../system/startup_ldf/app_startup.s'
+'Invoking: CrossCore Blackfin Assembler'
+easmblkfn.exe -file-attr ProjectName="Escenario1_Core1" -proc ADSP-BF609 -si-revision 0.0 -g -DCORE1 -D_DEBUG -DADI_MCAPI -i"C:\Users\Usuario\Music\PG\Demo_1\Escenario1_Core1\system" -i"/Include" -i"/Blackfin/include" -gnu-style-dependencies -MM -Mo "system/startup_ldf/app_startup.d" -o "system/startup_ldf/app_startup.doj" "../system/startup_ldf/app_startup.s"
+'Finished building: ../system/startup_ldf/app_startup.s'
+' '
+'Building file: ../system/pinmux/GeneratedSources/pinmux_config.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core1" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -DCORE1 -D_DEBUG -DADI_MCAPI -I"C:\Users\Usuario\Music\PG\Demo_1\Escenario1_Core1\system" -I"/Include" -I"/include" -I"/Include" -I"/Blackfin/include" -I"/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/pinmux/GeneratedSources/pinmux_config.d" -o "system/pinmux/GeneratedSources/pinmux_config.doj" "../system/pinmux/GeneratedSources/pinmux_config.c"
+'Finished building: ../system/pinmux/GeneratedSources/pinmux_config.c'
+' '
+'Building file: ../system/mcapi/GeneratedSources/mcapi_config.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core1" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -DCORE1 -D_DEBUG -DADI_MCAPI -I"C:\Users\Usuario\Music\PG\Demo_1\Escenario1_Core1\system" -I"/Include" -I"/include" -I"/Include" -I"/Blackfin/include" -I"/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/mcapi/GeneratedSources/mcapi_config.d" -o "system/mcapi/GeneratedSources/mcapi_config.doj" "../system/mcapi/GeneratedSources/mcapi_config.c"
+'Finished building: ../system/mcapi/GeneratedSources/mcapi_config.c'
+' '
+'Building file: C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core1" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -DCORE1 -D_DEBUG -DADI_MCAPI -I"C:\Users\Usuario\Music\PG\Demo_1\Escenario1_Core1\system" -I"/Include" -I"/include" -I"/Include" -I"/Blackfin/include" -I"/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.d" -o "system/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.doj" "C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.c"
+"C:\Analog Devices\Video_Encoder_EI3_Extender_Board-Rel1.0.1\Video_Encoder_EI3\Blackfin\src\drivers\encoder\adv7511\adi_adv7511_data.c", line 38: cc0005:  catastrophic error: could not open source file "drivers/encoder/adv7511/adi_adv7511.h"
+  #include <drivers/encoder/adv7511/adi_adv7511.h>
+                                                  ^
+
+1 catastrophic error detected in the compilation of "C:\Analog Devices\Video_Encoder_EI3_Extender_Board-Rel1.0.1\Video_Encoder_EI3\Blackfin\src\drivers\encoder\adv7511\adi_adv7511.c".
+Compilation terminated.
+cc3089: fatal error: Compilation failed
+make: *** [system/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.doj] Error 1
+
+**** Build Finished ****

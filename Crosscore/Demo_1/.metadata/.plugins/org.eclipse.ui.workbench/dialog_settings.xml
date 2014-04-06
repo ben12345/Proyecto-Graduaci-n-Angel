@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="PreferencesImportWizard">
+	</section>
+	<section name="FileSystemImportWizard">
+		<item value="true" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
+		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
+		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\Usuario\Music\PG1\Proyecto"/>
+			<item value="C:\Users\Usuario\Music\PG\Demo_1\BDTI_DiceDotCountingDemo\CannyEdgeDetection\common"/>
+			<item value="C:\Analog Devices\Camera_EI3_Extender_Board-Rel1.0.1\Camera_EI3\Blackfin\Examples\ADSP-BF609\MT9M114\VideoLoopbackYUV"/>
+		</list>
+	</section>
+	<section name="ZipFileImportWizard">
+	</section>
+	<section name="ImportExportAction">
+		<item value="org.eclipse.ui.wizards.import.FileSystem" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+</section>

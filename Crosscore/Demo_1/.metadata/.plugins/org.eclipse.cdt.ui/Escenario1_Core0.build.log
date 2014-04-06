@@ -1,0 +1,164 @@
+
+**** Build of configuration Debug for project Escenario1_Core0 ****
+
+make all 
+'Building file: ../system/startup_ldf/app_cplbtab.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_cplbtab.d" -o "system/startup_ldf/app_cplbtab.doj" "../system/startup_ldf/app_cplbtab.c"
+'Finished building: ../system/startup_ldf/app_cplbtab.c'
+' '
+'Building file: ../system/startup_ldf/app_handler_table.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_handler_table.d" -o "system/startup_ldf/app_handler_table.doj" "../system/startup_ldf/app_handler_table.c"
+'Finished building: ../system/startup_ldf/app_handler_table.c'
+' '
+'Building file: ../system/startup_ldf/app_heaptab.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/startup_ldf/app_heaptab.d" -o "system/startup_ldf/app_heaptab.doj" "../system/startup_ldf/app_heaptab.c"
+'Finished building: ../system/startup_ldf/app_heaptab.c'
+' '
+'Building file: ../system/startup_ldf/app_startup.s'
+'Invoking: CrossCore Blackfin Assembler'
+easmblkfn.exe -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -si-revision 0.0 -g -DCORE0 -D_DEBUG -DADI_MCAPI -DDEBUG -i"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -i"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -i"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -i"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -i"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -gnu-style-dependencies -MM -Mo "system/startup_ldf/app_startup.d" -o "system/startup_ldf/app_startup.doj" "../system/startup_ldf/app_startup.s"
+'Finished building: ../system/startup_ldf/app_startup.s'
+' '
+'Building file: ../system/pinmux/GeneratedSources/pinmux_config.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/pinmux/GeneratedSources/pinmux_config.d" -o "system/pinmux/GeneratedSources/pinmux_config.doj" "../system/pinmux/GeneratedSources/pinmux_config.c"
+'Finished building: ../system/pinmux/GeneratedSources/pinmux_config.c'
+' '
+'Building file: ../system/mcapi/GeneratedSources/mcapi_config.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/mcapi/GeneratedSources/mcapi_config.d" -o "system/mcapi/GeneratedSources/mcapi_config.doj" "../system/mcapi/GeneratedSources/mcapi_config.c"
+'Finished building: ../system/mcapi/GeneratedSources/mcapi_config.c'
+' '
+'Building file: C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.d" -o "system/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.doj" "C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.c"
+'Finished building: C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.c'
+' '
+'Building file: C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/src/drivers/sensor/aptina/mt9m114/adi_mt9m114.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/Camera_EI3/drivers/sensor/aptina/mt9m114/adi_mt9m114.d" -o "system/Camera_EI3/drivers/sensor/aptina/mt9m114/adi_mt9m114.doj" "C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/src/drivers/sensor/aptina/mt9m114/adi_mt9m114.c"
+'Finished building: C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/src/drivers/sensor/aptina/mt9m114/adi_mt9m114.c'
+' '
+'Building file: ../system/adi_initialize.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "system/adi_initialize.d" -o "system/adi_initialize.doj" "../system/adi_initialize.c"
+'Finished building: ../system/adi_initialize.c'
+' '
+'Building file: ../BF609_GPIO.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "BF609_GPIO.d" -o "BF609_GPIO.doj" "../BF609_GPIO.c"
+'Finished building: ../BF609_GPIO.c'
+' '
+'Building file: ../BallTracking.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "BallTracking.d" -o "BallTracking.doj" "../BallTracking.c"
+'Finished building: ../BallTracking.c'
+' '
+'Building file: ../Graphics.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "Graphics.d" -o "Graphics.doj" "../Graphics.c"
+'Finished building: ../Graphics.c'
+' '
+'Building file: ../Sensor.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "Sensor.d" -o "Sensor.doj" "../Sensor.c"
+'Finished building: ../Sensor.c'
+' '
+'Building file: ../SoftConfig_BF609.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "SoftConfig_BF609.d" -o "SoftConfig_BF609.doj" "../SoftConfig_BF609.c"
+'Finished building: ../SoftConfig_BF609.c'
+' '
+'Building file: ../SoftConfig_Encoder.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "SoftConfig_Encoder.d" -o "SoftConfig_Encoder.doj" "../SoftConfig_Encoder.c"
+'Finished building: ../SoftConfig_Encoder.c'
+' '
+'Building file: ../adi_contour_mem_alloc.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "adi_contour_mem_alloc.d" -o "adi_contour_mem_alloc.doj" "../adi_contour_mem_alloc.c"
+'Finished building: ../adi_contour_mem_alloc.c'
+' '
+'Building file: ../adi_contours_wrapper.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "adi_contours_wrapper.d" -o "adi_contours_wrapper.doj" "../adi_contours_wrapper.c"
+'Finished building: ../adi_contours_wrapper.c'
+' '
+'Building file: ../adi_dma_func.asm'
+'Invoking: CrossCore Blackfin Assembler'
+easmblkfn.exe -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -si-revision 0.0 -g -DCORE0 -D_DEBUG -DADI_MCAPI -DDEBUG -i"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -i"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -i"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -i"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -i"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -gnu-style-dependencies -MM -Mo "adi_dma_func.d" -o "adi_dma_func.doj" "../adi_dma_func.asm"
+[Informational ea1056] "../adi_dma_func.asm":66 Preg read after write which requires 3 extra cycles
+
+[Informational ea1056] "../adi_dma_func.asm":76 Preg read after write which requires 3 extra cycles
+
+[Informational ea1056] "../adi_dma_func.asm":149 Preg read after write which requires 3 extra cycles
+
+'Finished building: ../adi_dma_func.asm'
+' '
+'Building file: ../adi_dma_vars.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "adi_dma_vars.d" -o "adi_dma_vars.doj" "../adi_dma_vars.c"
+'Finished building: ../adi_dma_vars.c'
+' '
+'Building file: ../adi_draw_edge.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "adi_draw_edge.d" -o "adi_draw_edge.doj" "../adi_draw_edge.c"
+'Finished building: ../adi_draw_edge.c'
+' '
+'Building file: ../adi_find_contours.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "adi_find_contours.d" -o "adi_find_contours.doj" "../adi_find_contours.c"
+'Finished building: ../adi_find_contours.c'
+' '
+'Building file: ../adi_mem_move_bf609.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "adi_mem_move_bf609.d" -o "adi_mem_move_bf609.doj" "../adi_mem_move_bf609.c"
+'Finished building: ../adi_mem_move_bf609.c'
+' '
+'Building file: ../adi_memory.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "adi_memory.d" -o "adi_memory.doj" "../adi_memory.c"
+'Finished building: ../adi_memory.c'
+' '
+'Building file: ../contour_dynamic_mem_alloc.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "contour_dynamic_mem_alloc.d" -o "contour_dynamic_mem_alloc.doj" "../contour_dynamic_mem_alloc.c"
+'Finished building: ../contour_dynamic_mem_alloc.c'
+' '
+'Building file: ../contour_pseudo_dynamic_mem_alloc.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "contour_pseudo_dynamic_mem_alloc.d" -o "contour_pseudo_dynamic_mem_alloc.doj" "../contour_pseudo_dynamic_mem_alloc.c"
+'Finished building: ../contour_pseudo_dynamic_mem_alloc.c'
+' '
+'Building file: ../encoder.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "encoder.d" -o "encoder.doj" "../encoder.c"
+'Finished building: ../encoder.c'
+' '
+'Building file: ../finboard_bsp.c'
+'Invoking: CrossCore Blackfin C/C++ Compiler'
+ccblkfn.exe -c -file-attr ProjectName="Escenario1_Core0" -proc ADSP-BF609 -flags-compiler --no_wrap_diagnostics -si-revision 0.0 -g -file-attrCORE0 -file-attr_DEBUG -file-attrADI_MCAPI -file-attrDEBUG -I"C:/Analog Devices/SoftwareModules/ImageProcessingToolbox-BF-Rel2.3.0/Include" -I"C:/Analog Devices/Video_Encoder_EI3_Extender_Board-Rel1.0.1/Video_Encoder_EI3/Blackfin/include" -I"C:/Analog Devices/SoftwareModules/Graphics2D_OGL-BF-Rel3.4.0/Include" -I"C:/Analog Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/include" -I"C:/Analog Devices/Camera_EI3_Extender_Board-Rel1.0.1/Camera_EI3/Blackfin/include" -structs-do-not-overlap -no-multiline -warn-protos -double-size-32 -decls-strong -cplbs -gnu-style-dependencies -MD -Mo "finboard_bsp.d" -o "finboard_bsp.doj" "../finboard_bsp.c"
+'Finished building: ../finboard_bsp.c'
+' '
+'Building target: Escenario1_Core0.dxe'
+'Invoking: CrossCore Blackfin Linker'
+ccblkfn.exe -proc ADSP-BF609 -si-revision 0.0 -TC:/Users/Usuario/Music/PG/Demo_1/Escenario1_Core0/system/startup_ldf/app.ldf -no-mem -map Escenario1_Core0.map.xml -LC:/Users/Usuario/Music/PG/Demo_1/Escenario1_Core0/Debug/system/startup_ldf -LC:/Analog\ Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/src/Build-CCES -LC:/Analog\ Devices/SoftwareModules/VisionAnalyticsToolbox-BF-Rel2.4.0/Lib-Production-CCES -flags-link -MDDEBUG,-MDADI_MCAPI -flags-link -e -add-debug-libpaths -flags-link libadi_vat_bf.dlb -o Escenario1_Core0.dxe  ./system/startup_ldf/app_cplbtab.doj ./system/startup_ldf/app_handler_table.doj ./system/startup_ldf/app_heaptab.doj ./system/startup_ldf/app_startup.doj  ./system/pinmux/GeneratedSources/pinmux_config.doj  ./system/mcapi/GeneratedSources/mcapi_config.doj  ./system/Video_Encoder_EI3/Blackfin/src/drivers/encoder/adv7511/adi_adv7511.doj  ./system/Camera_EI3/drivers/sensor/aptina/mt9m114/adi_mt9m114.doj  ./system/adi_initialize.doj  ./BF609_GPIO.doj ./BallTracking.doj ./Graphics.doj ./Sensor.doj ./SoftConfig_BF609.doj ./SoftConfig_Encoder.doj ./adi_contour_mem_alloc.doj ./adi_contours_wrapper.doj ./adi_dma_func.doj ./adi_dma_vars.doj ./adi_draw_edge.doj ./adi_find_contours.doj ./adi_mem_move_bf609.doj ./adi_memory.doj ./contour_dynamic_mem_alloc.doj ./contour_pseudo_dynamic_mem_alloc.doj ./encoder.doj ./finboard_bsp.doj   ../system/startup_ldf/app.ldf   -flags-link -od,.\.
+
+[Error li1021]  The following symbols referenced in processor 'CORE_0' could not be resolved:
+        'adi_contour_BoundingRectangle [_adi_contour_BoundingRectangle]' referenced from '.\adi_find_contours.doj'
+        'adi_contour_RLE [_adi_contour_RLE]' referenced from '.\adi_contours_wrapper.doj'
+        'adi_contour_SplitSegmentRowWise [_adi_contour_SplitSegmentRowWise]' referenced from '.\adi_find_contours.doj'
+        'adi_contour_segment_image [_adi_contour_segment_image]' referenced from '.\adi_find_contours.doj'
+        'glColorPointer [_glColorPointer]' referenced from '.\adi_draw_edge.doj'
+        'glDrawArrays [_glDrawArrays]' referenced from '.\adi_draw_edge.doj'
+        'glVertexPointer [_glVertexPointer]' referenced from '.\adi_draw_edge.doj'
+        'glutSwapBuffers [_glutSwapBuffers]' referenced from '.\Graphics.doj'
+
+Linker finished with 1 error 
+cc3089: fatal error: Link failed
+make: *** [Escenario1_Core0.dxe] Error 1
+
+**** Build Finished ****

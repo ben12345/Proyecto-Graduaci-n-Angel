@@ -1,0 +1,593 @@
+//-----------------------------------------------------------------------------------------------
+//
+//     BBBBBBBBBBBBBBBBB   DDDDDDDDDDDDD       TTTTTTTTTTTTTTTTTTTTTTT  iiii
+//     B::::::::::::::::B  D::::::::::::DDD    T:::::::::::::::::::::T i::::i
+//     B::::::BBBBBB:::::B D:::::::::::::::DD  T:::::::::::::::::::::T  iiii
+//     BB:::::B     B:::::BDDD:::::DDDDD:::::D T:::::TT:::::::TT:::::T
+//       B::::B     B:::::B  D:::::D    D:::::DTTTTTT  T:::::T  TTTTTTiiiiiii
+//       B::::B     B:::::B  D:::::D     D:::::D       T:::::T        i:::::i
+//       B::::BBBBBB:::::B   D:::::D     D:::::D       T:::::T         i::::i
+//       B:::::::::::::BB    D:::::D     D:::::D       T:::::T         i::::i
+//       B::::BBBBBB:::::B   D:::::D     D:::::D       T:::::T         i::::i
+//       B::::B     B:::::B  D:::::D     D:::::D       T:::::T         i::::i
+//       B::::B     B:::::B  D:::::D     D:::::D       T:::::T         i::::i
+//       B::::B     B:::::B  D:::::D    D:::::D        T:::::T         i::::i
+//     BB:::::BBBBBB::::::BDDD:::::DDDDD:::::D       TT:::::::TT      i::::::i
+//     B:::::::::::::::::B D:::::::::::::::DD        T:::::::::T      i::::::i
+//     B::::::::::::::::B  D::::::::::::DDD          T:::::::::T      i::::::i
+//     BBBBBBBBBBBBBBBBB   DDDDDDDDDDDDD             TTTTTTTTTTT      iiiiiiii
+//
+//-----------------------------------------------------------------------------------------------
+// ADI BF60x Dice-Counting Demo Developed by Berkeley Design Technology, Inc. (BDTI)
+//
+// BDTI provides expert engineering services, including algorithm design and implementation of
+// software for embedded vision applications. For questions regarding this demo or information
+// on BDTI’s engineering services, contact BDTI:
+//
+// info@BDTI.com                      +1 510-451-1800                   http://www.BDTI.com
+//
+// Berkeley Design Technology, Inc.(BDTI) makes no warranty for the use of this software, which
+// has been developed for demonstration purposes only.  This software is provided  "as is".  BDTI
+// assumes no responsibility for any errors which may appear in this software, nor does it make
+// a commitment to update the information contained herein. BDTI specifically disclaims any implied
+// warranties of fitness for a particular purpose.  You are solely responsible for determining
+// the suitability of this software for your purposes and you use it at your own risk. In no event
+// shall BDTI be held liable for any damages of any kind arising out of your use of or inability to
+// use this software.
+//-----------------------------------------------------------------------------------------------
+
+/******************************************************************************
+Copyright (c), 2009-2012 - Analog Devices Inc. All Rights Reserved.
+This software is PROPRIETARY & CONFIDENTIAL to Analog Devices, Inc.
+and its licensors.
+*******************************************************************************
+
+Title       : Graphics.c
+
+Description : Captures the implementation of graphics framework.
+
+******************************************************************************/
+
+/*=============  I N C L U D E S   =============*/
+#include <stdio.h>
+
+#include "adi_graphics.h"
+#include "adi_font.h"
+#include "glut.h"
+#include "adi_sigprocess.h"
+#include "adi_common.h"
+
+/*=============  D E F I N E S  =============*/
+#define DISPLAY_WIDTH               OUTPUT_VIDEO_WIDTH
+#define DISPLAY_HEIGHT              OUTPUT_VIDEO_HEIGHT
+
+#define NUM_DISPLAY_BUFF            4
+
+/* Do NOT modify this macro, library working depends on this */
+#define NUM_FAST_MEM_BUF            4
+/* Do NOT modify this macro, library working depends on this */
+#define NUM_SLOW_MEM_BUF            1
+/* Do NOT modify this macro, library working depends on this */
+#define SIZE_INTERMEDIATE_BUF1      4752
+/* Do NOT modify this macro, library working depends on this */
+#define SIZE_INTERMEDIATE_BUF2      4752
+
+/*
+ * Number of overlays are configurable as long as it its less than
+ * MAX_NUM_OVERLAYS defined in adi_graphics.h
+ */
+#define NUM_OVERLAYS                1
+
+#define ADI_NUM_MEMORY_BLOCKS       (NUM_FAST_MEM_BUF + NUM_SLOW_MEM_BUF + NUM_OVERLAYS)
+
+#define MDMA0_BASE 0xFFC09000       /* DMA 21-22 */
+#define MDMA1_BASE 0xFFC09100       /* DMA 23-24 */
+
+#define BITBLT_WIDTH				100 // 60
+#define BITBLT_HEIGHT				50
+/*=============  D A T A  =============*/
+/* ADI Graphics structure */
+#pragma section("adi_fastb1_app_rw")
+ADIMem					memArray[ADI_NUM_MEMORY_BLOCKS];
+#pragma section("adi_fastb1_app_rw")
+ADIMemMap				oMemory;
+#pragma section("adi_fastb1_app_rw")
+ADIMemMap				*pMem = NULL;
+
+#pragma section("adi_fastb1_app_rw")
+ADIDisplayStruct		oDisplayStruct;
+#pragma section("adi_fastb1_app_rw")
+ADIDisplayStruct		*pDisplayStruct = &oDisplayStruct;
+
+#pragma section("adi_fastb1_app_rw")
+ADIFontStruct			oFontStruct;
+#pragma section("adi_fastb1_app_rw")
+ADIFontStruct   		*pFontStruct = &oFontStruct;
+
+#pragma section("adi_fastb1_app_rw")
+ADIMemDMAService   		memDMA;
+#pragma section("adi_fastb1_app_rw")
+ADIMemDMAService   		*pDMA = &memDMA;
+
+
+#pragma section("adi_fastb1_app_rw")
+ADI_GRAPHICS_ERROR_CODE	eGraphicsErrorCode;
+
+/* Fast memory buffer to be used by library */
+#pragma section("adi_fastb0_app_temp")
+uint8_t                             aFastMemBuf0[(DISPLAY_WIDTH * 5)];
+#pragma section("adi_fastb1_app_temp")
+uint8_t                             aFastMemBuf1[(((DISPLAY_WIDTH * DISPLAY_HEIGHT) + 31) >> 11) * NUM_OVERLAYS];
+#pragma section("adi_fastb0_app_temp")
+uint8_t                             aFastMemBuf2[SIZE_INTERMEDIATE_BUF1];
+#pragma section("adi_fastb1_app_temp")
+uint8_t                             aFastMemBuf3[SIZE_INTERMEDIATE_BUF2];
+
+/* Slow memory buffer to be used by library */
+#pragma section("adi_slow_app_temp" )
+uint8_t                             aSlowMemBuf0[(DISPLAY_WIDTH * DISPLAY_HEIGHT)];
+/* Overlay buffers */
+
+#pragma section("overlay_section")
+uint8_t                             aOverlayBuff0[4 * DISPLAY_WIDTH * DISPLAY_HEIGHT];
+
+#pragma section("overlay_section")
+uint8_t                             aOverlayBuff1[4 * DISPLAY_WIDTH * DISPLAY_HEIGHT];
+
+/* Buffer which holds the bitblt pattern */
+#pragma section("overlay_section")
+uint32_t                            bitblt_buffer[BITBLT_WIDTH][BITBLT_HEIGHT];
+
+extern unsigned char *GetFrameBuffer(void*);
+//                                                         |
+char aStringTitle[] = "DOT COUNT:                                  V0403";
+char aString2[10];
+#pragma section ("adi_fastb1_prio0_rw")
+GLshort        aVertices[8];
+//#pragma section ("adi_fastb1_prio0_rw")
+//char          *szStr;
+
+MT9M114_VIDEO_BUF *pGFxBuff = NULL; // to be differentiated using macro for decoder project RV
+CONTOUR_INFO oCONTOURInfo;
+uint32_t CONTOURCount;
+extern MESSAGE_INFO *pInfo;
+
+/******************************************************************************
+
+  Function              : FillColor
+
+  Function description  : Function to fill color in block for bitblt buffer.
+                          To change the pattern of bitblt, user need to modify
+                          this function accordingly.
+
+******************************************************************************/
+#pragma section("adi_slow_app_code")
+void FillColor(uint32_t *pBuff,int nColor, int nWidth, int nHeight)
+{
+    int i, j;
+    for(i = 0; i < nWidth; i++)
+    {
+        for(j = 0; j < nHeight; j++)
+        {
+            *pBuff++ = nColor;
+        }
+    }
+}
+
+
+/******************************************************************************
+
+  Function              : init_ccir_wrapper
+
+  Function description  : Initializes the CCIR structure.
+
+
+******************************************************************************/
+#pragma section("adi_slow_app_code")
+void init_ccir_wrapper(ADIGraphicsConfigVideoStd *pParam)
+{
+	uint32_t nBytesPerPixel = 2;
+
+	pParam->iFrameWidth = (DISPLAY_WIDTH * nBytesPerPixel * 2);
+	pParam->iFrameHeight = DISPLAY_HEIGHT;
+	pParam->iFld0Offset = 0;
+	pParam->iFld1Offset = (DISPLAY_WIDTH * nBytesPerPixel);
+	pParam->iFldHeight = (DISPLAY_HEIGHT>>1);
+    return;
+}
+
+/******************************************************************************
+
+  Function              : init_graphicsEngine
+
+  Function description  : Init function for graphics. Configures ezkit, opens USB,
+                          read the command from command files and sends it to
+                          lower layer for processing.
+
+
+******************************************************************************/
+#pragma section("adi_slow_app_code")
+int32_t init_graphicsEngine(void)
+{
+    uint32_t eResult = ADI_GRAPHICS_RESULT_SUCCESS;
+    /* Initialize the display dimensions. */
+    pDisplayStruct->nDisplayWidth = DISPLAY_WIDTH;
+    pDisplayStruct->eOutputFormat = ADI_OUTPUT_FORMAT_TV;
+
+    /* Initialize the CCIR parameters. */
+    init_ccir_wrapper(&(pDisplayStruct->oGraphicsConfigVideoStd));
+
+    /* Active lines in a frame */
+    pDisplayStruct->nDisplayHeight = (pDisplayStruct->oGraphicsConfigVideoStd.iFldHeight)<<1;
+
+    /* To retain background video/image. */
+    pDisplayStruct->bCompositor = GL_TRUE;
+    /* Enable anti flicker filter. */
+    pDisplayStruct->eAntiFlickerFilterType = ADI_ANTI_FLICKER_FILTER_NONE;
+    /* Initialize the display function pointers. */
+    pDisplayStruct->pfColorConv = &(rgb_yuv_656_blk);
+    if(pDisplayStruct->eAntiFlickerFilterType == ADI_ANTI_FLICKER_FILTER_NONE)
+    {
+        pDisplayStruct->pfAntiFlickerFilter = NULL;
+    }
+
+    pDisplayStruct->pfGetFrameBuffer = &(GetFrameBuffer);
+    pDisplayStruct->pfDisplayFrameBuffer = NULL;
+
+    /* Callback parameters (not used). */
+    pDisplayStruct->pColorConvArg = NULL;
+    pDisplayStruct->pDisplayFrameBufferArg = NULL;
+    pDisplayStruct->pGetFrameBufferArg = NULL;
+
+    /* Anti alias filter type */
+    pDisplayStruct->eAntiAliasFilterType = ADI_ANTI_ALIAS_FILTER_HORZ_VERT;
+
+    /* Configure font structure */
+    pFontStruct->nNumNewFonts = 1;
+
+    pFontStruct->aFontType[0] = ARIAL_2PT ;
+    pFontStruct->pFontMap[0] = &arial_12pt_fontmap;
+    pFontStruct->pFontMapRange[0] = &arial_12pt_range;
+    pFontStruct->aFontMapRangeLength[0] = arial_12pt_range_length;
+#if 0
+    pFontStruct->aFontType[1] = ARIAL_3PT ;
+    pFontStruct->pFontMap[1] = &arial_12pt_fontmap;
+    pFontStruct->pFontMapRange[1] = &arial_12pt_range;
+    pFontStruct->aFontMapRangeLength[1] = arial_12pt_range_length;
+
+    pFontStruct->aFontType[2] = ARIAL_8PT;
+    pFontStruct->pFontMap[2] = &arial_12pt_fontmap;
+    pFontStruct->pFontMapRange[2] = &arial_12pt_range;
+    pFontStruct->aFontMapRangeLength[2] = arial_12pt_range_length;
+
+    pFontStruct->aFontType[3] = TIMES_8PT;
+    pFontStruct->pFontMap[3] = &arial_12pt_fontmap;
+    pFontStruct->pFontMapRange[3] = &arial_12pt_range;
+    pFontStruct->aFontMapRangeLength[3] = arial_12pt_range_length;
+#endif
+    /* Configure MDMA Address */
+    pDMA->nMDMA1BaseAddress = MDMA1_BASE;
+    pDMA->nMDMA2BaseAddress = MDMA1_BASE;
+
+    /* Initialize graphics structure */
+    pMem = &oMemory;
+
+    pMem->nSize = sizeof(ADIMemMap);
+    pMem->nNumMemBlocks = ADI_NUM_MEMORY_BLOCKS;
+
+    /* Fast memory buffer used in library */
+    memArray[0].pMem = &aFastMemBuf0[0];
+    memArray[0].nMemSize = sizeof(aFastMemBuf0);
+    memArray[1].pMem = &aFastMemBuf1[0];
+    memArray[1].nMemSize = sizeof(aFastMemBuf1);
+    memArray[2].pMem = &aFastMemBuf2[0];
+    memArray[2].nMemSize = sizeof(aFastMemBuf2);
+    memArray[3].pMem = &aFastMemBuf3[0];
+    memArray[3].nMemSize = sizeof(aFastMemBuf3);
+
+    /* Slow memory buffer used in library */
+    memArray[4].pMem = &aSlowMemBuf0[0];
+    memArray[4].nMemSize = sizeof(aSlowMemBuf0);
+
+    /* Overlay Buffers. */
+    memArray[5].pMem = &aOverlayBuff0[0];
+    memArray[5].nMemSize = sizeof(aOverlayBuff0);
+
+    pMem->pMemBlocks = &memArray[0];
+
+    eResult = GraphicsEngineInit(pMem, pDMA, pDisplayStruct, pFontStruct, &eGraphicsErrorCode);
+
+    if(eResult != ADI_GRAPHICS_RESULT_SUCCESS)
+    {
+        if(eResult == ADI_GRAPHICS_RESULT_NULL_POINTER_WARNING)
+        {
+            /* Graphics Engine initialization warning. Dont' exit */
+            printf("Graphics Engine initialization warning. Few function pointer passed as NULL might be used in some cases.\n");
+        }
+        else
+        {
+            /* Graphics Engine initialization error. Exit */
+            printf("Failure: Graphics Engine initialization error!!!\n");
+            return (-1);
+        }
+    }
+
+    return 0;
+}
+
+
+/******************************************************************************
+
+  Function              : display
+
+  Function description  : Display function.
+                          Contains GL-ES calls to render primitives.
+                          This function is registered as GLUTDispFunc() and
+                          will be called from GLUTMainLoop().
+
+******************************************************************************/
+#pragma section("adi_slow_app_code")
+void display_title(void)
+{
+	GLubyte 	aColors[8];
+	uint32_t	nFontType = ARIAL_2PT;
+	uint32_t	nDisplayColor = 0x7FFFFF00;
+	/* Set the default color as red. */
+    glColor4x(0xff, 0, 0, 0x7f);
+
+    /* Enable the vertex and color array. */
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+
+
+	aColors[0] = nDisplayColor;
+	aColors[1] = (nDisplayColor>>8);
+	aColors[2] = (nDisplayColor>>16);
+	aColors[3] = (nDisplayColor>>24);
+
+	/* Set the current vertices to use from vertices array. */
+	glVertexPointer(2, GL_SHORT, 0, aVertices);
+
+	/* Set the current vertices to use color from colors array. */
+	glColorPointer(4, GL_UNSIGNED_BYTE, 0, aColors);
+
+	GLUT_ADI_bitmap_string((void *)nFontType, aStringTitle, 0, GL_FALSE);
+}
+
+
+/******************************************************************************
+
+  Function              : display
+
+  Function description  : Display function.
+                          Contains GL-ES calls to render primitives.
+                          This function is registered as GLUTDispFunc() and
+                          will be called from GLUTMainLoop().
+
+******************************************************************************/
+#pragma section("adi_slow_app_code")
+void display_count()
+{
+	GLubyte 	aColors[8];
+	uint32_t	nFontType = ARIAL_2PT;
+	uint32_t	nDisplayColor;
+	uint32_t	nWidth;
+	uint32_t	nHeight,i;
+//	char *szStr = &aStringTitle[0];
+
+	//----------------------------------------------------------------------------------
+	// ADI BF60x Dice-Counting Demo Developed by Berkeley Design Technology, Inc. (BDTI)
+	//----------------------------------------------------------------------------------
+	/* Convert the DOTCOUNT to string*/
+    itoa(CONTOURCount,aString2);
+
+//    *pREG_DMA23_BWLCNT = 10;
+//    *pREG_DMA24_BWLCNT = 10;
+
+    GL_ADI_clear_all_primitives();
+    nDisplayColor = 0x7F000000;
+    nWidth = BITBLT_WIDTH;
+    nHeight = BITBLT_HEIGHT;
+    FillColor(&bitblt_buffer[0][0], nDisplayColor, nWidth, nHeight);
+
+    glLogicOp(GL_SET);
+    glEnable(GL_COLOR_LOGIC_OP);
+
+    /*
+    nX0, nY0 specify the window coordinates of the first pixel
+    that is written using the pixel buffer. This location is the upper left
+    corner of a rectangular block of pixels
+    Pixel format is ARGB. Type is unsigned byte.
+    */
+    GL_ADI_copy_pixels(
+                       720-325, //EG
+                       620,
+                       nWidth,
+                       nHeight,
+                       GL_ADI_ARGB,         /* Format */
+                       GL_UNSIGNED_BYTE,    /* Type. */
+                       GL_ADI_NO_SCALE,     /* Scaling. */
+                       0,                   /* X Scale. */
+                       0,                   /* Y Scale. */
+                       (GLvoid *)bitblt_buffer,
+                       0                    /* Chroma key. */
+    				   );
+    nDisplayColor = 0x7FFFFF00;
+    aVertices[0] = 720-325; // EG
+	aVertices[1] = 660;
+
+	aColors[0] = nDisplayColor;
+	aColors[1] = (nDisplayColor>>8);
+	aColors[2] = (nDisplayColor>>16);
+	aColors[3] = (nDisplayColor>>24);
+
+	/* Set the current vertices to use from vertices array. */
+	glVertexPointer(2, GL_SHORT, 0, aVertices);
+
+	/* Set the current vertices to use color from colors array. */
+	glColorPointer(4, GL_UNSIGNED_BYTE, 0, aColors);
+
+	GLUT_ADI_bitmap_string((void *)nFontType, aString2, 0, GL_FALSE);
+
+	nDisplayColor = 0x7F00FF00;
+    if(pInfo->nBoundingRectFlag == 1)
+    {
+	    for(i=0;i<oCONTOURInfo.nNumberOfObjects;i++)
+	    {
+            aVertices[0] = oCONTOURInfo.aCONTOURInfo[i].nXTopLeft;
+            aVertices[1] = oCONTOURInfo.aCONTOURInfo[i].nYTopLeft + Y_OFFSET_FOR_VIDEO_POSITION;
+            aVertices[2] = oCONTOURInfo.aCONTOURInfo[i].nXTopLeft+oCONTOURInfo.aCONTOURInfo[i].nWidth;
+            aVertices[3] = aVertices[1];
+            aVertices[4] = aVertices[2];
+            aVertices[5] = oCONTOURInfo.aCONTOURInfo[i].nYTopLeft+oCONTOURInfo.aCONTOURInfo[i].nHeight + Y_OFFSET_FOR_VIDEO_POSITION;
+            aVertices[6] = aVertices[0];
+            aVertices[7] = aVertices[5];
+            /* Added condition check to prevent bounding rectangle draw near the boundary. Since the overlay buffer is larger than the
+             * video area, any drawing at the edges will cause the blending to gradually spread outside the video boundary. The below values
+             * are the limits taking into consideration the macroblock blending process */
+            if(aVertices[0] < 16 || aVertices[1] <= (Y_OFFSET_FOR_VIDEO_POSITION+16) || aVertices[1] >= (Y_OFFSET_FOR_VIDEO_POSITION + INPUT_VIDEO_HEIGHT-16) || aVertices[0] >= (INPUT_VIDEO_WIDTH-16))
+            	continue;
+            if(aVertices[2] >= (INPUT_VIDEO_WIDTH-16))
+               	continue;
+            if(aVertices[5] >= (Y_OFFSET_FOR_VIDEO_POSITION + INPUT_VIDEO_HEIGHT-16))
+                continue;
+
+            nDisplayColor = oCONTOURInfo.nColour[i];
+            aColors[0] = nDisplayColor;
+            aColors[1] = (nDisplayColor>>8);
+            aColors[2] = (nDisplayColor>>16);
+            aColors[3] = (nDisplayColor>>24);
+
+            /* Line width is by default 1 pixel. */
+            glLineWidthx(1);
+
+            /* Set the current vertices to use from vertices array. */
+            glVertexPointer(2, GL_SHORT, 0, aVertices);
+
+            /* Set the current vertices to use color from colors array. */
+            glColorPointer(4, GL_UNSIGNED_BYTE, 0, aColors);
+
+             /*Draw the primitive using elements from vertices array. */
+            glDrawArrays(GL_LINE_LOOP, 0, 4);
+	    }
+    }
+    if(pInfo->nBoundingRectFlag == 2)
+	{
+	       DrawEdge(pInfo->pBuf1);
+	}
+
+ //   *pREG_DMA23_BWLCNT = 0;
+ //   *pREG_DMA24_BWLCNT = 0;
+
+}
+
+
+/******************************************************************************
+
+  Function              : do_graphics
+
+  Function description  : Initializes the graphics engine, GLUT and registers
+                          the display function.
+
+******************************************************************************/
+#pragma  section("adi_slow_app_code")
+int32_t graphics_init(void)
+{
+	int32_t	nResult;
+//    szStr = &aStringTitle[0];
+
+    /* Initilize the graphics. */
+	nResult = init_graphicsEngine();
+
+	if(nResult == 0)
+	{
+		/* Initilize the GLUT library. */
+		glutInit(NULL, NULL);
+
+		/* Create a new window (instance). */
+		glutCreateWindow(NULL);
+
+		/* Init the display mode to double buffering. */
+		glutInitDisplayMode(GLUT_DOUBLE);
+	}
+	return nResult;
+}
+
+void reverse(char *str,int len)
+     {	int i=0;
+        char ch;
+	for(i=0;i<=(len-1)/2;i++)
+       	{
+		ch=str[i];
+		str[i]=str[len-1-i];
+		str[len-1-i]=ch;
+	}
+     }
+
+void  itoa(int32_t number,char *str)
+{
+	int negFlag=0,pos=0;
+	if(number<0)
+       	{
+		negFlag=1;
+		number=-number;
+	}
+	do
+	 {
+         str[pos++]='0'+number%10;
+	 number=number/10;
+	 }	while(number>0) ;
+	if(negFlag) {
+		str[pos++]='-';
+	}	str[pos]='\0';
+	        reverse(str,pos);
+
+}
+/******************************************************************************
+
+  Function              : GetDisplayBuffer
+
+  Function description  : Gets the free display buffer from the buffer list.
+
+
+******************************************************************************/
+#pragma section("adi_slow_app_code")
+unsigned char  *GetFrameBuffer(void *pArg)
+{
+    return((void *) pGFxBuff);
+}
+uint32_t pTempCfg;
+void InitTitle(void *pBuf)
+{
+	uint32_t *pDMACfg;
+//    szStr = &aStringTitle[0];
+    aVertices[0] = 30;
+    aVertices[1] = 660;
+
+    display_title();
+
+    pGFxBuff = pBuf;
+    glutSwapBuffers();
+    pDMACfg = (uint32_t*)(pDMA->nMDMA1BaseAddress + 0X08);
+    *pDMACfg &= ~(BITM_DMA_CFG_EN);
+    pDMACfg =  (uint32_t*)(pDMA->nMDMA2BaseAddress + 0X88);
+    *pDMACfg &= ~(BITM_DMA_CFG_EN);
+}
+
+void update_contour_count(void)
+{
+	uint32_t *pDMACfg;
+
+    pDMACfg =  (uint32_t*)(pDMA->nMDMA1BaseAddress + 0X08);
+    *pDMACfg &= ~(BITM_DMA_CFG_EN);
+    pDMACfg =  (uint32_t*)(pDMA->nMDMA2BaseAddress + 0X88);
+    *pDMACfg &= ~(BITM_DMA_CFG_EN);
+    display_count();
+    glutSwapBuffers();
+    pDMACfg =  (uint32_t*)(pDMA->nMDMA1BaseAddress + 0X08);
+    *pDMACfg &= ~(BITM_DMA_CFG_EN);
+    pDMACfg =  (uint32_t*)(pDMA->nMDMA2BaseAddress + 0X88);
+    *pDMACfg &= ~(BITM_DMA_CFG_EN);
+
+
+}
