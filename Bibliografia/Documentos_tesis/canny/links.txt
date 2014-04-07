@@ -1,0 +1,2 @@
+MachineVisionChapter5
+http://www.cse.usf.edu/~r1k/MachineVisionBook/MachineVision.pdf.

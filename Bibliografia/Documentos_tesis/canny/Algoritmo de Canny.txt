@@ -1,0 +1,4 @@
+@article{demarchicanny,
+  title={Canny Edge Detector},
+  author={Demarchi, Bruno Kewitz and Pilon, Felipe}
+}

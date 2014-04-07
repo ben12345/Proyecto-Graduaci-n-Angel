@@ -1,0 +1,7 @@
+@book{jain1995machine,
+  title={Machine vision},
+  author={Jain, Ramesh and Kasturi, Rangachar and Schunck, Brian G},
+  volume={5},
+  year={1995},
+  publisher={McGraw-Hill New York}
+}
