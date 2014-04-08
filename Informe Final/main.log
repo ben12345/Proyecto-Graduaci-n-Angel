@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  6 APR 2014 17:48
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  7 APR 2014 23:12
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1461,7 +1461,7 @@ Here is how much of TeX's memory you used:
  11610 multiletter control sequences out of 15000+50000
  18388 words of font info for 69 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 40i,15n,43p,312b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,15n,43p,478b,459s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts
@@ -1479,7 +1479,7 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (40 pages, 273323 bytes).
+Output written on main.pdf (40 pages, 273685 bytes).
 PDF statistics:
  404 PDF objects out of 1000 (max. 8388607)
  78 named destinations out of 1000 (max. 500000)
