@@ -22,31 +22,34 @@ Debido al desarrollo de esta nueva tendencia de Visión Embebida, en el Institut
 
 Un objetivo del Sip-Lab es, desarrollar aplicaciones en tiempo real con un bajo consumo energético, por esto es de vital importante para el laboratorio, tener información veraz sobre la capacidad de procesamiento y el consumo energético del Blackfin Embedded Vision Starter Kit ante diferentes escenarios en la utilización del hardware disponible en ella, pues esta información servirá como insumo a eventuales aplicaciones desarrollados por el laboratorio.
 
-  
+Este proyecto, viene a recopilar información sobre tiempo de comunicación entre núcleos y aceleradores gráficos, tiempos de ejecución y consumo energético de la arquitectura Blackfin BF609, esto con la ayuda de herramientas de desarrollo de sistemas embebidos como analizadores de protocolos, depuradores y emuladores, para categorizar posibles escenarios en el uso de los recursos. 
+
+La solución del problema, esta divida en varias etapas, la primera es un algoritmo de una técnica de seguimiento de objetos por color, en la cual se realiza una discriminación de color estableciendo un rango umbral mediante un entrenamiento de colores, para esto existen varios métodos de segmentación de color, por ejemplo la segmentación basada en correspondencia con histograma en Hue sobre imagen HSL[5]; sin embargo para este proyecto se utiliza el método en planos de color HSV[]. Después de obtener la segmentación de color se realiza una validación geométrica basada en la método de Transformada de Hough[] para la detección de círculos. Para verificar la validez del algoritmo se implementa previamente con las bibliotecas de OpenCV[].
+
+Una vez validado el algoritmo de seguimiento por color se debe implementar en la plataforma Blackfin Embedded Vision Starter Kit, esto se hace definiendo diferentes escenarios con los recursos del procesador. Para esto se desarrollan dos propuestas: la primera consiste en la utilizar de un núcleo y acelerador de visión (pipeline vision processor)[6], en el núcleo se implementa el algoritmo de seguimiento por color y el despliegue de la interfaz gráfica, y en el acelerador de visión se realizan tareas de procesamiento de imágenes como filtrado y detección de bordes; en la segunda propuesta se utilizan los dos núcleos del procesador Blackfin BF609 [6] y el acelerador de visión, donde se separa el algoritmo y despliegue de la interfaz en núcleo diferentes.  
+
+Se pretende obtener los parámetros del rendimiento del procesador utilizando el dispositivo de depuración Emulator, ADZS-ICE-100B [7], esta herramienta permite realizar pruebas y depuración de aplicaciones en los procesadores de Analog Devices.   
+\\
+\\
+\\
 
 
-
-
-
-%%1-http://www.bccresearch.com/market-research/information-technology/embedded-systems-technologies-markets-ift016d.html
+%%1-http://www.bccresearch.com/market-research/informyation-technology/embedded-systems-technologies-markets-ift016d.html
 %%2-http://www.embedded-vision.com/the-ev-alliance
 %%3-http://www.finboard.org/content/blackfin%C2%AE-embedded-vision-starter-kit
 %%4-http://www.ie.itcr.ac.cr/siplab/index.php/Main/HomePage
-
+%%5-http://bibing.us.es/proyectos/abreproy/70077/fichero/capitulo4.pdf
+%%6-http://www.analog.com/static/imported-files/data_sheets/ADSP-BF606_607_608_609.pdf
+%%7-http://www.analog.com/en/evaluation/eval-emulator-100/eb.html
 \section{Objetivos y estructura del documento}
 
 \index{objetivos}
-Esta plantilla LaTeX tiene como objetivo simplificar la construcción del
-documento de tesis, presentando ejemplo de figuras y tablas, así como otorgar
-una plataforma de compilación en GNU/Linux que simplifique la administración de
-todo el documento.
 
-La última sección de la introducción usualmente sí tiene un título estandar que
-es ``Objetivos y estructura del documento'', donde se presentan \emph{en prosa}
-los objetivos general y específicos que ha tenido el proyecto de graduación,
-así como la estructura de la tesis (por ejemplo, ``en el siguiente capítulo se
-esbozan los fundamentos teóricos necesarios para explicar en el
-capítulo~\ref{ch:solucion} la propuesta realizada$\ldots$''
+Este proyecto tiene como objetivo diseñar una aplicación demostrativa para los investigadores del Laboratorio
+del procesamiento digital de señales de imágenes que informe sobre las características de rendimiento en la plataforma Blackfin Embedded Vision Starter Kit; que permita obtener las características de rendimientos, en forma de gráficos y tablas de tiempos de ejecución, latencias de sistemas de comunicación y consumo de energía. Para esto se pretende definir una técnica de seguimiento por color en tiempo real, que tenga una alta precisión con el mínimo costo computacional; validado por medio de la bibliotecas de OpenCV. Además se quiere implementar C/C++ al menos dos escenarios de uso del hardware del procesador Blackfin BF609; donde se obtenga la información sobre los recursos utilizados. Finalmente se pretende esquematizar el rendimiento de los escenarios en gráficos y tablas comparativas. 
+
+En el siguiente capítulo se esbozan los fundamentos teóricos necesarios para explicar en el capítulo 3 y en el capitulo 4 las propuestas realizadas. En el capítulo 5 se muestran algunos resultados experimentales de las características de rendimiento para los dos escenarios de utilización del hardware, así como su análisis a con referencia a un algoritmo de implementado con las bibliotecas de OpenCV. En el capítulo 6 se ofrecen las principales conclusiones, algunos aportes y recomendaciones para trabajos futuros.
+
 
 %%% Local Variables: 
 %%% mode: latex

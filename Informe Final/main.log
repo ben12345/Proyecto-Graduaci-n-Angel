@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  11 APR 2014 18:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  13 APR 2014 20:02
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1197,11 +1197,33 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-])
-[2]
+]
+Underfull \hbox (badness 10000) in paragraph at lines 31--35
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--35
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--35
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2])
+[3]
 \openout2 = `teoria.aux'.
 
- (./teoria.tex
+ (./teoria.tex [4
+
+
+
+]
 Cap\'{\i }tulo 2.
 
 Overfull \hbox (15.87045pt too wide) in paragraph at lines 16--20
@@ -1209,11 +1231,7 @@ Overfull \hbox (15.87045pt too wide) in paragraph at lines 16--20
 journals . html$[][]\OT1/cmr/m/n/12 , donde puede
  []
 
-[3
-
-
-
-]
+[5]
 ! Font U/rsfs/m/n/10=rsfs10 at 10.0pt not loadable: Metric (TFM) file not found
 .
 <to be read again> 
@@ -1270,7 +1288,7 @@ Overfull \hbox (0.70549pt too wide) in paragraph at lines 88--88
 [][] 
  []
 
-[4] [5]
+[6] [7]
 
 ! LaTeX Error: File `ltxfig_prototipo' not found.
 
@@ -1307,31 +1325,31 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-LaTeX Warning: Citation `Davis1963' on page 6 undefined on input line 223.
+LaTeX Warning: Citation `Davis1963' on page 8 undefined on input line 223.
 
 
-LaTeX Warning: Citation `ProakisManolakis1998' on page 6 undefined on input lin
+LaTeX Warning: Citation `ProakisManolakis1998' on page 8 undefined on input lin
 e 224.
 
 
-LaTeX Warning: Citation `Oppenheim1998' on page 6 undefined on input line 225.
+LaTeX Warning: Citation `Oppenheim1998' on page 8 undefined on input line 225.
 
 
-LaTeX Warning: Citation `Roberts2005' on page 6 undefined on input line 225.
+LaTeX Warning: Citation `Roberts2005' on page 8 undefined on input line 225.
 
 
-LaTeX Warning: Citation `Haykin2001' on page 6 undefined on input line 225.
+LaTeX Warning: Citation `Haykin2001' on page 8 undefined on input line 225.
 
 
-LaTeX Warning: Citation `Burrus1998' on page 6 undefined on input line 226.
+LaTeX Warning: Citation `Burrus1998' on page 8 undefined on input line 226.
 
 
-LaTeX Warning: Citation `Octave' on page 6 undefined on input line 230.
+LaTeX Warning: Citation `Octave' on page 8 undefined on input line 230.
 
 
-LaTeX Warning: Citation `Lindner2002' on page 6 undefined on input line 231.
+LaTeX Warning: Citation `Lindner2002' on page 8 undefined on input line 231.
 
-[6]
+[8]
 ! Font U/rsfs/m/n/17.28=rsfs10 at 17.28pt not loadable: Metric (TFM) file not f
 ound.
 <to be read again> 
@@ -1350,7 +1368,7 @@ Overfull \hbox (14.34065pt too wide) in paragraph at lines 268--268
 ntrol draft-mode[] 
  []
 
-[7]
+[9]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 275.
 
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
@@ -1389,10 +1407,10 @@ Overfull \hbox (0.70549pt too wide) in paragraph at lines 290--290
  []
 
 
-LaTeX Warning: Marginpar on page 8 moved.
+LaTeX Warning: Marginpar on page 10 moved.
 
 
-LaTeX Warning: Marginpar on page 8 moved.
+LaTeX Warning: Marginpar on page 10 moved.
 
 
 Overfull \hbox (6.0pt too wide) in paragraph at lines 293--294
@@ -1412,44 +1430,44 @@ so I will ignore the font specification.
 You might try inserting a different font spec;
 e.g., type `I\font<same font id>=<substitute font name>'.
 
-[8]
+[10]
 \openout2 = `solucion.aux'.
 
  (./solucion.tex
 Cap\'{\i }tulo 3.
-) [9
+) [11
 
 
 
 ]
 \openout2 = `resultados.aux'.
 
- (./resultados.tex [10
+ (./resultados.tex [12
 
 
 
 ]
 Cap\'{\i }tulo 4.
-) [11]
+) [13]
 \openout2 = `conclusiones.aux'.
 
- (./conclusiones.tex [12
+ (./conclusiones.tex [14
 
 
 
 ]
 Cap\'{\i }tulo 5.
-) [13]
+) [15]
 No file main.bbl.
 \openout2 = `apendice.aux'.
 
-(./apendice.tex [14
+(./apendice.tex [16
 
 
 
 ]
 Ap\'{e}ndice A.
-) [15] [16
+) [17] [18
 
 
 ]
@@ -1468,9 +1486,9 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 8863 strings out of 495061
- 123527 string characters out of 1182622
- 215226 words of memory out of 3000000
+ 8865 strings out of 495061
+ 123541 string characters out of 1182622
+ 215228 words of memory out of 3000000
  11610 multiletter control sequences out of 15000+50000
  18388 words of font info for 69 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
@@ -1492,9 +1510,9 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (40 pages, 275948 bytes).
+Output written on main.pdf (42 pages, 280293 bytes).
 PDF statistics:
- 404 PDF objects out of 1000 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 80 named destinations out of 1000 (max. 500000)
  169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
