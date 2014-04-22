@@ -1,22 +1,68 @@
 \chapter{Marco teórico}
 \label{ch:marco}
 
+En este capitulo se presentan los conceptos que dan soporte a la solución implementada. Primero se hará una breve reseña sobre conceptos y algoritmos de procesamiento de imágenes: espacios de color, detector de borde Canny y transformación de Hough, luego se describe la composición de la arquitectura Blackfin BF609. Por último se hace referencia a trabajo anteriores desarrollado en Blackfin Embedded Vision Starter Kit.  
+
 \section{Espacios de Color}
 
-Toda tesis hace referencia a trabajos previos en el área y trabajos afines que
-están directamente relacionados con lo planteado en el tesis.
+Un espacios de color es una representación matemática tridimensional en la que se encuentran representados todos los colores visible para el ser humano.
 
-Además, en el marco teórico debe aparecer la información absolutamente
-necesaria para comprender la solución, y por eso es recomendable escribir
-primero la solución (el siguiente capítulo), para ir anotando qué debe ser
-explicado en el marco teórico.
+\subsection{Espacio de Color HSV}
 
-\section{Generalidades}
+se han diseñado para aproximar la forma que los humanos perciben e interpretan color[].
+%%La Alianza de Visión Integrada es una coalición de organizaciones desarrolladoras de sistemas embebidos y/o procesamiento de imagenes, fue fundada por Berkeley Design Technology, Inc. (BDTI), una reconocida firma de análisis e ingeniería de visión integrada desde 1992. En los últimos años han estado trabajando para incrustar la tendencia de visión integrada, y con mayor fuerza debido al desarrollo de procesadores potentes de bajo consumo.
 
-Se recomienda revisar las guías de publicación de la \nt{IEEE} en
-\url{http://www.ieee.org/publications_standards/publications/authors/authors_journals.html},
-donde puede encontrar cómo hacer referencias bibliográficas correctamente, cómo
-citar ecuaciones, tablas y figuras, etc.  
+\section{Algoritmo de Canny}
+
+El algoritmo de Canny es una técnica de detección de bordes basada en la utilización la primera derivada, que toma valores de cero en regiones donde el cambio de intensidad no varía y tiene valor constante ante cualquier transformación de intensidad, por lo tanto los cambios abruptos en la intensidad son evidenciados por la primera derivada[].
+
+El algoritmo de Canny consiste en tres grandes pasos: 
+
+\begin{itemize}
+\item Obtención del gradiente: se calcula la magnitud y orientación del vector gradiente en cada píxel. 
+\item Supresión no máxima: se adelgazamiento del ancho de los bordes,obtenidos con el gradiente, hasta lograr bordes de un píxel de ancho. 
+\item Histéresis de umbral: se aplica una función de histéresis basada en dos umbrales; con este proceso se pretende reducir la posibilidad de aparición de contornos falsos. 
+\end{itemize}
+
+\subsection{Obtención del gradiente}
+
+En este paso se aplica un filtro gaussiano para suavizar la imagen original y tratar de eliminar posible ruido existente, este filtrado se realiza promediando valores de intensidad de los píxeles en el entorno de vecindad con una 
+máscara de convolución de media cero y desviación estándar \sigma.
+
+\begin{equation}
+M =\begin{bmatrix}
+99 & 397 & 695 & 397 & 99 \\ 
+397 & 1986 & 3277 & 1986 & 397 \\ 
+695 & 3277 & 5362 & 3277 & 695 \\ 
+397 & 1986 & 3277 & 1986 & 397 \\ 
+99 & 397 & 695 & 397 & 99]
+\end{bmatrix}
+\end{equation}
+
+Para la obtención del gradiente de intensidad se utiliza típicamente el operador de Sobel[], 
+
+
+%%El Algoritmo fue propuesto por John F. Canny en A computational approach to edge detection. IEEE Transactions
+%on Pattern Analysis and Machine Intelligence, 8(6), 1986, pp. 679-698 []. Es visto por muchos autores como la consistente técnica en el área de la localización de bordes[1]. 
+
+%Canny esta definido por varios criterios de funcionamiento óptimo:
+
+%\begin{enumerate}
+%\item Detección: Detectar puntos de borde reales se debe maximizar, mientras que la probabilidad de detectar bordes %falsos (ruido) debe reducirse al mínimo. 
+%\item Localización: Los bordes localizados deben ser lo más cerca posible de los bordes reales. 
+%\item Número de respuestas: un borde real no debe dar lugar a más de un borde detectado.
+%\end{enumerate}
+
+
+
+
+
+
+
+
+ 
+
+%% 1-http://www.dimap.ufrn.br/~sbmac/ermac2008/Anais/Resumos%20Estendidos/aplica%E7%E3o%20de%20tecnicas%20de%20PS_Silva.pdf
 
 \subsection{Redacción}
 

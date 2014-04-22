@@ -148,7 +148,7 @@ int main(){
 	
 	imgGRAY&=imgThresh;
 	
-	Canny( imgGRAY, imgGRAY, lowThreshold, highThreshold, kernel_size );make
+	Canny( imgGRAY, imgGRAY, lowThreshold, highThreshold, kernel_size );
 	
         vector<Vec3f> circles;	
         HoughCircles(imgGRAY, circles, CV_HOUGH_GRADIENT,2, imgGRAY.rows/4, 100, 110, 10,150);

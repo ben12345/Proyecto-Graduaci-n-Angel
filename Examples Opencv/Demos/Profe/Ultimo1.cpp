@@ -143,7 +143,6 @@ int main(){
 	
 	Mat histgram = showHistogram(imgHSV);
         
-	
 	inRange(imgHSV,Scalar(0,114,205),Scalar(242,255,255), imgThresh);
 	
 	imgGRAY&=imgThresh;
