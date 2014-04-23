@@ -19,7 +19,7 @@ El algoritmo de Canny es una técnica de detección de bordes basada en la utili
 El algoritmo de Canny consiste en tres grandes pasos: 
 
 \begin{itemize}
-\item Obtención del gradiente: se calcula la magnitud y orientación del vector gradiente en cada píxel. 
+\item Obtención del gradiente: se calcula la magnitud y orientación del vector gradiente en cada píxel[]. 
 \item Supresión no máxima: se adelgazamiento del ancho de los bordes,obtenidos con el gradiente, hasta lograr bordes de un píxel de ancho. 
 \item Histéresis de umbral: se aplica una función de histéresis basada en dos umbrales; con este proceso se pretende reducir la posibilidad de aparición de contornos falsos. 
 \end{itemize}
@@ -39,7 +39,7 @@ M =\begin{bmatrix}
 \end{bmatrix}
 \end{equation}
 
-Para la obtención del gradiente de intensidad se utiliza típicamente el operador de Sobel[], 
+Para la obtención del gradiente de intensidad se utiliza el operador de Sobel[], con este operador es posible encontrar la magnitud del mayor cambio posible de intensidad y la dirección de este en cada pixel, al aplicar este operador se obtiene que tan bruscos o suave cambia la imagen en el punto analizado y consecuentemente que tan probable es encontrar un borde en la imagen y la orientación a la que tiende este.
 
 
 %%El Algoritmo fue propuesto por John F. Canny en A computational approach to edge detection. IEEE Transactions
