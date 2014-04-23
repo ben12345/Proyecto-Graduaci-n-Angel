@@ -76,6 +76,24 @@ s_{y} =\begin{bmatrix}
 
 \subsection{Supresión no máxima}
 
+La supresión no máxima es una técnica de adelgazamiento de bordes, que consisten en descartar los pixeles que no son máximos locales. Esto se realizar mediante el redondeo a la dirección del borde normal (vector gradiente) más cercano a $45^{o}$ y la comparación de los pixeles de la dirección de borde normal positivo y negativo ( es decir, si la dirección del borde normal es $0^{o}$, el pixel se compara con su vecino derecho e izquierdo), si el pixel no tiene mayor magnitud que sus vecinos, es suprimido.
+
+
+\subsection{Histéresis de umbral}
+
+Esta operación reduce los bordes falsos mediante el uso de dos umbrales: umbral bajo, $T_L$, umbral alto, $T_H$. Básicamente, la imagen es recorrida por píxel a píxel: si la intensidad del píxel es mayor que el umbral alto, entonces el píxel se considera fuerte,
+
+\begin{equation}
+g_{NH}(x,y) = g_{N}(x,y)\geq T_H
+\end{equation}
+
+si la intensidad es superior al umbral bajo, el píxel se considera débil.  
+
+\begin{equation}
+g_{NL}(x,y) = g_{N}(x,y)\geq T_L
+\end{equation}
+
+Finalmente si la intensidad del pixel es inferior al umbral bajo, el píxel es suprimido.
 
 
 

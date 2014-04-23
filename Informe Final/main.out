@@ -9,11 +9,13 @@
 \BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Espacio de Color HSV}{section.2.1}
 \BOOKMARK [1][-]{section.2.2}{2.2 Algoritmo de Canny}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Obtenci\363n del gradiente}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Redacci\363n}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Ecuaciones}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Figuras}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 Referencias bibliogr\341ficas}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Extensi\363n}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Supresi\363n no m\341xima}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Hist\351resis de umbral}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Redacci\363n}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 Ecuaciones}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Figuras}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.7}{2.2.7 Referencias bibliogr\341ficas}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.8}{2.2.8 Extensi\363n}{section.2.2}
 \BOOKMARK [1][-]{section.2.3}{2.3 Sobre esta plantilla LaTeX}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Marcar asuntos pendientes}{section.2.3}
 \BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 \315ndices}{section.2.3}
