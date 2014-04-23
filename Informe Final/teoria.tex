@@ -35,32 +35,49 @@ M =\begin{bmatrix}
 397 & 1986 & 3277 & 1986 & 397 \\ 
 695 & 3277 & 5362 & 3277 & 695 \\ 
 397 & 1986 & 3277 & 1986 & 397 \\ 
-99 & 397 & 695 & 397 & 99]
+99 & 397 & 695 & 397 & 99
 \end{bmatrix}
 \end{equation}
 
 Para la obtención del gradiente de intensidad se utiliza el operador de Sobel[], con este operador es posible encontrar la magnitud del mayor cambio posible de intensidad y la dirección de este en cada pixel, al aplicar este operador se obtiene que tan bruscos o suave cambia la imagen en el punto analizado y consecuentemente que tan probable es encontrar un borde en la imagen y la orientación a la que tiende este.
 
+La magnitud del gradiente del intensidad esta dada por 
 
-%%El Algoritmo fue propuesto por John F. Canny en A computational approach to edge detection. IEEE Transactions
-%on Pattern Analysis and Machine Intelligence, 8(6), 1986, pp. 679-698 []. Es visto por muchos autores como la consistente técnica en el área de la localización de bordes[1]. 
+\begin{equation}
+M=\sqrt{{s_{x}}^{2}+{s_{y}}^{2}}
+\end{equation}
 
-%Canny esta definido por varios criterios de funcionamiento óptimo:
+y la dirección por
 
-%\begin{enumerate}
-%\item Detección: Detectar puntos de borde reales se debe maximizar, mientras que la probabilidad de detectar bordes %falsos (ruido) debe reducirse al mínimo. 
-%\item Localización: Los bordes localizados deben ser lo más cerca posible de los bordes reales. 
-%\item Número de respuestas: un borde real no debe dar lugar a más de un borde detectado.
-%\end{enumerate}
+\begin{equation}
+\theta = \arctan\left({\frac{s_{y}}{s_{x}}}\right)
+\end{equation} 
+
+Los operadores de gradiente $s_{x}$ y $s_{y}$ se implementan mediante mascaras de convolución 
+
+\begin{equation}
+\begin{array}{cclcccl}
+s_{x} =\begin{bmatrix}
+-1 & -2 & 0 & 2 & 1 \\ 
+-4 & -8 & 0 & 8 & 4 \\ 
+-6 & -12 & 0 & 12 & 6 \\ 
+-4 & -8 & 0 & 8 & 4 \\ 
+-1 & -2 & 0 & 2 & 1, &\hspace{1em}&
+\end{bmatrix}
+s_{y} =\begin{bmatrix}
+1 & 4 & 6 & 4 & 1 \\ 
+2 & 8 & 12 & 8 & 2 \\ 
+0 & 0 & 0 & 0 & 0 \\ 
+-2 & -8 & -12 & -8 & -2\\ 
+-1 & -4 & -6 & -4 & -1
+\end{bmatrix} 
+\end{array}
+\end{equation}
+
+\subsection{Supresión no máxima}
 
 
 
-
-
-
-
-
- 
 
 %% 1-http://www.dimap.ufrn.br/~sbmac/ermac2008/Anais/Resumos%20Estendidos/aplica%E7%E3o%20de%20tecnicas%20de%20PS_Silva.pdf
 

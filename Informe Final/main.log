@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  22 APR 2014 16:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  23 APR 2014 09:34
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1253,7 +1253,7 @@ you left one out. Proceed, with fingers crossed.
 .
 <to be read again> 
                    relax 
-l.108 ...ctar de la siguiente forma: \explain{MAL}
+l.142 ...ctar de la siguiente forma: \explain{MAL}
                                                   
 I wasn't able to read the size data for this font,
 so I will ignore the font specification.
@@ -1264,7 +1264,7 @@ e.g., type `I\font<same font id>=<substitute font name>'.
 ! Font U/rsfs/m/n/7=rsfs7 at 7.0pt not loadable: Metric (TFM) file not found.
 <to be read again> 
                    relax 
-l.108 ...ctar de la siguiente forma: \explain{MAL}
+l.142 ...ctar de la siguiente forma: \explain{MAL}
                                                   
 I wasn't able to read the size data for this font,
 so I will ignore the font specification.
@@ -1275,7 +1275,7 @@ e.g., type `I\font<same font id>=<substitute font name>'.
 ! Font U/rsfs/m/n/5=rsfs5 at 5.0pt not loadable: Metric (TFM) file not found.
 <to be read again> 
                    relax 
-l.108 ...ctar de la siguiente forma: \explain{MAL}
+l.142 ...ctar de la siguiente forma: \explain{MAL}
                                                   
 I wasn't able to read the size data for this font,
 so I will ignore the font specification.
@@ -1284,28 +1284,31 @@ You might try inserting a different font spec;
 e.g., type `I\font<same font id>=<substitute font name>'.
 
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 108--108
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 142--142
 [][] 
  []
 
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 108--108
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 142--142
 [][] 
  []
 
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 108.
+ine 142.
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 133--133
+Underfull \vbox (badness 7344) has occurred while \output is active []
+
+ [7]
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 167--167
 [][] 
  []
 
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 133--133
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 167--167
 [][] 
  []
 
-[7] [8]
+[8]
 
 ! LaTeX Error: File `ltxfig_prototipo' not found.
 
@@ -1313,7 +1316,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.224 ...cs[width=0.9\textwidth]{ltxfig_prototipo}
+l.258 ...cs[width=0.9\textwidth]{ltxfig_prototipo}
                                                   
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2
@@ -1321,7 +1324,7 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (3.06564pt too wide) in paragraph at lines 232--240
+Overfull \hbox (3.06564pt too wide) in paragraph at lines 266--274
 \OT1/cmr/m/n/12 Los archivos con ex-ten-si^^Son \OT1/cmtt/m/n/12 .pstricks \OT1
 /cmr/m/n/12 en el di-rec-to-rio \OT1/cmtt/m/n/12 fig \OT1/cmr/m/n/12 se uti-liz
 an para gener-ar cualquier
@@ -1334,63 +1337,46 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.243   \includegraphics{prototipo_gnuplot}
+l.277   \includegraphics{prototipo_gnuplot}
                                            
 I could not locate the file with any of these extensions:
 .png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Citation `Davis1963' on page 9 undefined on input line 268.
-
-
-LaTeX Warning: Citation `ProakisManolakis1998' on page 9 undefined on input lin
-e 269.
-
-
-LaTeX Warning: Citation `Oppenheim1998' on page 9 undefined on input line 270.
-
-
-LaTeX Warning: Citation `Roberts2005' on page 9 undefined on input line 270.
-
-
-LaTeX Warning: Citation `Haykin2001' on page 9 undefined on input line 270.
-
-
-LaTeX Warning: Citation `Burrus1998' on page 9 undefined on input line 271.
-
-
-LaTeX Warning: Citation `Octave' on page 9 undefined on input line 275.
-
-
-LaTeX Warning: Citation `Lindner2002' on page 9 undefined on input line 276.
-
 [9]
+
+LaTeX Warning: Citation `Davis1963' on page 10 undefined on input line 302.
+
+
+LaTeX Warning: Citation `ProakisManolakis1998' on page 10 undefined on input li
+ne 303.
+
+
+LaTeX Warning: Citation `Oppenheim1998' on page 10 undefined on input line 304.
+
+
+
+LaTeX Warning: Citation `Roberts2005' on page 10 undefined on input line 304.
+
+
+LaTeX Warning: Citation `Haykin2001' on page 10 undefined on input line 304.
+
+
+LaTeX Warning: Citation `Burrus1998' on page 10 undefined on input line 305.
+
+
+LaTeX Warning: Citation `Octave' on page 10 undefined on input line 309.
+
+
+LaTeX Warning: Citation `Lindner2002' on page 10 undefined on input line 310.
+
 ! Font U/rsfs/m/n/17.28=rsfs10 at 17.28pt not loadable: Metric (TFM) file not f
 ound.
 <to be read again> 
                    relax 
-l.294 \section{Sobre esta plantilla \LaTeX}
+l.328 \section{Sobre esta plantilla \LaTeX}
                                            
-I wasn't able to read the size data for this font,
-so I will ignore the font specification.
-[Wizards can fix TFM files using TFtoPL/PLtoTF.]
-You might try inserting a different font spec;
-e.g., type `I\font<same font id>=<substitute font name>'.
-
-
-Overfull \hbox (14.34065pt too wide) in paragraph at lines 313--313
-[]\OT1/cmtt/m/n/12 \newboolean{draftmode}                  % boolean used to co
-ntrol draft-mode[] 
- []
-
-! Font U/rsfs/m/n/10.95=rsfs10 at 10.95pt not loadable: Metric (TFM) file not f
-ound.
-<to be read again> 
-                   relax 
-l.325 \item \verb
-                 +\chk{comentario}+ Crea una caja en el margen con símbolo de
 I wasn't able to read the size data for this font,
 so I will ignore the font specification.
 [Wizards can fix TFM files using TFtoPL/PLtoTF.]
@@ -1398,32 +1384,38 @@ You might try inserting a different font spec;
 e.g., type `I\font<same font id>=<substitute font name>'.
 
 [10]
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 331--331
+Overfull \hbox (14.34065pt too wide) in paragraph at lines 347--347
+[]\OT1/cmtt/m/n/12 \newboolean{draftmode}                  % boolean used to co
+ntrol draft-mode[] 
+ []
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 365--365
 [][] 
  []
 
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 331--331
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 365--365
 [][] 
  []
 
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 333--333
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 367--367
 [][] 
  []
 
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 333--333
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 367--367
 [][] 
  []
 
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 335--335
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 369--369
 [][] 
  []
 
 
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 335--335
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 369--369
 [][] 
  []
 
@@ -1434,20 +1426,33 @@ LaTeX Warning: Marginpar on page 11 moved.
 LaTeX Warning: Marginpar on page 11 moved.
 
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 338--339
+Overfull \hbox (6.0pt too wide) in paragraph at lines 372--373
 [][][][][][][] 
  []
 
-) [11]
+[11])
+! Font U/rsfs/m/n/10.95=rsfs10 at 10.95pt not loadable: Metric (TFM) file not f
+ound.
+<to be read again> 
+                   relax 
+l.123   \include{teoria}
+                        
+I wasn't able to read the size data for this font,
+so I will ignore the font specification.
+[Wizards can fix TFM files using TFtoPL/PLtoTF.]
+You might try inserting a different font spec;
+e.g., type `I\font<same font id>=<substitute font name>'.
+
+[12]
 \openout2 = `solucion.aux'.
 
- (./solucion.tex [12
+ (./solucion.tex
+Cap\'{\i }tulo 3.
+) [13
 
 
 
 ]
-Cap\'{\i }tulo 3.
-) [13]
 \openout2 = `resultados.aux'.
 
  (./resultados.tex [14
@@ -1492,18 +1497,15 @@ AED: lastpage setting LastPage (./main.aux (./titlepage.aux) (./disclaimer.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 8872 strings out of 495061
- 123635 string characters out of 1182622
- 215228 words of memory out of 3000000
+ 8875 strings out of 495061
+ 123671 string characters out of 1182622
+ 219229 words of memory out of 3000000
  11612 multiletter control sequences out of 15000+50000
  18388 words of font info for 69 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 41i,15n,43p,948b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,15n,43p,948b,406s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts
@@ -1521,9 +1523,9 @@ exmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (44 pages, 285665 bytes).
+Output written on main.pdf (44 pages, 290312 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
- 85 named destinations out of 1000 (max. 500000)
+ 434 PDF objects out of 1000 (max. 8388607)
+ 88 named destinations out of 1000 (max. 500000)
  185 words of extra memory for PDF output out of 10000 (max. 10000000)
 

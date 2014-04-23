@@ -9,19 +9,19 @@
 \contentsline {subsection}{\numberline {2.1.1}Espacio de Color HSV}{5}{subsection.2.1.1}
 \contentsline {section}{\numberline {2.2}Algoritmo de Canny}{5}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Obtenci\IeC {\'o}n del gradiente}{6}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Redacci\IeC {\'o}n}{6}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.2}Redacci\IeC {\'o}n}{7}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Ecuaciones}{7}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Figuras}{7}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.4}Figuras}{8}{subsection.2.2.4}
 \contentsline {subsubsection}{Im\IeC {\'a}genes raster}{8}{section*.10}
-\contentsline {subsubsection}{Im\IeC {\'a}genes vectoriales}{8}{section*.11}
-\contentsline {subsubsection}{Figuras ltxfig/psfrag}{8}{section*.12}
+\contentsline {subsubsection}{Im\IeC {\'a}genes vectoriales}{9}{section*.11}
+\contentsline {subsubsection}{Figuras ltxfig/psfrag}{9}{section*.12}
 \contentsline {subsubsection}{Figuras pstricks}{9}{section*.14}
-\contentsline {subsubsection}{Entradas en el \IeC {\'\i }ndice de figuras}{9}{section*.16}
-\contentsline {subsection}{\numberline {2.2.5}Referencias bibliogr\IeC {\'a}ficas}{9}{subsection.2.2.5}
+\contentsline {subsubsection}{Entradas en el \IeC {\'\i }ndice de figuras}{10}{section*.16}
+\contentsline {subsection}{\numberline {2.2.5}Referencias bibliogr\IeC {\'a}ficas}{10}{subsection.2.2.5}
 \contentsline {subsection}{\numberline {2.2.6}Extensi\IeC {\'o}n}{10}{subsection.2.2.6}
-\contentsline {section}{\numberline {2.3}Sobre esta plantilla \textlatin {\LaTeX }}{10}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Marcar asuntos pendientes}{10}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}\IeC {\'I}ndices}{11}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.3}Sobre esta plantilla \textlatin {\LaTeX }}{11}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Marcar asuntos pendientes}{11}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}\IeC {\'I}ndices}{12}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Soluci\IeC {\'o}n propuesta}{13}{chapter.3}
 \contentsline {chapter}{\numberline {4}Resultados y an\IeC {\'a}lisis}{15}{chapter.4}
 \contentsline {chapter}{\numberline {5}Conclusiones}{17}{chapter.5}
