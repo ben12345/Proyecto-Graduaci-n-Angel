@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  23 APR 2014 14:43
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  27 APR 2014 21:58
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -997,25 +997,13 @@ LaTeX Info: Redefining \pageref on input line 72.
 \AtBeginShipoutBox=\box70
 \openout2 = `titlepage.aux'.
 
- (./titlepage.tex
+ (./titlepage.tex <./fig/TEC.pdf, id=79, 154.5775pt x 211.79124pt>
+File: ./fig/TEC.pdf Graphic file (type pdf)
 
-! LaTeX Error: File `TEC' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \includegraphics[width=20mm]{TEC}
-                                      
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[1
+<use ./fig/TEC.pdf> [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fig/TEC.pdf>] [2
 
 ])
 \openout2 = `disclaimer.aux'.
@@ -1225,17 +1213,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 Cap\'{\i }tulo 2.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 22.
-(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+[5]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
+ (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
- [5]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
+
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.30 ... media cero y desviación estándar \sigma
+l.35 ... media cero y desviación estándar \sigma
                                                   .
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1243,241 +1232,49 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.31 
+l.36 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-[6] [7]
-! Font U/rsfs/m/n/10=rsfs10 at 10.0pt not loadable: Metric (TFM) file not found
-.
-<to be read again> 
-                   relax 
-l.144 ...ctar de la siguiente forma: \explain{MAL}
-                                                  
-I wasn't able to read the size data for this font,
-so I will ignore the font specification.
-[Wizards can fix TFM files using TFtoPL/PLtoTF.]
-You might try inserting a different font spec;
-e.g., type `I\font<same font id>=<substitute font name>'.
-
-! Font U/rsfs/m/n/7=rsfs7 at 7.0pt not loadable: Metric (TFM) file not found.
-<to be read again> 
-                   relax 
-l.144 ...ctar de la siguiente forma: \explain{MAL}
-                                                  
-I wasn't able to read the size data for this font,
-so I will ignore the font specification.
-[Wizards can fix TFM files using TFtoPL/PLtoTF.]
-You might try inserting a different font spec;
-e.g., type `I\font<same font id>=<substitute font name>'.
-
-! Font U/rsfs/m/n/5=rsfs5 at 5.0pt not loadable: Metric (TFM) file not found.
-<to be read again> 
-                   relax 
-l.144 ...ctar de la siguiente forma: \explain{MAL}
-                                                  
-I wasn't able to read the size data for this font,
-so I will ignore the font specification.
-[Wizards can fix TFM files using TFtoPL/PLtoTF.]
-You might try inserting a different font spec;
-e.g., type `I\font<same font id>=<substitute font name>'.
-
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 144--144
-[][] 
- []
-
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 144--144
-[][] 
- []
-
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 144.
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 169--169
-[][] 
- []
-
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 169--169
-[][] 
- []
-
-[8] [9]
-
-! LaTeX Error: File `ltxfig_prototipo' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.260 ...cs[width=0.9\textwidth]{ltxfig_prototipo}
-                                                  
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Overfull \hbox (3.06564pt too wide) in paragraph at lines 268--276
-\OT1/cmr/m/n/12 Los archivos con ex-ten-si^^Son \OT1/cmtt/m/n/12 .pstricks \OT1
-/cmr/m/n/12 en el di-rec-to-rio \OT1/cmtt/m/n/12 fig \OT1/cmr/m/n/12 se uti-liz
-an para gener-ar cualquier
- []
-
-
-! LaTeX Error: File `prototipo_gnuplot' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279   \includegraphics{prototipo_gnuplot}
-                                           
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Citation `Davis1963' on page 10 undefined on input line 304.
-
-
-LaTeX Warning: Citation `ProakisManolakis1998' on page 10 undefined on input li
-ne 305.
-
-
-LaTeX Warning: Citation `Oppenheim1998' on page 10 undefined on input line 306.
-
-
-
-LaTeX Warning: Citation `Roberts2005' on page 10 undefined on input line 306.
-
-
-LaTeX Warning: Citation `Haykin2001' on page 10 undefined on input line 306.
-
-
-LaTeX Warning: Citation `Burrus1998' on page 10 undefined on input line 307.
-
-
-LaTeX Warning: Citation `Octave' on page 10 undefined on input line 311.
-
-
-LaTeX Warning: Citation `Lindner2002' on page 10 undefined on input line 312.
-
-[10]
-! Font U/rsfs/m/n/17.28=rsfs10 at 17.28pt not loadable: Metric (TFM) file not f
-ound.
-<to be read again> 
-                   relax 
-l.330 \section{Sobre esta plantilla \LaTeX}
-                                           
-I wasn't able to read the size data for this font,
-so I will ignore the font specification.
-[Wizards can fix TFM files using TFtoPL/PLtoTF.]
-You might try inserting a different font spec;
-e.g., type `I\font<same font id>=<substitute font name>'.
-
-
-Overfull \hbox (14.34065pt too wide) in paragraph at lines 349--349
-[]\OT1/cmtt/m/n/12 \newboolean{draftmode}                  % boolean used to co
-ntrol draft-mode[] 
- []
-
-[11]
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 367--367
-[][] 
- []
-
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 367--367
-[][] 
- []
-
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 369--369
-[][] 
- []
-
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 369--369
-[][] 
- []
-
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 371--371
-[][] 
- []
-
-
-Overfull \hbox (0.70549pt too wide) in paragraph at lines 371--371
-[][] 
- []
-
-
-LaTeX Warning: Marginpar on page 12 moved.
-
-
-LaTeX Warning: Marginpar on page 12 moved.
-
-
-Overfull \hbox (6.0pt too wide) in paragraph at lines 374--375
-[][][][][][][] 
- []
-
-)
-! Font U/rsfs/m/n/10.95=rsfs10 at 10.95pt not loadable: Metric (TFM) file not f
-ound.
-<to be read again> 
-                   relax 
-l.123   \include{teoria}
-                        
-I wasn't able to read the size data for this font,
-so I will ignore the font specification.
-[Wizards can fix TFM files using TFtoPL/PLtoTF.]
-You might try inserting a different font spec;
-e.g., type `I\font<same font id>=<substitute font name>'.
-
-[12]
+[6] [7]) [8]
 \openout2 = `solucion.aux'.
 
  (./solucion.tex
 Cap\'{\i }tulo 3.
-) [13
+) [9
 
 
 
 ]
 \openout2 = `resultados.aux'.
 
- (./resultados.tex [14
+ (./resultados.tex [10
 
 
 
 ]
 Cap\'{\i }tulo 4.
-) [15]
+) [11]
 \openout2 = `conclusiones.aux'.
 
- (./conclusiones.tex [16
+ (./conclusiones.tex [12
 
 
 
 ]
 Cap\'{\i }tulo 5.
-) [17]
+) [13]
 No file main.bbl.
 \openout2 = `apendice.aux'.
 
-(./apendice.tex [18
+(./apendice.tex [14
 
 
 
 ]
 Ap\'{e}ndice A.
-) [19] [20
+) [15] [16
 
 
 ]
@@ -1490,42 +1287,28 @@ AED: lastpage setting LastPage (./main.aux (./titlepage.aux) (./disclaimer.aux)
 (./tribunal.aux) (./acta.aux) (./resumen.aux) (./dedicatoria.aux)
 (./agradecimientos.aux) (./notation.aux) (./glosario.aux) (./intro.aux)
 (./teoria.aux) (./solucion.aux) (./resultados.aux) (./conclusiones.aux)
-(./apendice.aux))
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(./apendice.aux)) ) 
 Here is how much of TeX's memory you used:
- 8880 strings out of 495061
- 123746 string characters out of 1182622
- 218229 words of memory out of 3000000
- 11613 multiletter control sequences out of 15000+50000
- 18388 words of font info for 69 fonts, out of 3000000 for 9000
+ 8792 strings out of 495061
+ 122718 string characters out of 1182622
+ 215935 words of memory out of 3000000
+ 11562 multiletter control sequences out of 15000+50000
+ 12768 words of font info for 46 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 40i,15n,43p,948b,406s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmsl12.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmsl8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (44 pages, 294265 bytes).
+ 40i,13n,43p,948b,391s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmb
+x10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl1
+0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl8.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (40 pages, 192074 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
- 92 named destinations out of 1000 (max. 500000)
- 193 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 74 named destinations out of 1000 (max. 500000)
+ 158 words of extra memory for PDF output out of 10000 (max. 10000000)
 

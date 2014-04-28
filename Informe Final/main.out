@@ -6,19 +6,14 @@
 \BOOKMARK [1][-]{section.1.1}{1.1 Objetivos y estructura del documento}{chapter.1}
 \BOOKMARK [0][-]{chapter.2}{2 Marco te\363rico}{}
 \BOOKMARK [1][-]{section.2.1}{2.1 Espacios de Color}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Espacio de Color HSV}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 }{section.2.1}
 \BOOKMARK [1][-]{section.2.2}{2.2 Algoritmo de Canny}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Obtenci\363n del gradiente}{section.2.2}
 \BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Supresi\363n no m\341xima}{section.2.2}
 \BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Hist\351resis de umbral}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Redacci\363n}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 Ecuaciones}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Figuras}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.7}{2.2.7 Referencias bibliogr\341ficas}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.8}{2.2.8 Extensi\363n}{section.2.2}
-\BOOKMARK [1][-]{section.2.3}{2.3 Sobre esta plantilla LaTeX}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Marcar asuntos pendientes}{section.2.3}
-\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 \315ndices}{section.2.3}
+\BOOKMARK [1][-]{section.2.3}{2.3 Transformada de Hough}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Transformaci\363n lineal}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Transformaci\363n circular}{section.2.3}
 \BOOKMARK [0][-]{chapter.3}{3 Soluci\363n propuesta}{}
 \BOOKMARK [0][-]{chapter.4}{4 Resultados y an\341lisis}{}
 \BOOKMARK [0][-]{chapter.5}{5 Conclusiones}{}

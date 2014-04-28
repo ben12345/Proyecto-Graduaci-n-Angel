@@ -6,25 +6,15 @@
 \contentsline {section}{\numberline {1.1}Objetivos y estructura del documento}{3}{section.1.1}
 \contentsline {chapter}{\numberline {2}Marco te\IeC {\'o}rico}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}Espacios de Color}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Espacio de Color HSV}{5}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.1}}{5}{subsection.2.1.1}
 \contentsline {section}{\numberline {2.2}Algoritmo de Canny}{5}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Obtenci\IeC {\'o}n del gradiente}{6}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Supresi\IeC {\'o}n no m\IeC {\'a}xima}{7}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Hist\IeC {\'e}resis de umbral}{7}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Redacci\IeC {\'o}n}{7}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Ecuaciones}{8}{subsection.2.2.5}
-\contentsline {subsection}{\numberline {2.2.6}Figuras}{9}{subsection.2.2.6}
-\contentsline {subsubsection}{Im\IeC {\'a}genes raster}{9}{section*.10}
-\contentsline {subsubsection}{Im\IeC {\'a}genes vectoriales}{9}{section*.11}
-\contentsline {subsubsection}{Figuras ltxfig/psfrag}{10}{section*.12}
-\contentsline {subsubsection}{Figuras pstricks}{10}{section*.14}
-\contentsline {subsubsection}{Entradas en el \IeC {\'\i }ndice de figuras}{10}{section*.16}
-\contentsline {subsection}{\numberline {2.2.7}Referencias bibliogr\IeC {\'a}ficas}{10}{subsection.2.2.7}
-\contentsline {subsection}{\numberline {2.2.8}Extensi\IeC {\'o}n}{11}{subsection.2.2.8}
-\contentsline {section}{\numberline {2.3}Sobre esta plantilla \textlatin {\LaTeX }}{11}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Marcar asuntos pendientes}{11}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}\IeC {\'I}ndices}{12}{subsection.2.3.2}
-\contentsline {chapter}{\numberline {3}Soluci\IeC {\'o}n propuesta}{13}{chapter.3}
-\contentsline {chapter}{\numberline {4}Resultados y an\IeC {\'a}lisis}{15}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusiones}{17}{chapter.5}
-\contentsline {chapter}{\numberline {A}Demostraci\IeC {\'o}n del teorema de Nyquist}{19}{appendix.A}
+\contentsline {section}{\numberline {2.3}Transformada de Hough}{7}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Transformaci\IeC {\'o}n lineal}{8}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Transformaci\IeC {\'o}n circular}{8}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}Soluci\IeC {\'o}n propuesta}{9}{chapter.3}
+\contentsline {chapter}{\numberline {4}Resultados y an\IeC {\'a}lisis}{11}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusiones}{13}{chapter.5}
+\contentsline {chapter}{\numberline {A}Demostraci\IeC {\'o}n del teorema de Nyquist}{15}{appendix.A}

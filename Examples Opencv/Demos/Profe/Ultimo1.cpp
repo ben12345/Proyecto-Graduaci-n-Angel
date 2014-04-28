@@ -116,7 +116,7 @@ cv::Mat showHistogram(const cv::Mat &inImage){
 int main(){
       CvCapture* capture;
       Mat frame,imgHSV,imgGRAY,imgThresh;
-      capture = cvCaptureFromCAM(0);
+      capture = cvCaptureFromCAM(1);
       
       if(!capture){
 			printf("Capture failure\n");
