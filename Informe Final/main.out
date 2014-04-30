@@ -6,7 +6,8 @@
 \BOOKMARK [1][-]{section.1.1}{1.1 Objetivos y estructura del documento}{chapter.1}
 \BOOKMARK [0][-]{chapter.2}{2 Marco te\363rico}{}
 \BOOKMARK [1][-]{section.2.1}{2.1 Espacios de Color}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 }{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Transformaci\363n RGB - YUV}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Transformaci\363n RGB - HSI}{section.2.1}
 \BOOKMARK [1][-]{section.2.2}{2.2 Algoritmo de Canny}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Obtenci\363n del gradiente}{section.2.2}
 \BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Supresi\363n no m\341xima}{section.2.2}
@@ -14,6 +15,7 @@
 \BOOKMARK [1][-]{section.2.3}{2.3 Transformada de Hough}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Transformaci\363n lineal}{section.2.3}
 \BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Transformaci\363n circular}{section.2.3}
+\BOOKMARK [1][-]{section.2.4}{2.4 Procesadores Blackfin}{chapter.2}
 \BOOKMARK [0][-]{chapter.3}{3 Soluci\363n propuesta}{}
 \BOOKMARK [0][-]{chapter.4}{4 Resultados y an\341lisis}{}
 \BOOKMARK [0][-]{chapter.5}{5 Conclusiones}{}

@@ -2,7 +2,7 @@
 
 \label{ch:marco}
 
-En este capitulo se presentan los conceptos que dan soporte a la solución implementada. Primero se hará una breve reseña sobre conceptos y algoritmos de procesamiento de imágenes: espacios de color, detector de borde Canny y transformación de Hough, luego se describe la composición de la arquitectura Blackfin BF609. Por último se hace referencia a trabajo anteriores desarrollado en Blackfin Embedded Vision Starter Kit.  
+En este capitulo se presentan los conceptos que dan soporte a la solución implementada. Primero se hará una breve reseña sobre conceptos y algoritmos de procesamiento de imágenes: espacios de color, detector de borde Canny y transformación de Hough, luego se describe la composición de la arquitectura Blackfin. Por último se hace referencia a trabajo anteriores desarrollado en Blackfin Embedded Vision Starter Kit.  
 
 \section{Espacios de Color}
 
@@ -10,12 +10,83 @@ Un espacio de color es una representación matemática tridimensional en la que 
 
 El HSI (matiz, saturación, intensidad) y HSV (matiz, saturación, valor), estos espacios de color se han desarrollado para ser más "intuitivo" en la manipulación de color y se han diseñado para aproximar la forma que los humanos perciben e interpretan color. 
 
-\subsection{}
+\subsection{Transformación RGB - YUV}
+
+La conversión del espacio RGB al YUV se define mediante el sistema
+\begin{equation}
+\begin{bmatrix}
+Y \\ 
+U \\ 
+V
+\end{bmatrix} =
+\begin{bmatrix}
+0,299 & 0,587 & 0,114 \\ 
+-0,147 & -0,289 & 0,436 \\ 
+0,615 & - 0,515 & - 0,100
+\end{bmatrix}
+\begin{bmatrix}
+R' \\ 
+G' \\ 
+B'
+\end{bmatrix}  
+\end{equation}
+\\
+\\
+En caso de la conversión YUV a RGB se tiene que 
+
+\begin{equation}
+\begin{bmatrix}
+R' \\ 
+G' \\ 
+B'
+\end{bmatrix} =
+\begin{bmatrix}
+1 & 1,140 & 0\\ 
+1 & -0,395 & -0,581 \\ 
+1 & 2.032 & 0
+\end{bmatrix}
+\begin{bmatrix}
+Y \\ 
+U \\ 
+V
+\end{bmatrix}
+\end{equation}
+
+La variables $R'$,$G'$,$B'$ representa compensaciones de pantalla no lineal a partir de señales $R$,$G$,$B$ puras[].
 
 
+\subsection{Transformación RGB - HSI}
 
+La componente de tonalidad (H) de cada pixel RGB se obtiene mediante la ecuación:
 
+\begin{equation}
+H=\left\{
+  \begin{array}{ll}
+     \theta & \text{si } B \leq G \\
+     360^{0} - \theta & \text{si } B > G \\
+  \end{array}
+  \right.
+\end{equation}
 
+con 
+
+\begin{equation}
+\theta = \arccos\left\lbrace\frac{\frac{1}{2}[(R-G)+(R-B)]}{[(R-G)^{2}+(R-B)(G-B)]^{\frac{1}{2}}}\right\rbrace
+\end{equation}
+
+La componente de saturación se obtiene por 
+
+\begin{equation}
+S=1-\frac{3}{(R+G+B)}[min(R,G,B)]
+\end{equation}
+
+El valor $min(R,G,B)$ representa el valor mínimo de arreglos de pixeles RGB.
+
+Finalmente, la componente de intensidad esta dada por:
+
+\begin{equation}
+I=\frac{1}{3}(R+G+B)
+\end{equation}
 
 \section{Algoritmo de Canny}
 
@@ -67,7 +138,7 @@ s_{x} =\begin{bmatrix}
 -4 & -8 & 0 & 8 & 4 \\ 
 -6 & -12 & 0 & 12 & 6 \\ 
 -4 & -8 & 0 & 8 & 4 \\ 
--1 & -2 & 0 & 2 & 1, &\hspace{1em}&
+-1 & -2 & 0 & 2 & 1 &\hspace{1em}&
 \end{bmatrix}
 s_{y} =\begin{bmatrix}
 1 & 4 & 6 & 4 & 1 \\ 
@@ -119,6 +190,8 @@ donde $m$ y $n$ son pendiente y la intersección con el eje $y$ respectivamente.
 
 La idea fundamental de la transformación de Hough es obtener características en términos de $m$, $n$ y no considerar las coordenadas $(x,y)$, para esto la ecuación de la recta se debe mapear al espacio de Hough mediante la parametrización en términos del ángulo $\theta$ y la distancia al origen $\rho$, que se muestran en la figura ......%
 
+
+
 %Apendices posiblemente
 %
 
@@ -139,9 +212,6 @@ La ecuación de la recta en el espacio de Hough se puede escribir como:
 y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto si dos curvas correspondientes en dos puntos se intersecan, existen una linea recta entres ellos en la imagen.  
 
 \subsection{Transformación circular}
-
-
-
 %%1-Illingworth, J., Kitntler, J.: A survey of the Hough transform. Comput. Vis. Graph. Image Process. 44(1), 87–116 (1988)
 
 %%2-@incollection{Ballard:1987:GHT:33517.33574,
@@ -159,5 +229,15 @@ y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. P
 %% address = {San Francisco, CA, USA},
 %%} 
 
-%% 1-http://www.dimap.ufrn.br/~sbmac/ermac2008/Anais/Resumos%20Estendidos/aplica%E7%E3o%20de%20tecnicas%20de%20PS_Silva.pdf
+\section{Procesadores Blackfin}
+
+Los procesadores Blackfin es una generación de 16 a 32 bits manufacturados por Analog Devices Inc; diseñada específicamente para satisfacer las demandas computacionales y las limitaciones de potencia de audio embebido, vídeo y aplicaciones de comunicaciones sobre la base de microarquitectura de la señal (MSA) desarrollada conjuntamente entre Analog Devices y Intel Corporation[2] 
+
+La arquitectura del procesador Blackfin se basa en una tuberia de 10 etapas RISC MCU/DSP con un conjunto de instrucciones 16-/32-bit mixta diseñado para la densidad de código óptimo. Esta arquitectura es compatible con el modelo SIMD[1] 
+
+%%1-http://www.hh.se/download/18.70cf2e49129168da0158000103477/1341267676514/SIMD+Architectures.pdf
+%%2-http://es.scribd.com/doc/147904550/Embedded-Signal-Processing-with-the-Micro-Signal-Architecture
+
+
+
 

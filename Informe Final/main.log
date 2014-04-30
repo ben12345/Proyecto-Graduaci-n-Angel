@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  27 APR 2014 21:58
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  29 APR 2014 20:52
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -997,7 +997,7 @@ LaTeX Info: Redefining \pageref on input line 72.
 \AtBeginShipoutBox=\box70
 \openout2 = `titlepage.aux'.
 
- (./titlepage.tex <./fig/TEC.pdf, id=79, 154.5775pt x 211.79124pt>
+ (./titlepage.tex <./fig/TEC.pdf, id=87, 154.5775pt x 211.79124pt>
 File: ./fig/TEC.pdf Graphic file (type pdf)
 
 <use ./fig/TEC.pdf> [1
@@ -1213,18 +1213,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 Cap\'{\i }tulo 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--36
+
+ []
+
 [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 98.
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 98.
+ [6]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.35 ... media cero y desviación estándar \sigma
+l.106 ...media cero y desviación estándar \sigma
                                                   .
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1232,49 +1237,49 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.36 
-     
+l.107 
+      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-[6] [7]) [8]
+[7] [8]) [9]
 \openout2 = `solucion.aux'.
 
- (./solucion.tex
-Cap\'{\i }tulo 3.
-) [9
+ (./solucion.tex [10
 
 
 
 ]
+Cap\'{\i }tulo 3.
+) [11]
 \openout2 = `resultados.aux'.
 
- (./resultados.tex [10
+ (./resultados.tex [12
 
 
 
 ]
 Cap\'{\i }tulo 4.
-) [11]
+) [13]
 \openout2 = `conclusiones.aux'.
 
- (./conclusiones.tex [12
+ (./conclusiones.tex [14
 
 
 
 ]
 Cap\'{\i }tulo 5.
-) [13]
+) [15]
 No file main.bbl.
 \openout2 = `apendice.aux'.
 
-(./apendice.tex [14
+(./apendice.tex [16
 
 
 
 ]
 Ap\'{e}ndice A.
-) [15] [16
+) [17] [18
 
 
 ]
@@ -1289,26 +1294,28 @@ AED: lastpage setting LastPage (./main.aux (./titlepage.aux) (./disclaimer.aux)
 (./teoria.aux) (./solucion.aux) (./resultados.aux) (./conclusiones.aux)
 (./apendice.aux)) ) 
 Here is how much of TeX's memory you used:
- 8792 strings out of 495061
- 122718 string characters out of 1182622
- 215935 words of memory out of 3000000
- 11562 multiletter control sequences out of 15000+50000
+ 8804 strings out of 495061
+ 122872 string characters out of 1182622
+ 217938 words of memory out of 3000000
+ 11564 multiletter control sequences out of 15000+50000
  12768 words of font info for 46 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 40i,13n,43p,948b,391s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,12n,43p,948b,397s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmb
 x10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive
 /fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1
 /public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl1
-0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl8.pfb></usr/
-share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf
--texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (40 pages, 192074 bytes).
+onts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl8.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (42 pages, 219271 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 74 named destinations out of 1000 (max. 500000)
- 158 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 383 PDF objects out of 1000 (max. 8388607)
+ 84 named destinations out of 1000 (max. 500000)
+ 174 words of extra memory for PDF output out of 10000 (max. 10000000)
 
