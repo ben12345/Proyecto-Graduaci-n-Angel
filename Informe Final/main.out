@@ -15,7 +15,9 @@
 \BOOKMARK [1][-]{section.2.3}{2.3 Transformada de Hough}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Transformaci\363n lineal}{section.2.3}
 \BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Transformaci\363n circular}{section.2.3}
-\BOOKMARK [1][-]{section.2.4}{2.4 Procesadores Blackfin}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{2.4 Procesador Blackfin BF609}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 Infraestructura}{section.2.4}
+\BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Memoria}{section.2.4}
 \BOOKMARK [0][-]{chapter.3}{3 Soluci\363n propuesta}{}
 \BOOKMARK [0][-]{chapter.4}{4 Resultados y an\341lisis}{}
 \BOOKMARK [0][-]{chapter.5}{5 Conclusiones}{}

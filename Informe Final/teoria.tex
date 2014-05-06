@@ -229,11 +229,30 @@ y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. P
 %% address = {San Francisco, CA, USA},
 %%} 
 
-\section{Procesadores Blackfin}
+\section{Procesador Blackfin BF609}
 
-Los procesadores Blackfin es una generación de 16 a 32 bits manufacturados por Analog Devices Inc; diseñada específicamente para satisfacer las demandas computacionales y las limitaciones de potencia de audio embebido, vídeo y aplicaciones de comunicaciones sobre la base de microarquitectura de la señal (MSA) desarrollada conjuntamente entre Analog Devices y Intel Corporation[2] 
+El procesador Blackfin BF609 es una generación de 16 a 32 bits manufacturados por Analog Devices Inc; diseñada específicamente para satisfacer las demandas computacionales y las limitaciones de potencia de audio embebido, vídeo y aplicaciones de comunicaciones sobre la base de MSA desarrollada conjuntamente entre Analog Devices y Intel Corporation[2] 
 
-La arquitectura del procesador Blackfin se basa en una tuberia de 10 etapas RISC MCU/DSP con un conjunto de instrucciones 16-/32-bit mixta diseñado para la densidad de código óptimo. Esta arquitectura es compatible con el modelo SIMD[1] 
+La arquitectura del procesador Blackfin BF609 se basa en una tuberia de 10 etapas RISC MCU/DSP con un conjunto de instrucciones 16-/32-bit mixtas diseñadas para la densidad de código óptimo. Esta arquitectura es compatible con el modelo SIMD[1] e incluye instrucciones para video acelerado y procesamiento de imágenes.  
+
+Como se muestra en la Figura 1, el procesador integra dos núcleos. Cada núcleo, se muestra en la Figura 2, contiene dos multiplicadores 16 bits, dos acumuladores de 40 bits, dos ALUs  de 40 bits, cuatro ALUs para vídeo, y una unidad de desplazamiento de 40 bits. El proceso de las unidades de cálculo se realiza en datos de 8, 16 o 32 bits aportados por el archivos de registro[].
+
+El archivo de registro contiene ocho registros de 32 bits, que también puede utilizarse como 16 registros independientes de bits. Todos los operandos para las operaciones de calculo provienen del archivo de registro multipuerto y campos constantes instrucciones.
+
+Cada MAC puede realizar una de 16 bits al de 16 bits se multiplican en cada ciclo, la acumulación de los resultados en los acumuladores de 40 bits. La unidad de desplazamiento de 40 bits puede realizar desplazamientos, rotaciones y se utiliza para apoyar la normalización, extracciones de campos e instrucciones de campo de depósito.
+
+Las ALUs realizan el conjunto tradicional de operaciones aritméticas y lógicas en los datos de 16 bits o 32 bits. Además, ejecuta instrucciones especiales para acelerar diversas tareas de procesamiento de señales. Estas instrucciones especiales incluyen operaciones de bits como el extracto de campo y el recuento de la población, multiplicación de módulos, divisiones primitivas, la saturación y el redondeo, y la detección de la señal/exponente.
+
+\subsection{Infraestructura}
+
+El procesador utiliza un DMA para transferir datos dentro de los espacios de memoria o entre un espacio de memoria y algún periférico. El procesador puede especificar las operaciones de transferencia de datos y volver al proceso normal mientras el controlador DMA integrado plenamente realiza las transferencias de datos independientes de la actividad del procesador. 
+
+Se utilizan dos módulos de protección CRC[] para la detección de errores en código y/o datos en la memoria, el en contenido de los registros mapeados por la memoria, o objetos de los mensajes de comunicación. También proporciona un sistema de control de eventos que soporta tanto la anidación y priorización. La anidación permite múltiples rutinas de servicio de eventos para estar activos al mismo tiempo. La priorización asegura que el mantenimiento de un evento de mayor prioridad tiene prioridad sobre el mantenimiento de un evento de menor prioridad. 
+
+\subsection{Memoria}
+
+El procesador ve la memoria como un único espacio de direcciones de 4 GB unificado, usando de direcciones de 32 bits. Todos los recursos, incluida la memoria interna, memoria externa, y E/S de registros de control, ocupan secciones separadas de este espacio de direcciones común. Las porciones de la memoria de este espacio de direcciones se organizan en una estructura jerárquica para proporcionar una buena relación coste / rendimiento de la parte de la memoria de núcleo puede acceder muy rápido, de baja latencia como caché o SRAM, y más grande, de menor costo y rendimiento de la memoria de la interfaz accesible sistemas.
+
 
 %%1-http://www.hh.se/download/18.70cf2e49129168da0158000103477/1341267676514/SIMD+Architectures.pdf
 %%2-http://es.scribd.com/doc/147904550/Embedded-Signal-Processing-with-the-Micro-Signal-Architecture
