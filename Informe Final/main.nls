@@ -1,0 +1,31 @@
+\begin{thenomenclature} 
+
+ \nomgroup{A}
+
+  \item [{ASM}]\begingroup Modelos Activos de Forma\nomeqref {0}
+		\nompageref{ix}
+  \item [{PCA}]\begingroup Análisis de componentes principales\nomeqref {0}
+		\nompageref{ix}
+  \item [{WSN}]\begingroup Redes Inalámbricas de Sensores\nomeqref {0}
+		\nompageref{ix}
+
+ \nomgroup{G}
+
+  \item [{$\mat {A}$}]\begingroup Matriz. \newline \hspace {1mm}$\mat {A} = \begin {bmatrix} a_{11} & a_{12} & \cdots & a_{1m}\\ a_{21} & a_{22} & \cdots & a_{2m}\\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nm}\\ \end {bmatrix}$\nomeqref {0}
+		\nompageref{ix}
+  \item [{$\setC $}]\begingroup Conjunto de los números complejos.\nomeqref {0}
+		\nompageref{ix}
+  \item [{$\Im (z)$ o $z_{\Im }$}]\begingroup Parte imaginaria del número complejo $z$\nomeqref {0}
+		\nompageref{ix}
+  \item [{$j$}]\begingroup $j=\sqrt {-1}$\nomeqref {0}\nompageref{ix}
+  \item [{$\Re (z)$ o $z_{\Re }$}]\begingroup Parte real del número complejo $z$\nomeqref {0}
+		\nompageref{ix}
+  \item [{$\sys {\cdot }$}]\begingroup Transformación realizada por un sistema\nomeqref {0}
+		\nompageref{ix}
+  \item [{$\vct {x}$}]\begingroup Vector. \newline \hspace {1mm}$\vct {x}=\left [ x_1 \; x_2 \; \ldots \; x_n \right ]^T = \begin {bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end {bmatrix}$\nomeqref {0}
+		\nompageref{ix}
+  \item [{$y$}]\begingroup Escalar.\nomeqref {0}\nompageref{ix}
+  \item [{$\conj {z}$}]\begingroup Complejo conjugado de $z$\nomeqref {0}
+		\nompageref{ix}
+
+\end{thenomenclature}

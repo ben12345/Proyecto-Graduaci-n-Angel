@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{ice100}
+ [online].
+
+\bibitem{sevilla}
+P.~Alvarado.
+\newblock técnicas de percepción activa para seguimiento de objetos mediante
+  robots móviles en entornos urbanos {C}apitulo 4, 2005.
+\newblock URL
+  \url{http://bibing.us.es/proyectos/abreproy/70077/fichero/capitulo4.pdf}.
+
+\bibitem{Ballard1987}
+D.~H. Ballard.
+\newblock Readings in computer vision: Issues, problems, principles, and
+  paradigms.
+\newblock chapter Generalizing the Hough Transform to Detect Arbitrary Shapes,
+  pages 714--725. Morgan Kaufmann Publishers Inc., San Francisco, CA, USA,
+  1987.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=33517.33574}.
+
+\bibitem{market2014}
+bccResearch.
+\newblock Embedded systems: Technologies and markets [online].
+\newblock 2014 [visitado el \today].
+\newblock URL \url{http://www.bccresearch.com}.
+
+\bibitem{opencv2014}
+John~W. Eaton.
+\newblock Open source computer vision [online].
+\newblock 2014 [visitado el \today].
+\newblock URL \url{http://opencv.org}.
+
+\bibitem{alliance2014}
+John~W. Eaton.
+\newblock Why does embedded vision need an alliance? [online].
+\newblock 2014 [visitado el \today].
+\newblock URL \url{http://www.embedded-vision.com}.
+
+\bibitem{GanKuo2007}
+W.~S. Gan and S.~M. Kuo.
+\newblock {\em Embedded Signal Processing with the Micro Signal Architecture}.
+\newblock John Wiley and sons Inc., 2007.
+
+\bibitem{Illingworth1988}
+J.~Illingworth and J.~Kittler.
+\newblock A survey of the hough transform.
+\newblock {\em Comput. Vision Graph. Image Process.}, 1988.
+\newblock URL \url{http://dx.doi.org/10.1016/S0734-189X(88)80033-1}.
+
+\bibitem{blackfin2014}
+Analog~Devices Inc.
+\newblock Blackfin dual core embedded processor {H}oja de datos, 2014.
+\newblock URL
+  \url{http://www.analog.com/static/imported-files/data_sheets/ADSP-BF606_607_%
+608_609.pdf}.
+
+\bibitem{Jack2008}
+K.~Jack.
+\newblock {\em Digital Video and DSP}, volume~I.
+\newblock Elsevier Inc, 2008.
+
+\bibitem{Lawson1992}
+H.~Lawson, B.~Svensson, and L.~Wanhammar.
+\newblock {\em Parallel Processing in Industrial Real Time Applications}.
+\newblock Prentice Hall, 1992.
+
+\bibitem{Shilov1973}
+G.~E. Shilov.
+\newblock {\em Elementary Real and Complex Analysis}.
+\newblock Dover Publications, Inc., 1973.
+
+\bibitem{Waqar2010}
+M.~Waqar, T.~Thanh Hoang, and P~Edefors.
+\newblock Cyclic redundancy checking (crc) accelerator for the flexcore
+  processor.
+\newblock 2010.
+\newblock URL
+  \url{http://www.cse.chalmers.se/~hoangt/papers/tunghoang-dsd2010.pdf}.
+
+\end{thebibliography}
