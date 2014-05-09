@@ -2,7 +2,9 @@
 
 \label{ch:marco}
 
-En este capitulo se presentan los conceptos que dan soporte a la solución implementada. Primero se hará una breve reseña sobre conceptos y algoritmos de procesamiento de imágenes: espacios de color, detector de borde Canny y transformación de Hough, luego se describe la composición de la arquitectura Blackfin. Por último se hace referencia a trabajo anteriores desarrollado en Blackfin Embedded Vision Starter Kit.  
+En este capitulo se presentan los conceptos que dan soporte a la solución implementada. Primero se hará una breve reseña sobre conceptos y algoritmos de procesamiento de imágenes: espacios de color, detector de borde Canny y transformación de Hough, luego se describe la composición de la arquitectura Blackfin.
+
+\boxcomment{Se deben agregar imágenes?}
 
 \section{Espacios de Color}
 
@@ -52,7 +54,7 @@ V
 \end{bmatrix}
 \end{equation}
 
-La variables $R'$,$G'$,$B'$ representa compensaciones de pantalla no lineal a partir de señales $R$,$G$,$B$ puras[].
+La variables $R'$,$G'$,$B'$ representa compensaciones de pantalla no lineal a partir de señales $R$,$G$,$B$ puras\cite{Jack2008}.
 
 
 \subsection{Transformación RGB - HSI}
@@ -88,6 +90,7 @@ Finalmente, la componente de intensidad esta dada por:
 I=\frac{1}{3}(R+G+B)
 \end{equation}
 
+\explain{Se puede agregar imagenes del proceso del algoritmo}
 \section{Algoritmo de Canny}
 
 El algoritmo de Canny es una técnica de detección de bordes basada en la utilización la primera derivada, que toma valores de cero en regiones donde el cambio de intensidad no varía y tiene valor constante ante cualquier transformación de intensidad, por lo tanto los cambios abruptos en la intensidad son evidenciados por la primera derivada[].
@@ -174,9 +177,9 @@ Finalmente si la intensidad del pixel es inferior al umbral bajo, el píxel es s
 \section{Transformada de Hough}
 
 
-La transformada de Hough es una técnica utilizada para aislar características de forma particular dentro de una imagen: identifica formas como lineas, círculos y elipses, es un método estándar en la detección de formas debido a su capacidad para hacer frente a los objetivos parcialmente ocluidos y su robustez a la presencia de ruido[1].
+La transformada de Hough es una técnica utilizada para aislar características de forma particular dentro de una imagen: identifica formas como lineas, círculos y elipses, es un método estándar en la detección de formas debido a su capacidad para hacer frente a los objetivos parcialmente ocluidos y su robustez a la presencia de ruido\cite{Illingworth1988}.
 
-Este algoritmo utiliza la información de borde detectado para definir un mapeo de la orientación de un punto de borde a un punto de referencia de la forma. El punto de referencia puede ser pensado como el origen de una de coordenadas locales[2].
+Este algoritmo utiliza la información de borde detectado para definir un mapeo de la orientación de un punto de borde a un punto de referencia de la forma. El punto de referencia puede ser pensado como el origen de una de coordenadas locales\cite{Ballard1987}.
 
 \subsection{Transformación lineal}
 
@@ -188,7 +191,8 @@ y=mx+n
 
 donde $m$ y $n$ son pendiente y la intersección con el eje $y$ respectivamente. 
 
-La idea fundamental de la transformación de Hough es obtener características en términos de $m$, $n$ y no considerar las coordenadas $(x,y)$, para esto la ecuación de la recta se debe mapear al espacio de Hough mediante la parametrización en términos del ángulo $\theta$ y la distancia al origen $\rho$, que se muestran en la figura ......%
+La idea fundamental de la transformación de Hough es obtener características en términos de $m$, $n$ y no considerar las coordenadas $(x,y)$, para esto la ecuación de la recta se debe mapear al espacio de Hough mediante la parametrización en términos del ángulo $\theta$ y la distancia al origen $\rho$.%
+
 
 
 
@@ -209,53 +213,45 @@ La ecuación de la recta en el espacio de Hough se puede escribir como:
 \rho = x\cos\theta + y\sin\theta
 \end{equation}
 
-y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto si dos curvas correspondientes en dos puntos se intersecan, existen una linea recta entres ellos en la imagen.  
+y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como se muestra en la figura [], si dos curvas correspondientes en dos puntos se intersecan, existen una linea recta entres ellos en la imagen.
 
+\begin{figure}[hbtp]
+\includegraphics[scale=1]{file.eps}
+\caption{mmmm}
+\end{figure}
+
+  
+\explain{No se ha encontrado información buena}
 \subsection{Transformación circular}
-%%1-Illingworth, J., Kitntler, J.: A survey of the Hough transform. Comput. Vis. Graph. Image Process. 44(1), 87–116 (1988)
 
-%%2-@incollection{Ballard:1987:GHT:33517.33574,
-%% author = {Ballard, D. H.},
-%% chapter = {Generalizing the Hough Transform to Detect Arbitrary Shapes},
-%% title = {Readings in Computer Vision: Issues, Problems, Principles, and Paradigms},
-%% editor = {Fischler, Martin A. and Firschein, Oscar},
-%% year = {1987},
-%% isbn = {0-934613-33-8},
-%% pages = {714--725},
-%% numpages = {12},
-%% url = {http://dl.acm.org/citation.cfm?id=33517.33574},
-%% acmid = {33574},
-%% publisher = {Morgan Kaufmann Publishers Inc.},
-%% address = {San Francisco, CA, USA},
-%%} 
+
 
 \section{Procesador Blackfin BF609}
 
-El procesador Blackfin BF609 es una generación de 16 a 32 bits manufacturados por Analog Devices Inc; diseñada específicamente para satisfacer las demandas computacionales y las limitaciones de potencia de audio embebido, vídeo y aplicaciones de comunicaciones sobre la base de MSA desarrollada conjuntamente entre Analog Devices y Intel Corporation[2] 
+El procesador Blackfin BF609 es una generación de 16 a 32 bits manufacturados por Analog Devices Inc; diseñada específicamente para satisfacer las demandas computacionales y las limitaciones de potencia de audio embebido, vídeo y aplicaciones de comunicaciones sobre la base de MSA desarrollada conjuntamente entre Analog Devices y Intel Corporation\cite{GanKuo2007}. 
 
-La arquitectura del procesador Blackfin BF609 se basa en una tuberia de 10 etapas RISC MCU/DSP con un conjunto de instrucciones 16-/32-bit mixtas diseñadas para la densidad de código óptimo. Esta arquitectura es compatible con el modelo SIMD[1] e incluye instrucciones para video acelerado y procesamiento de imágenes.  
+La arquitectura del procesador Blackfin BF609 se basa en una tubería de 10 etapas RISC MCU/DSP con un conjunto de instrucciones 16-/32-bit mixtas diseñadas para la densidad de código óptimo. Esta arquitectura es compatible con el modelo SIMD\cite{Lawson1992} e incluye instrucciones para vídeo acelerado y procesamiento de imágenes.  
 
-Como se muestra en la Figura 1, el procesador integra dos núcleos. Cada núcleo, se muestra en la Figura 2, contiene dos multiplicadores 16 bits, dos acumuladores de 40 bits, dos ALUs  de 40 bits, cuatro ALUs para vídeo, y una unidad de desplazamiento de 40 bits. El proceso de las unidades de cálculo se realiza en datos de 8, 16 o 32 bits aportados por el archivos de registro[].
+\explain{insertar estas figuras}
+Como se muestra en la Figura..., el procesador integra dos núcleos. Cada núcleo, se muestra en la Figura 2, contiene dos multiplicadores 16 bits, dos acumuladores de 40 bits, dos ALUs  de 40 bits, cuatro ALUs para vídeo, y una unidad de desplazamiento de 40 bits. El proceso en las unidades de cálculo se realiza en datos de 8, 16 o 32 bits aportados por el arreglo de registro del procesador.
 
-El archivo de registro contiene ocho registros de 32 bits, que también puede utilizarse como 16 registros independientes de bits. Todos los operandos para las operaciones de calculo provienen del archivo de registro multipuerto y campos constantes instrucciones.
+El archivo de registro contiene ocho registros de 32 bits, que también puede utilizarse como 16 registros independientes de bits. Todos los operandos para las operaciones de calculo provienen del archivo de registro multipuerto y campos constantes instrucciones. Las unidades MAC pueden realizar una de 16 bits al de 16 bits se multiplican en cada ciclo, la acumulación de los resultados en los acumuladores de 40 bits. La unidad de desplazamiento de 40 bits puede realizar desplazamientos, rotaciones y se utiliza para apoyar la normalización, extracciones de campos e instrucciones de campo de depósito. Las ALUs realizan el conjunto tradicional de operaciones aritméticas y lógicas en los datos de 16 bits o 32 bits. Además, ejecuta instrucciones especiales para acelerar diversas tareas de procesamiento de señales. Estas instrucciones especiales incluyen operaciones de bits como el extracto de campo y el recuento de la población, multiplicación de módulos, divisiones primitivas, la saturación y el redondeo, y la detección de la señal/exponente.
 
-Cada MAC puede realizar una de 16 bits al de 16 bits se multiplican en cada ciclo, la acumulación de los resultados en los acumuladores de 40 bits. La unidad de desplazamiento de 40 bits puede realizar desplazamientos, rotaciones y se utiliza para apoyar la normalización, extracciones de campos e instrucciones de campo de depósito.
-
-Las ALUs realizan el conjunto tradicional de operaciones aritméticas y lógicas en los datos de 16 bits o 32 bits. Además, ejecuta instrucciones especiales para acelerar diversas tareas de procesamiento de señales. Estas instrucciones especiales incluyen operaciones de bits como el extracto de campo y el recuento de la población, multiplicación de módulos, divisiones primitivas, la saturación y el redondeo, y la detección de la señal/exponente.
-
-\subsection{Infraestructura}
+\subsection{Estructura}
 
 El procesador utiliza un DMA para transferir datos dentro de los espacios de memoria o entre un espacio de memoria y algún periférico. El procesador puede especificar las operaciones de transferencia de datos y volver al proceso normal mientras el controlador DMA integrado plenamente realiza las transferencias de datos independientes de la actividad del procesador. 
 
-Se utilizan dos módulos de protección CRC[] para la detección de errores en código y/o datos en la memoria, el en contenido de los registros mapeados por la memoria, o objetos de los mensajes de comunicación. También proporciona un sistema de control de eventos que soporta tanto la anidación y priorización. La anidación permite múltiples rutinas de servicio de eventos para estar activos al mismo tiempo. La priorización asegura que el mantenimiento de un evento de mayor prioridad tiene prioridad sobre el mantenimiento de un evento de menor prioridad. 
+Se utilizan dos módulos de protección CRC \cite{Waqar2010} para la detección de errores en código y/o datos en la memoria, el en contenido de los registros mapeados por la memoria, o objetos de los mensajes de comunicación. También proporciona un sistema de control de eventos que soporta tanto la anidación y priorización. 
 
-\subsection{Memoria}
+%%La anidación permite múltiples rutinas de servicio de eventos para estar activos al mismo tiempo. La priorización asegura que el mantenimiento de un evento de mayor prioridad tiene prioridad sobre el mantenimiento de un evento de menor prioridad. 
 
-El procesador ve la memoria como un único espacio de direcciones de 4 GB unificado, usando de direcciones de 32 bits. Todos los recursos, incluida la memoria interna, memoria externa, y E/S de registros de control, ocupan secciones separadas de este espacio de direcciones común. Las porciones de la memoria de este espacio de direcciones se organizan en una estructura jerárquica para proporcionar una buena relación coste / rendimiento de la parte de la memoria de núcleo puede acceder muy rápido, de baja latencia como caché o SRAM, y más grande, de menor costo y rendimiento de la memoria de la interfaz accesible sistemas.
+La distribución de la memoria se realiza en único espacio de direcciones de 4 GBytes  unificado, usando de direcciones de 32 bits. Todos los recursos del nucleos del procesador, incluida la memoria interna, memoria externa, y registros de control de E/S, ocupan secciones separadas de este espacio de direcciones común. 
+
+El procesador posee un subsistema de video conformado por un procesador de video, interfaz periférica paralela[] y un compositor de píxeles. En el procesador de video (PVP) se desarrollan algoritmos de procesamiento de señal e imágenes que se requieren para el preprocesamiento y coprocesamiento de video, se incluyen bloques para realizar convoluciones, conversión de coordenadas rectangular a polares, clasificación de pixeles por diferenciación, operaciones aritméticas, segmentación por color\cite{sevilla} y escalamiento. La interfaz periférica paralela facilita la conexión directa a los paneles LCD, a los convertidores analógico a digital y digital a analógico, codificadores y decodificadores de vídeo, módulos de sensor de imagen y otros periféricos de uso general. Finalmente el compositor de píxeles (PIXC) proporciona superposiciones de imágenes con soporte transparente de color, mezcla alfa [alpha blending], y capacidades de conversión de espacio de color para la salida de las pantallas LCD y codificadores de vídeo NTSC/PAL.
 
 
-%%1-http://www.hh.se/download/18.70cf2e49129168da0158000103477/1341267676514/SIMD+Architectures.pdf
-%%2-http://es.scribd.com/doc/147904550/Embedded-Signal-Processing-with-the-Micro-Signal-Architecture
+%Las porciones de la memoria de este espacio de direcciones se organizan en una estructura jerárquica para proporcionar una buena relación costo-rendimiento de la parte de la memoria de núcleo puede acceder muy rápido, de baja latencia como caché o SRAM, y más grande, de menor costo y rendimiento de la memoria de la interfaz accesible sistemas.
+
 
 
 

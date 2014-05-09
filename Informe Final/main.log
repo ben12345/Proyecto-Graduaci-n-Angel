@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  6 MAY 2014 12:05
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.4.6)  8 MAY 2014 20:16
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -944,20 +944,20 @@ Writing nomenclature file main.nlo
 (./resultados.aux) (./conclusiones.aux) (./apendice.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -978,7 +978,7 @@ Package caption Info: End \AtBeginDocument code.
 \MPnumerator=\count157
 \everyMPtoPDFconversion=\toks35
 )
-Package hyperref Info: Link coloring ON on input line 72.
+Package hyperref Info: Link coloring ON on input line 71.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
@@ -987,8 +987,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count158
 )
-LaTeX Info: Redefining \ref on input line 72.
-LaTeX Info: Redefining \pageref on input line 72.
+LaTeX Info: Redefining \ref on input line 71.
+LaTeX Info: Redefining \pageref on input line 71.
  (./main.out)
 (./main.out)
 \@outlinefile=\write5
@@ -997,13 +997,25 @@ LaTeX Info: Redefining \pageref on input line 72.
 \AtBeginShipoutBox=\box70
 \openout2 = `titlepage.aux'.
 
- (./titlepage.tex <./fig/TEC.pdf, id=95, 154.5775pt x 211.79124pt>
-File: ./fig/TEC.pdf Graphic file (type pdf)
+ (./titlepage.tex
 
-<use ./fig/TEC.pdf> [1
+! LaTeX Error: File `TEC' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 \includegraphics[width=20mm]{TEC}
+                                      
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fig/TEC.pdf>] [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ])
 \openout2 = `disclaimer.aux'.
@@ -1134,7 +1146,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.101   \listoffigures
+l.100   \listoffigures
                                                               % List of figures
 [1
 
@@ -1178,6 +1190,30 @@ No file main.nls.
  (./intro.tex
 Cap\'{\i }tulo 1.
 
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 11--11
+[][] 
+ []
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 11--11
+[][] 
+ []
+
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 11.
+
+LaTeX Warning: Citation `Shilov1973' on page 1 undefined on input line 12.
+
+
+LaTeX Warning: Citation `market2014' on page 1 undefined on input line 14.
+
+
+LaTeX Warning: Citation `alliance2014' on page 1 undefined on input line 19.
+
+
+LaTeX Warning: Citation `finboard' on page 1 undefined on input line 21.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1
@@ -1186,6 +1222,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
+
+LaTeX Warning: Citation `sevilla' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `opencv2014' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `blackfin2014' on page 2 undefined on input line 29.
+
+
+LaTeX Warning: Citation `blackfin2014' on page 2 undefined on input line 29.
+
+
+LaTeX Warning: Citation `ice100' on page 2 undefined on input line 31.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 31--35
 
  []
@@ -1214,22 +1266,80 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ]
 Cap\'{\i }tulo 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--36
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 7--7
+[][] 
+ []
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 7--7
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--38
 
  []
 
 [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 98.
- (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+
+LaTeX Warning: Citation `Jack2008' on page 6 undefined on input line 57.
+
+! Font U/rsfs/m/n/10=rsfs10 at 10.0pt not loadable: Metric (TFM) file not found
+.
+<to be read again> 
+                   relax 
+l.93 ...gregar imagenes del proceso del algoritmo}
+                                                  
+I wasn't able to read the size data for this font,
+so I will ignore the font specification.
+[Wizards can fix TFM files using TFtoPL/PLtoTF.]
+You might try inserting a different font spec;
+e.g., type `I\font<same font id>=<substitute font name>'.
+
+! Font U/rsfs/m/n/7=rsfs7 at 7.0pt not loadable: Metric (TFM) file not found.
+<to be read again> 
+                   relax 
+l.93 ...gregar imagenes del proceso del algoritmo}
+                                                  
+I wasn't able to read the size data for this font,
+so I will ignore the font specification.
+[Wizards can fix TFM files using TFtoPL/PLtoTF.]
+You might try inserting a different font spec;
+e.g., type `I\font<same font id>=<substitute font name>'.
+
+! Font U/rsfs/m/n/5=rsfs5 at 5.0pt not loadable: Metric (TFM) file not found.
+<to be read again> 
+                   relax 
+l.93 ...gregar imagenes del proceso del algoritmo}
+                                                  
+I wasn't able to read the size data for this font,
+so I will ignore the font specification.
+[Wizards can fix TFM files using TFtoPL/PLtoTF.]
+You might try inserting a different font spec;
+e.g., type `I\font<same font id>=<substitute font name>'.
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 93--93
+[][] 
+ []
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 93--93
+[][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 101.
+
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 98.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
  [6]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.106 ...media cero y desviación estándar \sigma
+l.109 ...media cero y desviación estándar \sigma
                                                   .
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1237,12 +1347,66 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.107 
+l.110 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-[7] [8] [9]) [10]
+[7]
+
+LaTeX Warning: Citation `Illingworth1988' on page 8 undefined on input line 180
+.
+
+
+LaTeX Warning: Citation `Ballard1987' on page 8 undefined on input line 182.
+
+[8]
+
+! LaTeX Error: Unknown graphics extension: .eps.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.219 \includegraphics[scale=1]{file.eps}
+                                         
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 224--224
+[][] 
+ []
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 224--224
+[][] 
+ []
+
+
+LaTeX Warning: Citation `GanKuo2007' on page 9 undefined on input line 231.
+
+
+LaTeX Warning: Citation `Lawson1992' on page 9 undefined on input line 233.
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 235--235
+[][] 
+ []
+
+
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 235--235
+[][] 
+ []
+
+[9]
+
+LaTeX Warning: Citation `Waqar2010' on page 10 undefined on input line 244.
+
+
+LaTeX Warning: Citation `sevilla' on page 10 undefined on input line 250.
+
+) [10]
 \openout2 = `solucion.aux'.
 
  (./solucion.tex
@@ -1292,30 +1456,36 @@ AED: lastpage setting LastPage (./main.aux (./titlepage.aux) (./disclaimer.aux)
 (./tribunal.aux) (./acta.aux) (./resumen.aux) (./dedicatoria.aux)
 (./agradecimientos.aux) (./notation.aux) (./glosario.aux) (./intro.aux)
 (./teoria.aux) (./solucion.aux) (./resultados.aux) (./conclusiones.aux)
-(./apendice.aux)) ) 
+(./apendice.aux))
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8808 strings out of 495061
- 122935 string characters out of 1182622
- 217938 words of memory out of 3000000
- 11566 multiletter control sequences out of 15000+50000
- 12768 words of font info for 46 fonts, out of 3000000 for 9000
+ 8853 strings out of 495061
+ 123334 string characters out of 1182622
+ 218938 words of memory out of 3000000
+ 11595 multiletter control sequences out of 15000+50000
+ 14772 words of font info for 55 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 40i,12n,43p,948b,397s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmb
-x10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1
-/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl8.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (42 pages, 224826 bytes).
+ 40i,12n,43p,1108b,397s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/
+texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmsl8.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (42 pages, 249713 bytes).
 PDF statistics:
- 394 PDF objects out of 1000 (max. 8388607)
+ 407 PDF objects out of 1000 (max. 8388607)
  86 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 185 words of extra memory for PDF output out of 10000 (max. 10000000)
 
