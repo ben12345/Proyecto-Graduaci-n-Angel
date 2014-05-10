@@ -4,6 +4,8 @@
 
 En este capitulo se presentan los conceptos que dan soporte a la solución implementada. Primero se hará una breve reseña sobre conceptos y algoritmos de procesamiento de imágenes: espacios de color, detector de borde Canny y transformación de Hough, luego se describe la composición de la arquitectura Blackfin.
 
+\boxcomment{Se deben agregar imágenes?}
+
 \section{Espacios de Color}
 
 Un espacio de color es una representación matemática tridimensional en la que se encuentran representados todos los
@@ -178,7 +180,7 @@ que sus vecinos, es suprimido.
 
 Esta operación reduce los bordes falsos mediante el uso de dos umbrales: umbral bajo, $T_L$, umbral alto, $T_H$.
 Básicamente, la imagen es recorrida por píxel a píxel: si la intensidad del píxel es mayor que el umbral alto, entonces
-el píxel se considera fuerte
+el píxel se considera fuerte,
 
 \begin{equation}
 g_{NH}(x,y) = g_{N}(x,y)\geq T_H
@@ -204,7 +206,7 @@ un punto de referencia de la forma. El punto de referencia puede ser pensado com
 
 \subsection{Transformación lineal}
 
-Una recta en el espacio de imagen cartesiano, como la que se observa en la figura \ref{houghlineal}, se define como:
+Una recta en el espacio de imagen cartesiano se define como:
 
 \begin{equation}
 y=mx+n
@@ -216,17 +218,8 @@ La idea fundamental de la transformación de Hough es obtener características e
 coordenadas $(x,y)$, para esto la ecuación de la recta se debe mapear al espacio de Hough mediante la parametrización en
 términos del ángulo $\theta$ y la distancia al origen $\rho$.%
 
-\begin{figure}{}
- \centering
-  \subfloat{
-   \label{a:lineal}
-    \includegraphics[width=50mm,height=44mm]{./fig/houghlineal}}
-  \subfloat{
-   \label{b:sinusoidal}
-    \includegraphics[width=90mm,height=50mm]{./fig/houghlinespace}}
- \caption{Múltiples imágenes}
- \label{houghlineal}
-\end{figure}
+
+
 
 %Apendices posiblemente
 %
@@ -245,15 +238,19 @@ La ecuación de la recta en el espacio de Hough se puede escribir como:
 \rho = x\cos\theta + y\sin\theta
 \end{equation}
 
-y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como se muestra en la figura \ref{houghlineal},
+y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como se muestra en la figura [],
 si dos curvas correspondientes en dos puntos se intersecan, existen una linea recta entres ellos en la imagen.
 
+\begin{figure}[hbtp]
+\includegraphics[scale=1]{file.eps}
+\caption{mmmm}
+\end{figure}
 
   
 \explain{No se ha encontrado información buena}
 \subsection{Transformación circular}
 
-%http://www.egr.msu.edu/classes/ece480/capstone/fall10/group03/ece480_dt3_application_note_dembelef.pdf
+
 
 \section{Procesador Blackfin BF609}
 

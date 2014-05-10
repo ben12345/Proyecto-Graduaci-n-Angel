@@ -1,0 +1,68 @@
+\begin{thebibliography}{10}
+
+\bibitem{opencv2014}
+Open source computer vision, 2014.
+\newblock URL \url{http://opencv.org} [visitado el \today].
+
+\bibitem{alliance2014}
+Why does embedded vision need an alliance?, 2014.
+\newblock URL \url{http://www.embedded-vision.com} [visitado el \today].
+
+\bibitem{sevilla}
+P.~Alvarado.
+\newblock técnicas de percepción activa para seguimiento de objetos mediante
+  robots móviles en entornos urbanos {C}apitulo 4, 2005.
+\newblock URL
+  \url{http://bibing.us.es/proyectos/abreproy/70077/fichero/capitulo4.pdf}.
+
+\bibitem{Ballard1987}
+D.~H. Ballard.
+\newblock Readings in computer vision: Issues, problems, principles, and
+  paradigms.
+\newblock chapter Generalizing the Hough Transform to Detect Arbitrary Shapes,
+  pages 714--725. Morgan Kaufmann Publishers Inc., San Francisco, CA, USA,
+  1987.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=33517.33574}.
+
+\bibitem{market2014}
+bccResearch.
+\newblock Embedded systems: Technologies and markets, 2014.
+\newblock URL \url{http://www.bccresearch.com} [visitado el \today].
+
+\bibitem{Illingworth1988}
+J.~Illingworth and J.~Kittler.
+\newblock A survey of the hough transform.
+\newblock {\em Comput. Vision Graph. Image Process.}, 1988.
+\newblock URL \url{http://dx.doi.org/10.1016/S0734-189X(88)80033-1}.
+
+\bibitem{ice100}
+Analog~Devices Inc.
+\newblock Analog devices blackfin emulator, 2014.
+\newblock URL \url{http://www.analog.com} [visitado el \today].
+
+\bibitem{blackfin2014}
+Analog~Devices Inc.
+\newblock Blackfin dual core embedded processor {H}oja de datos, 2014.
+\newblock URL
+  \url{http://www.analog.com/static/imported-files/data_sheets/ADSP-BF606_607_%
+608_609.pdf}.
+
+\bibitem{Jack2008}
+K.~Jack.
+\newblock {\em Digital Video and DSP}, volume~I.
+\newblock Elsevier Inc, 2008.
+
+\bibitem{Lawson1992}
+H.~Lawson, B.~Svensson, and L.~Wanhammar.
+\newblock {\em Parallel Processing in Industrial Real Time Applications}.
+\newblock Prentice Hall, 1992.
+
+\bibitem{Waqar2010}
+M.~Waqar, T.~Thanh Hoang, and P~Edefors.
+\newblock Cyclic redundancy checking (crc) accelerator for the flexcore
+  processor.
+\newblock 2010.
+\newblock URL
+  \url{http://www.cse.chalmers.se/~hoangt/papers/tunghoang-dsd2010.pdf}.
+
+\end{thebibliography}

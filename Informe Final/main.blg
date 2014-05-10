@@ -1,0 +1,76 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: titlepage.aux
+A level-1 auxiliary file: disclaimer.aux
+A level-1 auxiliary file: tribunal.aux
+A level-1 auxiliary file: acta.aux
+A level-1 auxiliary file: resumen.aux
+A level-1 auxiliary file: dedicatoria.aux
+A level-1 auxiliary file: agradecimientos.aux
+A level-1 auxiliary file: notation.aux
+A level-1 auxiliary file: glosario.aux
+A level-1 auxiliary file: intro.aux
+A level-1 auxiliary file: teoria.aux
+A level-1 auxiliary file: solucion.aux
+A level-1 auxiliary file: resultados.aux
+A level-1 auxiliary file: conclusiones.aux
+The style file: sty/plainurl.bst
+A level-1 auxiliary file: apendice.aux
+Database file #1: literatura.bib
+Warning--entry type for "market2014" isn't style-file defined
+--line 46 of file literatura.bib
+Warning--entry type for "ice100" isn't style-file defined
+--line 72 of file literatura.bib
+Warning--entry type for "alliance2014" isn't style-file defined
+--line 104 of file literatura.bib
+Warning--entry type for "opencv2014" isn't style-file defined
+--line 111 of file literatura.bib
+Warning--I didn't find a database entry for "Shilov1973"
+Warning--I didn't find a database entry for "finboard"
+Warning--I didn't find a database entry for "GanKuo2007"
+Warning--to sort, need author or key in alliance2014
+Warning--to sort, need author or key in opencv2014
+Warning--empty booktitle in Ballard1987
+Warning--empty journal in Waqar2010
+You've used 11 entries,
+            2363 wiz_defined-function locations,
+            633 strings with 6540 characters,
+and the built_in function-call counts, 3212 in all, are:
+= -- 393
+> -- 93
+< -- 3
++ -- 40
+- -- 28
+* -- 154
+:= -- 526
+add.period$ -- 35
+call.type$ -- 11
+change.case$ -- 45
+chr.to.int$ -- 0
+cite$ -- 15
+duplicate$ -- 130
+empty$ -- 287
+format.name$ -- 28
+if$ -- 750
+int.to.chr$ -- 0
+int.to.str$ -- 11
+missing$ -- 7
+newline$ -- 59
+num.names$ -- 18
+pop$ -- 86
+preamble$ -- 1
+purify$ -- 36
+quote$ -- 0
+skip$ -- 151
+stack$ -- 0
+substring$ -- 88
+swap$ -- 20
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 40
+warning$ -- 4
+while$ -- 21
+width$ -- 13
+write$ -- 116
+(There were 11 warnings)

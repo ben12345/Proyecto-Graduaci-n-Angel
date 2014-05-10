@@ -1,32 +1,120 @@
 \chapter{Marco teórico}
+
 \label{ch:marco}
 
-En este capitulo se presentan los conceptos que dan soporte a la solución implementada. Primero se hará una breve reseña sobre conceptos y algoritmos de procesamiento de imágenes: espacios de color, detector de borde Canny y transformación de Hough, luego se describe la composición de la arquitectura Blackfin BF609. Por último se hace referencia a trabajo anteriores desarrollado en Blackfin Embedded Vision Starter Kit.  
+En este capitulo se presentan los conceptos que dan soporte a la solución implementada. Primero se hará una breve reseña sobre conceptos y algoritmos de procesamiento de imágenes: espacios de color, detector de borde Canny y transformación de Hough, luego se describe la composición de la arquitectura Blackfin.
 
 \section{Espacios de Color}
 
-Un espacios de color es una representación matemática tridimensional en la que se encuentran representados todos los colores visible para el ser humano.
+Un espacio de color es una representación matemática tridimensional en la que se encuentran representados todos los
+colores visible para el ser humano, los más utilizados son el RGB y YUV. El espacio RGB se basa en los tres colores
+primarios aditivos rojo, verde y azul; es utilizado en el desarrollo de gráficos por computadora, por su parte el espacio
+YUV se define por una componente de luminancia (Y) y dos componentes de cromancia (UV); se usa principalmente en
+codificación de vídeo.  
 
-\subsection{Espacio de Color HSV}
+El HSI (matiz, saturación, intensidad) y HSV (matiz, saturación, valor), estos espacios de color se han desarrollado para
+ser más "intuitivo" en la manipulación de color y se han diseñado para aproximar la forma que los humanos perciben e
+interpretan color. 
+%
+\subsection{Transformación RGB - YUV}
 
-se han diseñado para aproximar la forma que los humanos perciben e interpretan color[].
-%%La Alianza de Visión Integrada es una coalición de organizaciones desarrolladoras de sistemas embebidos y/o procesamiento de imagenes, fue fundada por Berkeley Design Technology, Inc. (BDTI), una reconocida firma de análisis e ingeniería de visión integrada desde 1992. En los últimos años han estado trabajando para incrustar la tendencia de visión integrada, y con mayor fuerza debido al desarrollo de procesadores potentes de bajo consumo.
+La conversión del espacio RGB al YUV se define mediante el sistema
+\begin{equation}
+\begin{bmatrix}
+Y \\ 
+U \\ 
+V
+\end{bmatrix} =
+\begin{bmatrix}
+0,299 & 0,587 & 0,114 \\ 
+-0,147 & -0,289 & 0,436 \\ 
+0,615 & - 0,515 & - 0,100
+\end{bmatrix}
+\begin{bmatrix}
+R' \\ 
+G' \\ 
+B'
+\end{bmatrix}  
+\end{equation}
+\\
+\\
+En caso de la conversión YUV a RGB se tiene que 
 
+\begin{equation}
+\begin{bmatrix}
+R' \\ 
+G' \\ 
+B'
+\end{bmatrix} =
+\begin{bmatrix}
+1 & 1,140 & 0\\ 
+1 & -0,395 & -0,581 \\ 
+1 & 2.032 & 0
+\end{bmatrix}
+\begin{bmatrix}
+Y \\ 
+U \\ 
+V
+\end{bmatrix}
+\end{equation}
+
+La variables $R'$,$G'$,$B'$ representa compensaciones de pantalla no lineal a partir de señales $R$,$G$,$B$ puras\cite{Jack2008}.
+
+
+\subsection{Transformación RGB - HSI}
+
+La componente de tonalidad (H) de cada pixel RGB se obtiene mediante la ecuación:
+
+\begin{equation}
+H=\left\{
+  \begin{array}{ll}
+     \theta & \text{si } B \leq G \\
+     360^{0} - \theta & \text{si } B > G \\
+  \end{array}
+  \right.
+\end{equation}
+
+con 
+
+\begin{equation}
+\theta = \arccos\left\lbrace\frac{\frac{1}{2}[(R-G)+(R-B)]}{[(R-G)^{2}+(R-B)(G-B)]^{\frac{1}{2}}}\right\rbrace
+\end{equation}
+
+La componente de saturación se obtiene por 
+
+\begin{equation}
+S=1-\frac{3}{(R+G+B)}[min(R,G,B)]
+\end{equation}
+
+El valor $min(R,G,B)$ representa el valor mínimo de arreglos de pixeles RGB.
+
+Finalmente, la componente de intensidad esta dada por:
+
+\begin{equation}
+I=\frac{1}{3}(R+G+B)
+\end{equation}
+
+\explain{Se puede agregar imagenes del proceso del algoritmo}
 \section{Algoritmo de Canny}
 
-El algoritmo de Canny es una técnica de detección de bordes basada en la utilización la primera derivada, que toma valores de cero en regiones donde el cambio de intensidad no varía y tiene valor constante ante cualquier transformación de intensidad, por lo tanto los cambios abruptos en la intensidad son evidenciados por la primera derivada[].
+El algoritmo de Canny es una técnica de detección de bordes basada en la utilización la primera derivada, que toma
+valores de cero en regiones donde el cambio de intensidad no varía y tiene valor constante ante cualquier transformación
+de intensidad, por lo tanto los cambios abruptos en la intensidad son evidenciados por la primera derivada[].
 
 El algoritmo de Canny consiste en tres grandes pasos: 
 
 \begin{itemize}
 \item Obtención del gradiente: se calcula la magnitud y orientación del vector gradiente en cada píxel[]. 
-\item Supresión no máxima: se adelgazamiento del ancho de los bordes,obtenidos con el gradiente, hasta lograr bordes de un píxel de ancho. 
-\item Histéresis de umbral: se aplica una función de histéresis basada en dos umbrales; con este proceso se pretende reducir la posibilidad de aparición de contornos falsos. 
+\item Supresión no máxima: se adelgazamiento del ancho de los bordes,obtenidos con el gradiente, hasta lograr bordes de
+un píxel de ancho. 
+\item Histéresis de umbral: se aplica una función de histéresis basada en dos umbrales; con este proceso se pretende
+reducir la posibilidad de aparición de contornos falsos. 
 \end{itemize}
 
 \subsection{Obtención del gradiente}
 
-En este paso se aplica un filtro gaussiano para suavizar la imagen original y tratar de eliminar posible ruido existente, este filtrado se realiza promediando valores de intensidad de los píxeles en el entorno de vecindad con una 
+En este paso se aplica un filtro gaussiano para suavizar la imagen original y tratar de eliminar posible ruido existente,
+este filtrado se realiza promediando valores de intensidad de los píxeles en el entorno de vecindad con una 
 máscara de convolución de media cero y desviación estándar \sigma.
 
 \begin{equation}
@@ -39,7 +127,10 @@ M =\begin{bmatrix}
 \end{bmatrix}
 \end{equation}
 
-Para la obtención del gradiente de intensidad se utiliza el operador de Sobel[], con este operador es posible encontrar la magnitud del mayor cambio posible de intensidad y la dirección de este en cada pixel, al aplicar este operador se obtiene que tan bruscos o suave cambia la imagen en el punto analizado y consecuentemente que tan probable es encontrar un borde en la imagen y la orientación a la que tiende este.
+Para la obtención del gradiente de intensidad se utiliza el operador de Sobel[], con este operador es posible encontrar
+la magnitud del mayor cambio posible de intensidad y la dirección de este en cada pixel, al aplicar este operador se
+obtiene que tan bruscos o suave cambia la imagen en el punto analizado y consecuentemente que tan probable es encontrar
+un borde en la imagen y la orientación a la que tiende este.
 
 La magnitud del gradiente del intensidad esta dada por 
 
@@ -62,7 +153,7 @@ s_{x} =\begin{bmatrix}
 -4 & -8 & 0 & 8 & 4 \\ 
 -6 & -12 & 0 & 12 & 6 \\ 
 -4 & -8 & 0 & 8 & 4 \\ 
--1 & -2 & 0 & 2 & 1, &\hspace{1em}&
+-1 & -2 & 0 & 2 & 1 &\hspace{1em}&
 \end{bmatrix}
 s_{y} =\begin{bmatrix}
 1 & 4 & 6 & 4 & 1 \\ 
@@ -76,12 +167,18 @@ s_{y} =\begin{bmatrix}
 
 \subsection{Supresión no máxima}
 
-La supresión no máxima es una técnica de adelgazamiento de bordes, que consisten en descartar los pixeles que no son máximos locales. Esto se realizar mediante el redondeo a la dirección del borde normal (vector gradiente) más cercano a $45^{o}$ y la comparación de los pixeles de la dirección de borde normal positivo y negativo ( es decir, si la dirección del borde normal es $0^{o}$, el pixel se compara con su vecino derecho e izquierdo), si el pixel no tiene mayor magnitud que sus vecinos, es suprimido.
+La supresión no máxima es una técnica de adelgazamiento de bordes, que consisten en descartar los pixeles que no son
+máximos locales. Esto se realizar mediante el redondeo a la dirección del borde normal (vector gradiente) más cercano a
+$45^{o}$ y la comparación de los pixeles de la dirección de borde normal positivo y negativo ( es decir, si la dirección
+del borde normal es $0^{o}$, el pixel se compara con su vecino derecho e izquierdo), si el pixel no tiene mayor magnitud
+que sus vecinos, es suprimido.
 
 
 \subsection{Histéresis de umbral}
 
-Esta operación reduce los bordes falsos mediante el uso de dos umbrales: umbral bajo, $T_L$, umbral alto, $T_H$. Básicamente, la imagen es recorrida por píxel a píxel: si la intensidad del píxel es mayor que el umbral alto, entonces el píxel se considera fuerte,
+Esta operación reduce los bordes falsos mediante el uso de dos umbrales: umbral bajo, $T_L$, umbral alto, $T_H$.
+Básicamente, la imagen es recorrida por píxel a píxel: si la intensidad del píxel es mayor que el umbral alto, entonces
+el píxel se considera fuerte
 
 \begin{equation}
 g_{NH}(x,y) = g_{N}(x,y)\geq T_H
@@ -98,307 +195,120 @@ Finalmente si la intensidad del pixel es inferior al umbral bajo, el píxel es s
 \section{Transformada de Hough}
 
 
-La transformada de Hough es una técnica utilizada para aislar características de forma particular dentro de una imagen: identifica formas como lineas, círculos y elipses, este el algoritmo utiliza la información de borde para definir un mapeo de la orientación de un punto de borde a un punto de referencia de la forma. El punto de referencia puede ser pensado como el origen de una de coordenadas locales[].
+La transformada de Hough es una técnica utilizada para aislar características de forma particular dentro de una imagen:
+identifica formas como lineas, círculos y elipses, es un método estándar en la detección de formas debido a su capacidad
+para hacer frente a los objetivos parcialmente ocluidos y su robustez a la presencia de ruido\cite{Illingworth1988}.
 
+Este algoritmo utiliza la información de borde detectado para definir un mapeo de la orientación de un punto de borde a
+un punto de referencia de la forma. El punto de referencia puede ser pensado como el origen de una de coordenadas locales\cite{Ballard1987}.
 
+\subsection{Transformación lineal}
 
-\begin{figure}[htb]
-  \centering
-  \includegraphics[scale=1]{fig/file.eps} 
-  \caption{Ejemplo de imagen gnuplot/pstricks}
-  \label{fig:pstricks}
+Una recta en el espacio de imagen cartesiano, como la que se observa en la figura \ref{houghlineal}, se define como:
+
+\begin{equation}
+y=mx+n
+\end{equation}
+
+donde $m$ y $n$ son pendiente y la intersección con el eje $y$ respectivamente. 
+
+La idea fundamental de la transformación de Hough es obtener características en términos de $m$, $n$ y no considerar las
+coordenadas $(x,y)$, para esto la ecuación de la recta se debe mapear al espacio de Hough mediante la parametrización en
+términos del ángulo $\theta$ y la distancia al origen $\rho$.%
+
+\begin{figure}{}
+ \centering
+  \subfloat{
+   \label{a:lineal}
+    \includegraphics[width=50mm,height=44mm]{./fig/houghlineal}}
+  \subfloat{
+   \label{b:sinusoidal}
+    \includegraphics[width=90mm,height=50mm]{./fig/houghlinespace}}
+ \caption{Múltiples imágenes}
+ \label{houghlineal}
 \end{figure}
 
-
-
-%% 1-http://www.dimap.ufrn.br/~sbmac/ermac2008/Anais/Resumos%20Estendidos/aplica%E7%E3o%20de%20tecnicas%20de%20PS_Silva.pdf
-
-\subsection{Redacción}
-
-La \nt{redacción} en todo el documento debe seguir un estilo científico
-objetivo. Esto implica que se redacta de modo impersonal, sin utilizar primeras
-personas del singular o del plural, y se evita el uso de cualquier tipo de
-calificativo, sustituyéndolos siempre por datos concretos, vinculados a
-referencias bibliográficas o datos experimentales. Los comparativos también
-deben concretarse a hechos y datos, y nunca dejarse ``en el aire''. Por la
-naturaleza de la tesis, el tiempo verbal es usualmente presente, no perdiendo
-nunca de vista que se está explicando ``cómo hacer algo'', en vez de ``qué se
-hizo''.
-
-Las \nt{frases} deben ser cortas, y debe evitarse que el lector tenga que saltar
-constantemente entre partes de la tesis, lo que implica una exposición lineal
-clara, donde lo que se necesita ya ha sido explicado antes. Deben evitarse
-redundancias y por tanto cada concepto se exponen en un único lugar.
-
-Todo aspecto circunstancial es irrelevante para la tesis, es decir, si se ha
-desarrollado en el laboratorio $X$, o en el curso $Y$, con el profesor $Z$, o
-en la empresa $W$, el nombre de funciones o clases en su código, etc., es
-información irrelevante para reproducir el experimento, y por lo tanto sobra.
-Numeración del documento
-
-La primera página de la tesis es la correspondiente a la introducción, así que
-ésta debe ser la página 1. Desde la introducción, hasta antes de la
-bibliografía, las unidades son ``Capítulos''. La bibliografía y anexos no se
-consideran capítulos, así que ya no continúan con la misma numeración de los
-capítulos (la paginación sí continua). Los índices, notación, glosario, etc. se
-numeran con números romanos en minúscula (i,ii,iii,iv,v,vi...) y antes del
-índice (portada, resúmenes, agradecimientos, hoja de evaluadores, etc.) las
-páginas no llevan numeración. 
-
-Esta plantilla LaTeX ya se ocupa de todo lo anterior.
-
-\subsection{Ecuaciones}
-
-Para citar \nt{ecuaciones} se utilizan paréntesis redondos, y no es necesario
-emplear la palabra ``ecuación''. Por ejemplo ``Introduciendo en (4.2) los
-resultados de (3.3) y (3.7) se obtiene ...''. La ecuación es parte del flujo de
-texto y no un objeto flotante, así que no pueden emplearse como figuras. Cuando
-se requiere la ecuación, allí se inserta.  
-
-Es incorrecto redactar de la siguiente forma: \explain{MAL}
-
-\textsl{La operación del transistor sin tomar en cuenta el efecto Early está
-  dada por (\ref{eq:ej1}), donde el parámetro $\kappa$ está dado por
-  (\ref{eq:ej2}).}
-
-\begin{equation} \label{eq:ej1}
-  I_{DS}
-  =
-  I_{n0} \frac{W}{L}e^{\kappa \frac{V_{GB}}{v_t}}
-  \left[
-    e^{-\frac{V_{SB}}{v_t}}
-    -
-    e^{-\frac{V_{DB}}{v_t}}
-  \right]
-\end{equation}
-
-\begin{equation} \label{eq:ej2}
-  \kappa = \frac{C_{ox}}{C_{ox}+C_{dep}}
-\end{equation}
-
-Lo anterior es incorrecto porque obliga al lector a estar buscando ecuaciones,
-que pueden mostrarse directamente.  La única referenciación permitida es hacia
-atrás.
-
-La forma correcta de redactar lo anterior es: \chk{BIEN}
-
-\textsl{La operación del transistor sin tomar en cuenta el efecto Early está
-  dada por}
-\begin{equation} \label{eq:ej3}
-  I_{DS}
-  =
-  I_{n0} \frac{W}{L}e^{\kappa \frac{V_{GB}}{v_t}}
-  \left[
-    e^{-\frac{V_{SB}}{v_t}}
-    -
-    e^{-\frac{V_{DB}}{v_t}}
-  \right]
-\end{equation}
-\textsl{donde el parámetro $\kappa$ es}
-\begin{equation} \label{eq:ej4}
-  \kappa = \frac{C_{ox}}{C_{ox}+C_{dep}}
-\end{equation}
-
-Así el flujo del texto guía al lector por las ecuaciones sin mayor esfuerzo.
-
-Es recomendable numerar \emph{todas} las ecuaciones, de modo que en la revisión
-del documento, o en futuras referencias a su documento de tesis todas las
-ecuaciones puedan ser citadas sin requerir describir textualmente a cuál
-ecuación se está haciendo referencia.
-
-\subsection{Figuras}
-
-Para el almacenamiento de imágenes existen dos tipos de formato: las imágenes
-raster y las imágenes vectoriales.\index{imagen!raster}
-
-\subsubsection{Imágenes raster}
-
-Las imágenes raster son representadas por una rejilla de píxeles, en donde cada
-píxel tiene un valor que representa al nivel de gris o el color. La
-discretización espacial es ineludible, y la única forma de obtener buena
-calidad es empleando tamaños grandes de la imagen que conduzcan a resoluciones
-de al menos 300 puntos por pulgada en la impresión, lo que conlleva a archivos
-de documentos de varios megabytes. Dentro de los formatos para almacenar
-imágenes raster existen algunos con pérdida (como el JPEG) que producen en
-imágenes sintéticas, como diagramas, estructuras ruidosas que dan una
-apariencia de baja calidad a las figuras. Otros formatos (como PNG, BMP, TIFF o
-GIF) no tiene pérdidas de información, pero los algoritmos de compresión no
-pueden reducir el tamaño de las imágenes con los mismos factores de reducción
-que los formatos con pérdidas. Este tipo de formatos debe utilizarse únicamente
-para fotografías o capturas de escenas reales con cámaras digitales.
-
-\subsubsection{Imágenes vectoriales}
-
-\index{imagen!vectorial}
-Las imágenes vectoriales \textbf{deben} ser empleadas en todo tipo de
-diagrama. En ellas no se almacenan píxeles, sino las estructuras geométricas
-que componen la figura como círculos (representado por posicion de su centro y
-su radio), rectángulos (representados por sus esquinas), líneas, texto, etc. La
-mayoría de programas para elaborar este tipo de diagramas, como Inkscape, XFig,
-OpenOffice.org Draw, MS Visio, Adobe Illustrator, etc. proveen varios formatos
-vectoriales que pueden ser insertados tanto en LaTeX como en OpenOffice.org
-Writer (o MS Word). Los formatos más empleados son los llamados metafiles, que
-incluyen al WMF, EMF. En LaTeX se utiliza por lo general EPS. Recientemente se
-ha incrementado el soporte al formato SVG.
-
-No debe cometerse el error de generar una imagen vectorial a partir de una
-imagen raster, pues una vez realizada la discretización espacial no es posible
-reconstruir los elementos geométricos que componen la imagen. Por ello, no
-tiene ningún sentido generar un archivo EPS o WMF a partir de una imagen ya
-almacenada en BMP, JPG, o PNG, pues lo único que ocurrirá es que se inserta la
-figura raster tal cual en la imagen vectorial, sin implicar ninguna ganancia en
-la calidad.
-
-Esta plantilla de LaTeX administra la generación de ciertas figuras por usted.
-Puede colocar en el directorio \texttt{fig/} archivos EPS, JPG, PNG o GP (de
-GNUPlot) y el Makefile se encarga de hacer todas las conversiones necesarias.
-En las siguientes subsecciones se describen dos casos adicionales que resultan
-útiles para realizar figuras más complejas.
-
-\subsubsection{Figuras ltxfig/psfrag}
-
-\index{psfrag}
-Cuando en el subdirectorio \texttt{fig/} se encuentran dos archivos con el
-mismo nombre pero extensiones \texttt{ltxfig} y \texttt{psfrag}, por ejemplo
-\texttt{prueba.ltxfig} y \texttt{prueba.psfrag}, entonces el Makefile asume que
-usted desea crear una figura a partir del archivo \texttt{prueba.ltxfig},
-creado con el programa \texttt{XFig}, sustituyendo los textos ahí presentes con
-texto formateado con LaTeX.
-
-La figur ha sido creada con este esquema.  Revise los
-archivos correspondientes en el directorio de figuras
-\texttt{fig/ltxfig\_prototipo.*} para más detalles sobre su uso.
-
-%%\begin{figure}[htb]
-%%  \centering
-%%  \includegraphics[width=0.9\textwidth]{ltxfig_prototipo}
-%%  \caption{Ejemplo de imagen ltxfig/psfrag}
-%%  \label{fig:ltxfig}
-%%\end{figure}
-
-\subsubsection{Figuras pstricks}  
-
-\index{pstricks}
-Los archivos con extensión \texttt{.pstricks} en el directorio \texttt{fig} se
-utilizan para generar cualquier tipo de imágenes según el código que se
-contenga.  Es un concepto más general que el anterior.  La
-figura ha sido creada con este esquema.  Puede revisar los
-archivos \texttt{prototipo\_gnuplot*} como un ejemplo de su uso, en donde de un
-archivo gnuplot (\texttt{\_.gp}) se genera un archivo \texttt{\_.eps}, el cual
-es incluido en el archivo \texttt{.pstricks} sustituyendo cadenas de texto por
-código LaTeX.
-
-%%\begin{figure}[htb]
-%%  \centering
-%%  \includegraphics{prototipo_gnuplot}
-%%  \caption{Ejemplo de imagen gnuplot/pstricks}
-%%  \label{fig:pstricks}
-%%\end{figure}
-
-\subsubsection{Entradas en el índice de figuras}
-
-El índice de figuras debe servir para encontrar rápidamente dónde se encuentra
-cierta figura.  El pie de la figura, indicado en \LaTeX con \texttt{caption}
-puede ser extenso, en especial para indicar detalles de las figura, y es la
-entrada por defecto que aparecerá en el índice de figuras, la cual no debe
-superar la extensión de una línea y debe únicamente dar la idea del contenido
-de la figura para poder ser encontrada.  Para lograr esto en \LaTeX se utiliza
-\begin{verbatim}
-  \caption[Texto en el índice]{Texto al pie de la figura}
-\end{verbatim}
-
-\subsection{Referencias bibliográficas}
-
-\index{referencias}\index{BibTeX}
-Todo concepto o idea tomado de otros autores contar con la respectiva
-referencia. En redacción técnica de ingeniería rara vez se utiliza la cita
-textual, así que es necesario reformular las ideas y conceptos con palabras
-propias. En ingeniería electrónica se utilizan los formatos de referencia de la
-IEEE o la ACM, que son numéricos, encerrados entre paréntesis cuadrados (por
-ejemplo, ``En \cite{Davis1963} se propuso un nuevo algoritmo'', o ``En
-\cite{ProakisManolakis1998} los autores proponen tomar las ventajas de los
-algorimos presentados en \cite{Oppenheim1998,Roberts2005,Haykin2001} por medio
-del método de Newton \cite{Burrus1998} conocido en el área de optimización
-lineal.''). La referencia es parte de las frases, así que si la frase termina
-con la referencia para indicar la idea, ésta debe estar antes del punto final o
-demás signos de puntuación: ``La capacidad de memoria también sigue una Ley
-similar a la de Moore \cite{Octave}. Los siguientes son los aspectos a tomar en
-cuenta en el diseño del sistema \cite{Lindner2002}:''
-
-Se recomienda utilizar BibTeX para administrar las referencias bibliográficas.
-
-\subsection{Extensión}
-
-\index{extensión}
-Una tesis de licenciatura no debe sobrepasar las 120 páginas incluyendo
-apéndices y los formalismos desde portada hasta índices.
-
-El cuerpo de la tesis (desde introducción hasta conclusiones) usualmente se
-extiende desde 45 páginas hasta no más de 80, dependiendo de la problemática
-tratada.
-
-No es necesario reproducir contenidos de otras fuentes: agregue las referencias
-a dichas fuentes, y limítese a enunciar lo estrictamente necesario para
-comprender sus propuestas de solución.
-
-\section{Sobre esta plantilla \LaTeX}
-
-Esta plantilla \LaTeX pretende simplificar varios pasos en la creación del
-documento de tesis.
-
-\subsection{Marcar asuntos pendientes}
-
-La plantilla tiene dos ``\emph{modos}'' de operación: normal y borrador
-(\emph{draft}).  En el archivo \texttt{main.tex} a partir de la línea 41 usted
-encuentra el código
-
-\begin{verbatim}
+%Apendices posiblemente
 %
-% DRAFT MODE
-%
-\newboolean{draftmode}                  % boolean used to control draft-mode
-% Ensure that only one of the next two lines is active:
-\setboolean{draftmode}{true}            % turn draft mode on
-%\setboolean{draftmode}{false}           % turn draft mode off
-\end{verbatim}
 
-Con el modo borrador, se activan ciertos comandos y funcionalidades útiles en
-el proceso de elaboración de la tesis, pero que deben ser desactivados al
-final, antes de entregar la tesis.  Por ejemplo, se activa el pie de página que
-dice ``\emph{Borrador: fecha}'', y se activa el índice titulado ``Revisar''.  En dicho índice aparecen las páginas en donde se hayan utilizado alguno de los siguientes comandos:
-\begin{compactitem}
-\item \verb+\boxcomment{comentario}+ Crea una caja en el margen de página con
-  el comentario indicado.
-\item \verb+\explain{comentario}+ Crea una caja en el margen de página con
-  el comentario indicado, con una flecha hacia la derecha para indicar qué en
-  concreto debe ser revisado.
-\item \verb+\chk{comentario}+ Crea una caja en el margen con símbolo de
-  ``chequeado'' y el comentario indicado.
-\item \verb+\TODO{comentario}+ Crea una caja grande de fondo sombreado con el
-  comentario indicado.
-\end{compactitem}
+%\begin{equation}
+%m= \left(-\frac{\cos\theta}{\sin\theta}\right)
+%\end{equation}
+%y
+%\begin{equation}
+%n= \left(\frac{\rho}{\sin\theta}\right)
+%\end{equation}
 
-En este párrafo se\chk{resultado de chk} utilizan algunos de estos comandos
-para ilustrar su efecto.  El \verb+\chk+ como puede observar tiene sentido
-usarlo para marcar que algo está casi listo.  Por otro lado \explain{explain}
-el comando \verb+\explain+ permite marcar algo que requiere ser revisado en
-redacción, valores, etc.  El \verb+\boxcomment+\boxcomment{La caja simple}
-solo pone una marca al margen.
+La ecuación de la recta en el espacio de Hough se puede escribir como:
 
-\TODO{Finalmente el comando \texttt{TODO} coloca esta caja gris.}
+\begin{equation}
+\rho = x\cos\theta + y\sin\theta
+\end{equation}
 
-Si usted desativa el modo draft, desaparecen todas las páginas, y desaparece el
-índice ``Revisar''.  En éste índice aparecen todas las páginas en donde se
-utilizaron estos comandos con los respectivos comentarios, lo que permite
-encontrar rápidamente detalles que usted indicó que debe revisar.
+y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como se muestra en la figura \ref{houghlineal},
+si dos curvas correspondientes en dos puntos se intersecan, existen una linea recta entres ellos en la imagen.
 
-\subsection{Índices}
 
-Como índice se conoce la lista de términos claves con su respectiva página, al
-final del documento.  La plantilla ofrece varios comandos para simplificar el
-uso estandar del comando de \LaTeX\ \verb+\index{termino}+ que coloca al término
-indicado en el índice.  Con \verb+\nt[indice]{termino}+ (\emph{new term}) usted
-indica la entrada principal del término, que aparece en el texto en el índice,
-es decir, en el índice aparece lo que indique en vez de ``indice'' y en el
-texto aparece lo que indique ``termino''; \verb+\ot{termino}+ agrega una
-entrada secundaria al término.
+  
+\explain{No se ha encontrado información buena}
+\subsection{Transformación circular}
+
+%http://www.egr.msu.edu/classes/ece480/capstone/fall10/group03/ece480_dt3_application_note_dembelef.pdf
+
+\section{Procesador Blackfin BF609}
+
+El procesador Blackfin BF609 es una generación de 16 a 32 bits manufacturados por Analog Devices Inc; diseñada
+específicamente para satisfacer las demandas computacionales y las limitaciones de potencia de audio embebido, vídeo y
+aplicaciones de comunicaciones sobre la base de MSA desarrollada conjuntamente entre Analog Devices y Intel
+Corporation\cite{GanKuo2007}. 
+
+La arquitectura del procesador Blackfin BF609 se basa en una tubería de 10 etapas RISC MCU/DSP con un conjunto de
+instrucciones 16-/32-bit mixtas diseñadas para la densidad de código óptimo. Esta arquitectura es compatible con el
+modelo SIMD\cite{Lawson1992} e incluye instrucciones para vídeo acelerado y procesamiento de imágenes.  
+
+\explain{insertar estas figuras}
+Como se muestra en la Figura..., el procesador integra dos núcleos. Cada núcleo, se muestra en la Figura 2, contiene dos
+multiplicadores 16 bits, dos acumuladores de 40 bits, dos ALUs  de 40 bits, cuatro ALUs para vídeo, y una unidad de
+desplazamiento de 40 bits. El proceso en las unidades de cálculo se realiza en datos de 8, 16 o 32 bits aportados por el
+arreglo de registro del procesador.
+
+El archivo de registro contiene ocho registros de 32 bits, que también puede utilizarse como 16 registros independientes
+de bits. Todos los operandos para las operaciones de calculo provienen del archivo de registro multipuerto y campos
+constantes instrucciones. Las unidades MAC pueden realizar una de 16 bits al de 16 bits se multiplican en cada ciclo, la
+acumulación de los resultados en los acumuladores de 40 bits. La unidad de desplazamiento de 40 bits puede realizar
+desplazamientos, rotaciones y se utiliza para apoyar la normalización, extracciones de campos e instrucciones de campo de
+depósito. Las ALUs realizan el conjunto tradicional de operaciones aritméticas y lógicas en los datos de 16 bits o 32
+bits. Además, ejecuta instrucciones especiales para acelerar diversas tareas de procesamiento de señales. Estas
+instrucciones especiales incluyen operaciones de bits como el extracto de campo y el recuento de la población,
+multiplicación de módulos, divisiones primitivas, la saturación y el redondeo, y la 
+detección de la señal/exponente.
+
+\subsection{Estructura}
+
+El procesador utiliza un DMA para transferir datos dentro de los espacios de memoria o entre un espacio de memoria y
+algún periférico. El procesador puede especificar las operaciones de transferencia de datos y volver al proceso normal
+mientras el controlador DMA integrado plenamente realiza las transferencias de datos independientes de la actividad del
+procesador. 
+
+Se utilizan dos módulos de protección CRC \cite{Waqar2010} para la detección de errores en código y/o datos en la
+memoria, el en contenido de los registros mapeados por la memoria, o objetos de los mensajes de comunicación. También
+proporciona un sistema de control de eventos que soporta tanto la anidación y priorización. 
+
+
+La distribución de la memoria se realiza en único espacio de direcciones de 4 GBytes  unificado, usando de direcciones de
+32 bits. Todos los recursos del nucleos del procesador, incluida la memoria interna, memoria externa, y registros de
+control de E/S, ocupan secciones separadas de este espacio de direcciones común. 
+
+El procesador posee un subsistema de video conformado por un procesador de video, interfaz periférica paralela[] y un
+compositor de píxeles. En el procesador de video (PVP) se desarrollan algoritmos de procesamiento de señal e imágenes que
+se requieren para el preprocesamiento y coprocesamiento de video, se incluyen bloques para realizar convoluciones, 
+conversión de coordenadas rectangular a polares, clasificación de pixeles por diferenciación, operaciones aritméticas,
+segmentación por color\cite{sevilla} y escalamiento. La interfaz periférica paralela facilita la conexión directa a los
+paneles LCD, a los convertidores analógico a digital y digital a analógico, codificadores y decodificadores de vídeo,
+módulos de sensor de imagen y otros periféricos de uso general. Finalmente el compositor de píxeles (PIXC) proporciona
+superposiciones de imágenes con soporte transparente de color, mezcla alfa [alpha blending], y capacidades de conversión
+de espacio de color para la salida de las pantallas LCD y codificadores 
+de vídeo NTSC/PAL.
+
+
+
