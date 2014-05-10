@@ -17,7 +17,11 @@
 \contentsline {subsection}{\numberline {2.3.1}Transformaci\IeC {\'o}n lineal}{8}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Transformaci\IeC {\'o}n circular}{9}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}Procesador Blackfin BF609}{9}{section.2.4}
+<<<<<<< HEAD
 \contentsline {subsection}{\numberline {2.4.1}Estructura}{10}{subsection.2.4.1}
+=======
+\contentsline {subsection}{\numberline {2.4.1}Estructura}{11}{subsection.2.4.1}
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 \contentsline {chapter}{\numberline {3}Soluci\IeC {\'o}n propuesta}{13}{chapter.3}
 \contentsline {chapter}{\numberline {4}Resultados y an\IeC {\'a}lisis}{15}{chapter.4}
 \contentsline {chapter}{\numberline {5}Conclusiones}{17}{chapter.5}

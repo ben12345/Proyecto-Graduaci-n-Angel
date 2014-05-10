@@ -1,7 +1,11 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+<<<<<<< HEAD
 \contentsline {figure}{\numberline {2.1}{\ignorespaces M\IeC {\'u}ltiples im\IeC {\'a}genes\relax }}{9}{figure.caption.11}
+=======
+\contentsline {figure}{\numberline {2.1}{\ignorespaces mmmm\relax }}{10}{figure.caption.11}
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

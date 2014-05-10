@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.5.9)  9 MAY 2014 23:25
+=======
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.6.5)  9 MAY 2014 10:54
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 entering extended mode
  %&-line parsing enabled.
 **main
@@ -822,25 +826,16 @@ LaTeX Info: Redefining \pageref on input line 71.
 \AtBeginShipoutBox=\box70
 \openout2 = `titlepage.aux'.
 
+<<<<<<< HEAD
 (./titlepage.tex
-
-! LaTeX Error: File `TEC' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \includegraphics[width=20mm]{TEC}
-                                      
-I could not locate the file with any of these extensions:
-.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[1
+=======
+(./titlepage.tex <./fig/TEC.pdf, id=107, 154.5775pt x 211.79124pt>
+File: ./fig/TEC.pdf Graphic file (type pdf)
+<use ./fig/TEC.pdf> [1
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fig/TEC.pdf>] [2
 
 ])
 \openout2 = `disclaimer.aux'.
@@ -964,8 +959,16 @@ l.100   \listoffigures
 \openout2 = `glosario.aux'.
 
 (./glosario.tex [8
+<<<<<<< HEAD
+=======
+
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 
 
+
+] (./main.nls)) [9
+
+] [10
 
 
 ] (./main.nls)) [9
@@ -991,9 +994,12 @@ Overfull \hbox (0.70549pt too wide) in paragraph at lines 11--11
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
 ine 11.
 
+<<<<<<< HEAD
 LaTeX Warning: Citation `Shilov1973' on page 1 undefined on input line 12.
 
 
+=======
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 LaTeX Warning: Citation `finboard' on page 1 undefined on input line 21.
 
 
@@ -1035,7 +1041,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--42
  []
 
 [5]
+<<<<<<< HEAD
 Overfull \hbox (0.70549pt too wide) in paragraph at lines 97--97
+=======
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 93--93
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 [][] 
  []
 
@@ -1050,7 +1060,11 @@ LaTeX Font Info:    Try loading font information for OMS+cmr on input line 107.
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+<<<<<<< HEAD
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
+=======
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 [6]
 ! Missing $ inserted.
 <inserted text> 
@@ -1068,6 +1082,7 @@ l.119
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
+<<<<<<< HEAD
 [7] [8]
 ! Undefined control sequence.
 l.221   \subfloat
@@ -1077,6 +1092,14 @@ of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
+=======
+[7] [8] <./fig/file.pdf, id=340, 794.97pt x 507.8975pt>
+File: ./fig/file.pdf Graphic file (type pdf)
+<use ./fig/file.pdf>
+Overfull \hbox (340.00848pt too wide) in paragraph at lines 219--220
+[][] 
+ []
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 
 <./fig/houghlineal.pdf, id=334, 175.65625pt x 153.57375pt>
 File: ./fig/houghlineal.pdf Graphic file (type pdf)
@@ -1103,10 +1126,14 @@ Overfull \hbox (0.70549pt too wide) in paragraph at lines 253--253
  []
 
 
+<<<<<<< HEAD
 LaTeX Warning: Citation `GanKuo2007' on page 9 undefined on input line 263.
 
 
 Overfull \hbox (0.70549pt too wide) in paragraph at lines 269--269
+=======
+Overfull \hbox (0.70549pt too wide) in paragraph at lines 235--235
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 [][] 
  []
 
@@ -1115,7 +1142,11 @@ Overfull \hbox (0.70549pt too wide) in paragraph at lines 269--269
 [][] 
  []
 
+<<<<<<< HEAD
 [9 <./fig/houghlineal.pdf> <./fig/houghlinespace.pdf>] [10]) [11]
+=======
+[9] [10 <./fig/file.pdf>]) [11]
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 \openout2 = `solucion.aux'.
 
 (./solucion.tex [12
@@ -1145,6 +1176,7 @@ Cap\'{\i }tulo 5.
 ) [17] (./main.bbl (./main.brf)
 \tf@brf=\write10
 \openout10 = `main.brf'.
+<<<<<<< HEAD
 
 [18
 
@@ -1165,13 +1197,35 @@ s-sor Ho-ja de da-
 \openout2 = `apendice.aux'.
 
 (./apendice.tex [20
+=======
+
+[18
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 
 
 ]
+Underfull \hbox (badness 1629) in paragraph at lines 57--57
+[]\OT1/cmr/m/n/12 Analog De-vi-ces Inc.  Black-fin dual co-re em-bed-ded pro-ce
+s-sor Ho-ja de da-
+ []
+
+[19]) [20]
+\openout2 = `apendice.aux'.
+
+(./apendice.tex
 Ap\'{e}ndice A.
+<<<<<<< HEAD
 ) [21] [22
 
 
+=======
+) [21
+
+
+] [22
+
+
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 ] (./main.ind [23
 
 
@@ -1189,6 +1243,7 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  8990 strings out of 494999
  125224 string characters out of 1180817
  219540 words of memory out of 3000000
@@ -1196,6 +1251,15 @@ Here is how much of TeX's memory you used:
  17478 words of font info for 67 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
  40i,12n,43p,959b,397s stack positions out of 5000i,500n,10000p,200000b,50000s
+=======
+ 8975 strings out of 494999
+ 125073 string characters out of 1180817
+ 219386 words of memory out of 3000000
+ 11699 multiletter control sequences out of 15000+50000
+ 17478 words of font info for 67 fonts, out of 3000000 for 9000
+ 54 hyphenation exceptions out of 8191
+ 40i,12n,43p,1087b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts
@@ -1211,9 +1275,16 @@ sy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive
 /fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+<<<<<<< HEAD
 Output written on main.pdf (49 pages, 314268 bytes).
 PDF statistics:
  524 PDF objects out of 1000 (max. 8388607)
  108 named destinations out of 1000 (max. 500000)
+=======
+Output written on main.pdf (49 pages, 296966 bytes).
+PDF statistics:
+ 526 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 500000)
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
  219 words of extra memory for PDF output out of 10000 (max. 10000000)
 

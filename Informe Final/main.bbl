@@ -1,5 +1,6 @@
 \begin{thebibliography}{10}
 
+<<<<<<< HEAD
 \bibitem{opencv2014}
 Open source computer vision, 2014.
 \newblock URL \url{http://opencv.org} [visitado el \today].
@@ -7,6 +8,10 @@ Open source computer vision, 2014.
 \bibitem{alliance2014}
 Why does embedded vision need an alliance?, 2014.
 \newblock URL \url{http://www.embedded-vision.com} [visitado el \today].
+=======
+\bibitem{ice100}
+ [online].
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 
 \bibitem{sevilla}
 P.~Alvarado.
@@ -26,8 +31,31 @@ D.~H. Ballard.
 
 \bibitem{market2014}
 bccResearch.
+<<<<<<< HEAD
 \newblock Embedded systems: Technologies and markets, 2014.
 \newblock URL \url{http://www.bccresearch.com} [visitado el \today].
+=======
+\newblock Embedded systems: Technologies and markets [online].
+\newblock 2014 [visitado el \today].
+\newblock URL \url{http://www.bccresearch.com}.
+
+\bibitem{opencv2014}
+John~W. Eaton.
+\newblock Open source computer vision [online].
+\newblock 2014 [visitado el \today].
+\newblock URL \url{http://opencv.org}.
+
+\bibitem{alliance2014}
+John~W. Eaton.
+\newblock Why does embedded vision need an alliance? [online].
+\newblock 2014 [visitado el \today].
+\newblock URL \url{http://www.embedded-vision.com}.
+
+\bibitem{GanKuo2007}
+W.~S. Gan and S.~M. Kuo.
+\newblock {\em Embedded Signal Processing with the Micro Signal Architecture}.
+\newblock John Wiley and sons Inc., 2007.
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 
 \bibitem{Illingworth1988}
 J.~Illingworth and J.~Kittler.
@@ -35,11 +63,14 @@ J.~Illingworth and J.~Kittler.
 \newblock {\em Comput. Vision Graph. Image Process.}, 1988.
 \newblock URL \url{http://dx.doi.org/10.1016/S0734-189X(88)80033-1}.
 
+<<<<<<< HEAD
 \bibitem{ice100}
 Analog~Devices Inc.
 \newblock Analog devices blackfin emulator, 2014.
 \newblock URL \url{http://www.analog.com} [visitado el \today].
 
+=======
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 \bibitem{blackfin2014}
 Analog~Devices Inc.
 \newblock Blackfin dual core embedded processor {H}oja de datos, 2014.
@@ -57,6 +88,14 @@ H.~Lawson, B.~Svensson, and L.~Wanhammar.
 \newblock {\em Parallel Processing in Industrial Real Time Applications}.
 \newblock Prentice Hall, 1992.
 
+<<<<<<< HEAD
+=======
+\bibitem{Shilov1973}
+G.~E. Shilov.
+\newblock {\em Elementary Real and Complex Analysis}.
+\newblock Dover Publications, Inc., 1973.
+
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 \bibitem{Waqar2010}
 M.~Waqar, T.~Thanh Hoang, and P~Edefors.
 \newblock Cyclic redundancy checking (crc) accelerator for the flexcore

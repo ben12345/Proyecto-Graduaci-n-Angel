@@ -17,6 +17,7 @@ A level-1 auxiliary file: conclusiones.aux
 The style file: sty/plainurl.bst
 A level-1 auxiliary file: apendice.aux
 Database file #1: literatura.bib
+<<<<<<< HEAD
 Warning--entry type for "market2014" isn't style-file defined
 --line 46 of file literatura.bib
 Warning--entry type for "ice100" isn't style-file defined
@@ -74,3 +75,63 @@ while$ -- 21
 width$ -- 13
 write$ -- 116
 (There were 11 warnings)
+=======
+I was expecting a `,' or a `}'---line 81 of file literatura.bib
+ :   
+ :   address = {Hoboken, NJ, USA},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 171 of file literatura.bib
+ :    
+ :    url =       {http://www.analog.com},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "finboard"
+Warning--to sort, need author or key in ice100
+Warning--empty title in ice100
+Warning--empty url in ice100
+Warning--empty booktitle in Ballard1987
+Warning--empty journal in Waqar2010
+You've used 13 entries,
+            2363 wiz_defined-function locations,
+            641 strings with 6711 characters,
+and the built_in function-call counts, 3709 in all, are:
+= -- 463
+> -- 119
+< -- 3
++ -- 50
+- -- 36
+* -- 182
+:= -- 656
+add.period$ -- 44
+call.type$ -- 13
+change.case$ -- 52
+chr.to.int$ -- 0
+cite$ -- 18
+duplicate$ -- 148
+empty$ -- 294
+format.name$ -- 36
+if$ -- 839
+int.to.chr$ -- 0
+int.to.str$ -- 13
+missing$ -- 11
+newline$ -- 72
+num.names$ -- 24
+pop$ -- 78
+preamble$ -- 1
+purify$ -- 44
+quote$ -- 0
+skip$ -- 166
+stack$ -- 0
+substring$ -- 98
+swap$ -- 18
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 44
+warning$ -- 5
+while$ -- 27
+width$ -- 15
+write$ -- 137
+(There were 2 error messages)
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b

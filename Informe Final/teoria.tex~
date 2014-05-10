@@ -248,6 +248,13 @@ La ecuación de la recta en el espacio de Hough se puede escribir como:
 y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como se muestra en la figura \ref{houghlineal},
 si dos curvas correspondientes en dos puntos se intersecan, existen una linea recta entres ellos en la imagen.
 
+<<<<<<< HEAD
+=======
+\begin{figure}[hbtp]
+\includegraphics[scale=1]{file}
+\caption{mmmm}
+\end{figure}
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 
   
 \explain{No se ha encontrado información buena}
@@ -267,6 +274,7 @@ instrucciones 16-/32-bit mixtas diseñadas para la densidad de código óptimo. 
 modelo SIMD\cite{Lawson1992} e incluye instrucciones para vídeo acelerado y procesamiento de imágenes.  
 
 \explain{insertar estas figuras}
+<<<<<<< HEAD
 Como se muestra en la Figura..., el procesador integra dos núcleos. Cada núcleo, se muestra en la Figura 2, contiene dos
 multiplicadores 16 bits, dos acumuladores de 40 bits, dos ALUs  de 40 bits, cuatro ALUs para vídeo, y una unidad de
 desplazamiento de 40 bits. El proceso en las unidades de cálculo se realiza en datos de 8, 16 o 32 bits aportados por el
@@ -281,10 +289,16 @@ depósito. Las ALUs realizan el conjunto tradicional de operaciones aritméticas
 bits. Además, ejecuta instrucciones especiales para acelerar diversas tareas de procesamiento de señales. Estas
 instrucciones especiales incluyen operaciones de bits como el extracto de campo y el recuento de la población,
 multiplicación de módulos, divisiones primitivas, la saturación y el redondeo, y la 
+=======
+Como se muestra en la Figura..., el procesador integra dos núcleos. Cada núcleo, se muestra en la Figura 2, contiene dos multiplicadores 16 bits, dos acumuladores de 40 bits, dos ALUs  de 40 bits, cuatro ALUs para vídeo, y una unidad de desplazamiento de 40 bits. El proceso en las unidades de cálculo se realiza en datos de 8, 16 o 32 bits aportados por el arreglo de registro del procesador.
+
+El archivo de registro contiene ocho registros de 32 bits, que también puede utilizarse como 16 registros independientes de bits. Todos los operandos para las operaciones de calculo provienen del archivo de registro multipuerto y campos constantes instrucciones. Las unidades MAC pueden realizar una de 16 bits al de 16 bits se multiplican en cada ciclo, la acumulación de los resultados en los acumuladores de 40 bits. La unidad de desplazamiento de 40 bits puede realizar desplazamientos, rotaciones y se utiliza para apoyar la normalización, extracciones de campos e instrucciones de campo de depósito. Las ALUs realizan el conjunto tradicional de operaciones aritméticas y lógicas en los datos de 16 bits o 32 bits. Además, ejecuta instrucciones especiales para acelerar diversas tareas de procesamiento de señales. Estas instrucciones especiales incluyen operaciones de bits como el extracto de campo y el recuento de la población, multiplicación de módulos, divisiones primitivas, la saturación y el redondeo, y la 
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 detección de la señal/exponente.
 
 \subsection{Estructura}
 
+<<<<<<< HEAD
 El procesador utiliza un DMA para transferir datos dentro de los espacios de memoria o entre un espacio de memoria y
 algún periférico. El procesador puede especificar las operaciones de transferencia de datos y volver al proceso normal
 mientras el controlador DMA integrado plenamente realiza las transferencias de datos independientes de la actividad del
@@ -309,6 +323,23 @@ módulos de sensor de imagen y otros periféricos de uso general. Finalmente el 
 superposiciones de imágenes con soporte transparente de color, mezcla alfa [alpha blending], y capacidades de conversión
 de espacio de color para la salida de las pantallas LCD y codificadores 
 de vídeo NTSC/PAL.
+=======
+El procesador utiliza un DMA para transferir datos dentro de los espacios de memoria o entre un espacio de memoria y algún periférico. El procesador puede especificar las operaciones de transferencia de datos y volver al proceso normal mientras el controlador DMA integrado plenamente realiza las transferencias de datos independientes de la actividad del procesador. 
+
+Se utilizan dos módulos de protección CRC \cite{Waqar2010} para la detección de errores en código y/o datos en la memoria, el en contenido de los registros mapeados por la memoria, o objetos de los mensajes de comunicación. También proporciona un sistema de control de eventos que soporta tanto la anidación y priorización. 
+
+%%La anidación permite múltiples rutinas de servicio de eventos para estar activos al mismo tiempo. La priorización asegura que el mantenimiento de un evento de mayor prioridad tiene prioridad sobre el mantenimiento de un evento de menor prioridad. 
+
+La distribución de la memoria se realiza en único espacio de direcciones de 4 GBytes  unificado, usando de direcciones de 32 bits. Todos los recursos del nucleos del procesador, incluida la memoria interna, memoria externa, y registros de control de E/S, ocupan secciones separadas de este espacio de direcciones común. 
+
+El procesador posee un subsistema de video conformado por un procesador de video, interfaz periférica paralela[] y un compositor de píxeles. En el procesador de video (PVP) se desarrollan algoritmos de procesamiento de señal e imágenes que se requieren para el preprocesamiento y coprocesamiento de video, se incluyen bloques para realizar convoluciones, conversión de coordenadas rectangular a polares, clasificación de pixeles por diferenciación, operaciones aritméticas, segmentación por color\cite{sevilla} y escalamiento. La interfaz periférica paralela facilita la conexión directa a los paneles LCD, a los convertidores analógico a digital y digital a analógico, codificadores y decodificadores de vídeo, módulos de sensor de imagen y otros periféricos de uso general. Finalmente el compositor de píxeles (PIXC) proporciona superposiciones de imágenes con soporte transparente de color, mezcla alfa [alpha blending], y capacidades de conversión de espacio de color para la salida de las pantallas LCD y codificadores 
+de vídeo NTSC/PAL.
+
+
+%Las porciones de la memoria de este espacio de direcciones se organizan en una estructura jerárquica para proporcionar una buena relación costo-rendimiento de la parte de la memoria de núcleo puede acceder muy rápido, de baja latencia como caché o SRAM, y más grande, de menor costo y rendimiento de la memoria de la interfaz accesible sistemas.
+
+
+>>>>>>> ea59c9052003919349761c6eb0cece961069030b
 
 
 
