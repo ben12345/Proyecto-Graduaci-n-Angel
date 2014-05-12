@@ -1,8 +1,4 @@
-\contentsline {todo}{No se deben agregar las citas}{1}{chapter.1}
+\contentsline {todo}{``RECORDARE'' editar la acta }{g}{section*.1}
 \contentsline {todo}{Se puede agregar imagenes del proceso del algoritmo}{6}{equation.2.6}
-<<<<<<< HEAD
-\contentsline {todo}{No se ha encontrado informaci\IeC {\'o}n buena}{9}{equation.2.14}
-=======
-\contentsline {todo}{No se ha encontrado informaci\IeC {\'o}n buena}{9}{figure.caption.11}
->>>>>>> ea59c9052003919349761c6eb0cece961069030b
-\contentsline {todo}{insertar estas figuras}{9}{section.2.4}
+\contentsline {todo}{cambiar esta imagen por un gnuplot}{9}{equation.2.14}
+\contentsline {todo}{insertar estas figuras}{11}{section.2.4}

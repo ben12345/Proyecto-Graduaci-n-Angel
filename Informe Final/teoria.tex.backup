@@ -204,7 +204,7 @@ un punto de referencia de la forma. El punto de referencia puede ser pensado com
 
 \subsection{Transformación lineal}
 
-Una recta en el espacio de imagen cartesiano, como la que se observa en la figura \ref{houghlineal}, se define como:
+Una recta en el espacio de imagen, como la que se observa en la figura ~\ref{fig:houghlineal} se define como:
 
 \begin{equation}
 y=mx+n
@@ -212,21 +212,20 @@ y=mx+n
 
 donde $m$ y $n$ son pendiente y la intersección con el eje $y$ respectivamente. 
 
+\begin{figure}[h]{}
+ \centering
+ \includegraphics[width=70mm]{./fig/houghlineal}
+ \caption{Definición de la recta}
+ \label{fig:houghlineal}
+\end{figure}
+
+
+
 La idea fundamental de la transformación de Hough es obtener características en términos de $m$, $n$ y no considerar las
 coordenadas $(x,y)$, para esto la ecuación de la recta se debe mapear al espacio de Hough mediante la parametrización en
-términos del ángulo $\theta$ y la distancia al origen $\rho$.%
+términos del ángulo $\theta$ y la distancia al origen $\rho$.
 
-\begin{figure}{}
- \centering
-  \subfloat{
-   \label{a:lineal}
-    \includegraphics[width=50mm,height=44mm]{./fig/houghlineal}}
-  \subfloat{
-   \label{b:sinusoidal}
-    \includegraphics[width=90mm,height=50mm]{./fig/houghlinespace}}
- \caption{Múltiples imágenes}
- \label{houghlineal}
-\end{figure}
+
 
 %Apendices posiblemente
 %
@@ -245,15 +244,48 @@ La ecuación de la recta en el espacio de Hough se puede escribir como:
 \rho = x\cos\theta + y\sin\theta
 \end{equation}
 
-y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como se muestra en la figura [],
-si dos curvas correspondientes en dos puntos se intersecan, existen una linea recta entres ellos en la imagen.
+y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como
+se muestra en la figura ~\ref{fig:houghlinespace} si dos curvas correspondientes en dos puntos se intersecan,
+existen una linea recta entres ellos en la imagen.
+\explain{cambiar esta imagen por un gnuplot}
+\begin{figure}[h]{}
+ \centering
+ \includegraphics[width=100mm]{./fig/houghlinespace}
+ \caption{aaaaa}
+ \label{fig:houghlinespace}
+\end{figure}
 
 
-  
-\explain{No se ha encontrado información buena}
+
 \subsection{Transformación circular}
 
+En la transformación circular se determinan parámetros de un círculo a partir de ciertos números 
+de puntos importantes en su perímetro. Un circulo de radio $R$ y de centro $(x_{0},y_{0})$ se describe por la ecuación 
 
+\begin{equation}
+(x-x_{0})^{2}+(y-y_{0})^{2}=R^{2}  
+\end{equation}
+
+Por lo tanto, el espacio de Hough para circulos es tridimensional, sin embargo si se define un valor $R$ para todo círculo, entonces el
+espacio de Hough se reduce a un plano bidimensional donde un punto $(x_{0},y_{0})$ es parte del perímetro de un círculo de centrado en $(x,y)$ 
+y además es compartido por otros dos circulos como en la figura ~\ref{fig:houghcircular}, entonces este punto es el centro de un circulo existen
+en la imagen.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=70mm]{./fig/houghcircular}
+  \caption{ahhhh}
+ \label{fig:houghcircular}
+\end{figure}
+
+
+Si el valor de $R$ es desconocido, entonces se realiza una proyección cada píxel en el espacio de Hough que forma un cono, pues si se establece un 
+punto fijo en la ecuación del circulo se satisface un conjunto infinito de círculos concéntricos. El radio de los circulos centrado en los puntos
+en el perímetro del círculo aumenta a medida que la proyección de pixel crece, como se observa en la figura .... .  
+
+
+
+%http://www.egr.msu.edu/classes/ece480/capstone/fall10/group03/ece480_dt3_application_note_dembelef.pdf
 
 \section{Procesador Blackfin BF609}
 

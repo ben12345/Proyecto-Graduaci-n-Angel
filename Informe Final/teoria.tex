@@ -99,12 +99,12 @@ I=\frac{1}{3}(R+G+B)
 
 El algoritmo de Canny es una técnica de detección de bordes basada en la utilización la primera derivada, que toma
 valores de cero en regiones donde el cambio de intensidad no varía y tiene valor constante ante cualquier transformación
-de intensidad, por lo tanto los cambios abruptos en la intensidad son evidenciados por la primera derivada[].
+de intensidad, por lo tanto los cambios abruptos en la intensidad son evidenciados por la primera derivada.
 
 El algoritmo de Canny consiste en tres grandes pasos: 
 
 \begin{itemize}
-\item Obtención del gradiente: se calcula la magnitud y orientación del vector gradiente en cada píxel[]. 
+\item Obtención del gradiente: se calcula la magnitud y orientación del vector gradiente en cada píxel. 
 \item Supresión no máxima: se adelgazamiento del ancho de los bordes,obtenidos con el gradiente, hasta lograr bordes de
 un píxel de ancho. 
 \item Histéresis de umbral: se aplica una función de histéresis basada en dos umbrales; con este proceso se pretende
@@ -127,7 +127,7 @@ M =\begin{bmatrix}
 \end{bmatrix}
 \end{equation}
 
-Para la obtención del gradiente de intensidad se utiliza el operador de Sobel[], con este operador es posible encontrar
+Para la obtención del gradiente de intensidad se utiliza el operador de Sobel, con este operador es posible encontrar
 la magnitud del mayor cambio posible de intensidad y la dirección de este en cada pixel, al aplicar este operador se
 obtiene que tan bruscos o suave cambia la imagen en el punto analizado y consecuentemente que tan probable es encontrar
 un borde en la imagen y la orientación a la que tiende este.
@@ -204,7 +204,7 @@ un punto de referencia de la forma. El punto de referencia puede ser pensado com
 
 \subsection{Transformación lineal}
 
-Una recta en el espacio de imagen cartesiano, como la que se observa en la figura \ref{houghlineal}, se define como:
+Una recta en el espacio de imagen, como la que se observa en la figura ~\ref{fig:houghlineal} se define como:
 
 \begin{equation}
 y=mx+n
@@ -212,21 +212,20 @@ y=mx+n
 
 donde $m$ y $n$ son pendiente y la intersección con el eje $y$ respectivamente. 
 
+\begin{figure}[h]{}
+ \centering
+ \includegraphics[width=70mm]{./fig/houghlineal}
+ \caption{Definición de la recta}
+ \label{fig:houghlineal}
+\end{figure}
+
+
+
 La idea fundamental de la transformación de Hough es obtener características en términos de $m$, $n$ y no considerar las
 coordenadas $(x,y)$, para esto la ecuación de la recta se debe mapear al espacio de Hough mediante la parametrización en
-términos del ángulo $\theta$ y la distancia al origen $\rho$.%
+términos del ángulo $\theta$ y la distancia al origen $\rho$.
 
-\begin{figure}{}
- \centering
-  \subfloat{
-   \label{a:lineal}
-    \includegraphics[width=50mm,height=44mm]{./fig/houghlineal}}
-  \subfloat{
-   \label{b:sinusoidal}
-    \includegraphics[width=90mm,height=50mm]{./fig/houghlinespace}}
- \caption{Múltiples imágenes}
- \label{houghlineal}
-\end{figure}
+
 
 %Apendices posiblemente
 %
@@ -245,13 +244,48 @@ La ecuación de la recta en el espacio de Hough se puede escribir como:
 \rho = x\cos\theta + y\sin\theta
 \end{equation}
 
-y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como se muestra en la figura \ref{houghlineal},
-si dos curvas correspondientes en dos puntos se intersecan, existen una linea recta entres ellos en la imagen.
+y es representada mediante una curva sinusoidal para un punto $(x_{0},y_{0})$. Por esto, como
+se muestra en la figura ~\ref{fig:houghlinespace} si dos curvas correspondientes en dos puntos se intersecan,
+existen una linea recta entres ellos en la imagen.
+\explain{cambiar esta imagen por un gnuplot}
+\begin{figure}[h]{}
+ \centering
+ \includegraphics[width=100mm]{./fig/houghlinespace}
+ \caption{curvas senusoidales}
+ \label{fig:houghlinespace}
+\end{figure}
 
 
-  
-\explain{No se ha encontrado información buena}
+
 \subsection{Transformación circular}
+
+En la transformación circular se determinan parámetros de un círculo a partir de ciertos números 
+de puntos importantes en su perímetro. Un circulo de radio $R$ y de centro $(x_{0},y_{0})$ se describe por la ecuación 
+
+\begin{equation}
+(x-x_{0})^{2}+(y-y_{0})^{2}=R^{2}  
+\end{equation}
+
+Por lo tanto, el espacio de Hough para circulos es tridimensional, sin embargo si se define un valor $R$ para todo círculo, entonces el
+espacio de Hough se reduce a un plano bidimensional donde un punto $(x_{0},y_{0})$ es parte del perímetro de un círculo de centrado en $(x,y)$ 
+y además es compartido por otros dos circulos como en la figura ~\ref{fig:houghcircular}, entonces este punto es el centro de un circulo existen
+en la imagen.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=70mm]{./fig/houghcircular}
+  \caption{circulos}
+ \label{fig:houghcircular}
+\end{figure}
+
+
+Si el valor de $R$ es desconocido, entonces se realiza una proyección cada píxel en el espacio de Hough que forma un cono, pues si se establece un 
+punto fijo en la ecuación del circulo se satisface un conjunto infinito de círculos concéntricos. El radio de los circulos centrado en los puntos
+en el perímetro del círculo aumenta a medida que la proyección de pixel crece, como se observa en la figura .... .   Si un número de píxeles que 
+se encuentran en un círculo en el espacio de la imagen se proyecta en el espacio Hough, los conos resultantes se encuentran en puntos $(x,y,r)$. 
+El algoritmo de acumulación de votos como se desarrolla en \cite{Kimme1975}, producirá un máximo en $(x,y,r)$ que se puede utilizar para reconstruir el círculo.
+
+
 
 %http://www.egr.msu.edu/classes/ece480/capstone/fall10/group03/ece480_dt3_application_note_dembelef.pdf
 
@@ -260,13 +294,14 @@ si dos curvas correspondientes en dos puntos se intersecan, existen una linea re
 El procesador Blackfin BF609 es una generación de 16 a 32 bits manufacturados por Analog Devices Inc; diseñada
 específicamente para satisfacer las demandas computacionales y las limitaciones de potencia de audio embebido, vídeo y
 aplicaciones de comunicaciones sobre la base de MSA desarrollada conjuntamente entre Analog Devices y Intel
-Corporation\cite{GanKuo2007}. 
+Corporation. 
 
 La arquitectura del procesador Blackfin BF609 se basa en una tubería de 10 etapas RISC MCU/DSP con un conjunto de
 instrucciones 16-/32-bit mixtas diseñadas para la densidad de código óptimo. Esta arquitectura es compatible con el
 modelo SIMD\cite{Lawson1992} e incluye instrucciones para vídeo acelerado y procesamiento de imágenes.  
 
 \explain{insertar estas figuras}
+
 Como se muestra en la Figura..., el procesador integra dos núcleos. Cada núcleo, se muestra en la Figura 2, contiene dos
 multiplicadores 16 bits, dos acumuladores de 40 bits, dos ALUs  de 40 bits, cuatro ALUs para vídeo, y una unidad de
 desplazamiento de 40 bits. El proceso en las unidades de cálculo se realiza en datos de 8, 16 o 32 bits aportados por el
@@ -299,7 +334,7 @@ La distribución de la memoria se realiza en único espacio de direcciones de 4 
 32 bits. Todos los recursos del nucleos del procesador, incluida la memoria interna, memoria externa, y registros de
 control de E/S, ocupan secciones separadas de este espacio de direcciones común. 
 
-El procesador posee un subsistema de video conformado por un procesador de video, interfaz periférica paralela[] y un
+El procesador posee un subsistema de video conformado por un procesador de video, interfaz periférica paralela y un
 compositor de píxeles. En el procesador de video (PVP) se desarrollan algoritmos de procesamiento de señal e imágenes que
 se requieren para el preprocesamiento y coprocesamiento de video, se incluyen bloques para realizar convoluciones, 
 conversión de coordenadas rectangular a polares, clasificación de pixeles por diferenciación, operaciones aritméticas,

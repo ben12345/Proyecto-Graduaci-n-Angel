@@ -11,24 +11,22 @@
 
 @STRING{prl = {Pattern Recognition Letters}}
 
-@BOOKLET{Alvarado2005,
-  title = {Modelos de Sistemas. {N}otas de Clase},
-  author = {P. Alvarado},
-  year = {2005},
-  school = {Escuela de Ingeniería Electrónica, ITCR},
-  url = {http://www.ie.itcr.ac.cr/palvarado/Modelos/modelos.pdf}
-}
-
-@BOOKLET{sevilla,
-  title = {técnicas de percepción activa para seguimiento de objetos mediante
-	robots móviles en entornos urbanos {C}apitulo 4},
-  author = {P. Alvarado},
-  year = {2005},
-  school = {Escuela Técnica Superior de Ingeniería, Universidad de Sevilla},
-  url = {http://bibing.us.es/proyectos/abreproy/70077/fichero/capitulo4.pdf}
-}
-
 @INCOLLECTION{Ballard1987,
+  author = {Ballard, D. H.},
+  title = {Readings in Computer Vision: Issues, Problems, Principles, and Paradigms},
+  publisher = {Morgan Kaufmann Publishers Inc.},
+  year = {1987},
+  editor = {Fischler, Martin A. and Firschein, Oscar},
+  chapter = {Generalizing the Hough Transform to Detect Arbitrary Shapes},
+  pages = {714--725},
+  address = {San Francisco, CA, USA},
+  acmid = {33574},
+  isbn = {0-934613-33-8},
+  numpages = {12},
+  url = {http://dl.acm.org/citation.cfm?id=33517.33574}
+}
+
+@INCOLLECTION{Ballard1987a,
   author = {Ballard, D. H.},
   title = {Readings in Computer Vision: Issues, Problems, Principles, and Paradigms},
   publisher = {Morgan Kaufmann Publishers Inc.},
@@ -51,7 +49,42 @@
   lastchecked = {\today}
 }
 
+@BOOK{Burrus1998,
+  title = {Ejercicios de Tratamiento de la Señal. Un enfoque práctico},
+  publisher = {Prentice Hall},
+  year = {1998},
+  author = {C. S. Burrus and J. H. McClellan and A. V. Oppenheim and T. W. Parks
+	and R. W. Schafer and H. W. Schuessler}
+}
+
+@OTHER{alliance2014,
+  author = {John W. Eaton},
+  lastchecked = {\today},
+  title = {Why does Embedded Vision need an Alliance?},
+  url = {http://www.embedded-vision.com},
+  year = {2014}
+}
+
+@OTHER{opencv2014,
+  author = {John W. Eaton},
+  lastchecked = {\today},
+  school = {University of Wisconsin},
+  title = {Open Source Computer Vision},
+  url = {http://opencv.org},
+  year = {2014}
+}
+
 @ARTICLE{Illingworth1988,
+  author = {Illingworth, J. and Kittler, J.},
+  title = {A Survey of the Hough Transform},
+  journal = {Comput. Vision Graph. Image Process.},
+  year = {1988},
+  address = {San Diego, CA, USA},
+  publisher = {Academic Press Professional, Inc.},
+  url = {http://dx.doi.org/10.1016/S0734-189X(88)80033-1}
+}
+
+@ARTICLE{Illingworth1988a,
   author = {Illingworth, J. and Kittler, J.},
   title = {A Survey of the Hough Transform},
   journal = {Comput. Vision Graph. Image Process.},
@@ -85,6 +118,26 @@
   volume = {I}
 }
 
+@ARTICLE{Kimme1975,
+  author = {Kimme, Carolyn and Ballard, Dana and Sklansky, Jack},
+  title = {Finding Circles by an Array of Accumulators},
+  journal = {Commun. ACM},
+  year = {1975},
+  volume = {18},
+  pages = {120--122},
+  number = {2},
+  month = feb,
+  acmid = {360677},
+  address = {New York, NY, USA},
+  doi = {10.1145/360666.360677},
+  issn = {0001-0782},
+  issue_date = {Feb. 1975},
+  keywords = {curve detection, line fitting, pattern recognition, picture processing},
+  numpages = {3},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/360666.360677}
+}
+
 @BOOK{Lawson1992,
   title = {Parallel Processing in Industrial Real Time Applications},
   publisher = {Prentice Hall},
@@ -101,17 +154,25 @@
   url = {http://www.cse.chalmers.se/~hoangt/papers/tunghoang-dsd2010.pdf}
 }
 
-@ELECTRONIC{alliance2014,
+@ELECTRONIC{2014,
+  year = {2014},
+  title = {Open Source Computer Vision},
+  url = {http://opencv.org},
+  lastchecked = {\today}
+}
+
+@ELECTRONIC{2014a,
   year = {2014},
   title = {Why does Embedded Vision need an Alliance?},
   url = {http://www.embedded-vision.com},
   lastchecked = {\today}
 }
 
-@ELECTRONIC{opencv2014,
-  year = {2014},
-  title = {Open Source Computer Vision},
-  url = {http://opencv.org},
-  lastchecked = {\today}
+@BOOKLET{Alvarado2005a,
+  title = {Técnicas de percepción activa para seguimiento de objetos mediante
+	robots móviles en entornos urbanos {C}apitulo 4},
+  year = {2005},
+  school = {Escuela Técnica Superior de Ingeniería, Universidad de Sevilla},
+  url = {http://bibing.us.es/proyectos/abreproy/70077/fichero/capitulo4.pdf}
 }
 
